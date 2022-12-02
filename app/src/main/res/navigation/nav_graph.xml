@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    android:label="@string/add"
+    app:startDestination="@id/petListFragment">
+
+    <fragment
+        android:id="@+id/petListFragment"
+        android:name="com.example.petcare.ui.pet.PetListFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_pet_list">
+        <action
+            android:id="@+id/action_petListFragment_to_addPetFragment"
+            app:destination="@id/addPetFragment" />
+        <action
+            android:id="@+id/action_petListFragment_to_petDetailFragment"
+            app:destination="@id/petDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPetFragment"
+        android:name="com.example.petcare.ui.pet.AddPetFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_add_pet">
+        <action
+            android:id="@+id/action_addPetFragment_to_petListFragment"
+            app:destination="@id/petListFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="pet_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/petDetailFragment"
+        android:name="com.example.petcare.ui.pet.PetDetailFragment"
+        tools:layout="@layout/fragment_pet_detail">
+        <action
+            android:id="@+id/action_petDetailFragment_to_petListFragment"
+            app:destination="@id/petListFragment" />
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_petDetailFragment_to_addPetFragment"
+            app:destination="@id/addPetFragment" />
+        <action
+            android:id="@+id/action_petDetailFragment_to_vaccineListFragment"
+            app:destination="@id/vaccineListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vaccineListFragment"
+        android:name="com.example.petcare.ui.vaccine.VaccineListFragment"
+        android:label="fragment_vaccine_list"
+        tools:layout="@layout/fragment_vaccine_list" >
+        <action
+            android:id="@+id/action_vaccineListFragment_to_addVaccineFragment"
+            app:destination="@id/addVaccineFragment" />
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/addVaccineFragment"
+        android:name="com.example.petcare.ui.vaccine.AddVaccineFragment"
+        android:label="fragment_add_vaccine"
+        tools:layout="@layout/fragment_add_vaccine" >
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_addVaccineFragment_to_vaccineListFragment"
+            app:destination="@id/vaccineListFragment" />
+        <argument
+            android:name="vacccine_id"
+            app:argType="integer" />
+    </fragment>
+</navigation>

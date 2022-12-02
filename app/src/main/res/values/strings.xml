@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Pet Care</string>
+
+    <!-- Pet -->
+    <string name="pet_name">Pet name</string>
+    <string name="pet_species">Pet species</string>
+    <string name="pet_breed">Pet breed</string>
+    <string name="pet_sex">Pet sex</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="pet_date_of_birth">Pet date of birth</string>
+    <string name="pet_colour">Pet colour</string>
+    <string name="pet_chip">Pet chip number</string>
+    <string name="pet_image">pet image</string>
+
+    <!-- Vaccine -->
+    <string name="vaccine_name">Name</string>
+    <string name="vaccine_description">Description</string>
+    <string name="vaccination_date">Vaccination date</string>
+    <string name="next_vaccination_date">Next vaccination date</string>
+
+    <!-- Buttons -->
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">delete</string>
+    <string name="save_info">Save Info</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="vaccines">Vaccines</string>
+    <string name="medication">Medication</string>
+    <string name="exams">Exams</string>
+    <string name="bath">Bath</string>
+    <string name="grooming">Grooming</string>
+
+    <!-- Dialogues -->
+    <string name="delete_question">Are you sure you want to delete this pet?</string>
+
+    <!-- Fragment titles -->
+    <string name="edit_pet_title">Edit pet</string>
+    <string name="add_pet_title">Add pet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
