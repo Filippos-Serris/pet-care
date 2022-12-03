@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_petDetailFragment_to_vaccineListFragment"
             app:destination="@id/vaccineListFragment" />
+        <action
+            android:id="@+id/action_petDetailFragment_to_medicationListFragment"
+            app:destination="@id/medicationListFragment" />
     </fragment>
     <fragment
         android:id="@+id/vaccineListFragment"
@@ -77,5 +80,31 @@
         <argument
             android:name="vacccine_id"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicationListFragment"
+        android:name="com.example.petcare.ui.medication.MedicationListFragment"
+        android:label="fragment_medication_list"
+        tools:layout="@layout/fragment_medication_list" >
+        <argument android:name="pet_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_medicationListFragment_to_addMedicationFragment"
+            app:destination="@id/addMedicationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMedicationFragment"
+        android:name="com.example.petcare.ui.medication.AddMedicationFragment"
+        android:label="fragment_add_medication"
+        tools:layout="@layout/fragment_add_medication" >
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
+        <argument
+            android:name="medication_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_addMedicationFragment_to_medicationListFragment"
+            app:destination="@id/medicationListFragment" />
     </fragment>
 </navigation>

@@ -1,14 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.medication.MedicationListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/medication_name_header"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/medication_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/medication_description_header"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/medication_description"
+                app:layout_constraintStart_toEndOf="@+id/medication_name_header"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/medication_dosage_header"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/medication_dosage"
+                app:layout_constraintStart_toEndOf="@+id/medication_description_header"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/medication_start_date_header"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/medication_start_date"
+                app:layout_constraintStart_toEndOf="@+id/medication_dosage_header"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/medication_end_date_header"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/medication_end_date"
+                app:layout_constraintStart_toEndOf="@+id/medication_start_date_header"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/medication_repetition_header"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/medication_repetition"
+                app:layout_constraintStart_toEndOf="@+id/medication_end_date_header"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/medication_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/medication_name_header" />
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/medication_recycler" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
+
+</ScrollView>

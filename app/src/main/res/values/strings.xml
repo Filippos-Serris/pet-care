@@ -19,6 +19,14 @@
     <string name="vaccination_date">Vaccination date</string>
     <string name="next_vaccination_date">Next vaccination date</string>
 
+    <!-- Medication -->
+    <string name="medication_name">Name</string>
+    <string name="medication_description">Description</string>
+    <string name="medication_dosage">Dosage</string>
+    <string name="medication_start_date">Start date</string>
+    <string name="medication_end_date">End date</string>
+    <string name="medication_repetition">Repetition</string>
+
     <!-- Buttons -->
     <string name="add">Add</string>
     <string name="edit">Edit</string>
