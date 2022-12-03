@@ -20,12 +20,3 @@ data class Vaccine(
     @ColumnInfo(name = "vaccinationDate") val vaccinationDate: String,
     @ColumnInfo(name = "nextVaccinationDate") val nextVaccinationDate: String
 )
-
-/*data class PetVaccines(
-    @Embedded val pet: Pet,
-    @Relation(
-        parentColumn = "petId",
-        entityColumn = "petId"
-    )
-    val vaccines: List<Vaccine>
-)*/
