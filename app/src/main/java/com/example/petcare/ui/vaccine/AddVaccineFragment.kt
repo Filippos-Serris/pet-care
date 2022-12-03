@@ -10,23 +10,24 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.petcare.PetCareApplication
-import com.example.petcare.PetCareViewModel
-import com.example.petcare.PetCareViewModelFactory
-import com.example.petcare.R
 import com.example.petcare.database.vaccine.Vaccine
-import com.example.petcare.databinding.FragmentAddPetBinding
 import com.example.petcare.databinding.FragmentAddVaccineBinding
-import com.example.petcare.ui.pet.PetDetailFragmentArgs
+import com.example.petcare.viewmodels.VaccineViewModel
+import com.example.petcare.viewmodels.VaccineViewModelFactory
 
 class AddVaccineFragment : Fragment() {
     private var _binding: FragmentAddVaccineBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: PetCareViewModel by activityViewModels {
+    /*private val vaccineViewModel: PetCareViewModel by activityViewModels {
         PetCareViewModelFactory(
             (activity?.application as PetCareApplication).database.petDao(),
             (activity?.application as PetCareApplication).database.vaccineDao()
         )
+    }*/
+
+    private val vaccineViewModel: VaccineViewModel by activityViewModels {
+        VaccineViewModelFactory((activity?.application as PetCareApplication).database.vaccineDao())
     }
 
     private val navigationArgs: AddVaccineFragmentArgs by navArgs()
@@ -49,7 +50,7 @@ class AddVaccineFragment : Fragment() {
         val vaccineId = navigationArgs.vacccineId
 
         if (vaccineId > 0) {
-            viewModel.retrieveVaccine(vaccineId)
+            this.vaccineViewModel.retrieveVaccine(vaccineId)
                 .observe(this.viewLifecycleOwner) { selectedVaccine ->
                     vaccine = selectedVaccine
                     bind(vaccine)
@@ -60,7 +61,7 @@ class AddVaccineFragment : Fragment() {
     }
 
     private fun isEntryValid(): Boolean {
-        return viewModel.isEntryValid(
+        return this.vaccineViewModel.isEntryValid(
             binding.vaccineName.text.toString(),
             binding.vaccineDescription.text.toString(),
             binding.vaccinationDate.text.toString(),
@@ -70,7 +71,7 @@ class AddVaccineFragment : Fragment() {
 
     private fun addNewVaccine() {
         if (isEntryValid()) {
-            viewModel.addNewVaccine(
+            this.vaccineViewModel.addNewVaccine(
                 //petId,
                 navigationArgs.petId,
                 binding.vaccineName.text.toString(),
@@ -99,7 +100,7 @@ class AddVaccineFragment : Fragment() {
 
     private fun updateVaccine() {
         if (isEntryValid()) {
-            viewModel.updateVaccine(
+            this.vaccineViewModel.updateVaccine(
                 this.navigationArgs.vacccineId,
                 this.navigationArgs.petId,
                 this.binding.vaccineName.text.toString(),

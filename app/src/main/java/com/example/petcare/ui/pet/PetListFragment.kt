@@ -9,22 +9,26 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.petcare.PetCareApplication
-import com.example.petcare.PetCareViewModel
-import com.example.petcare.PetCareViewModelFactory
 import com.example.petcare.R
 import com.example.petcare.adapters.PetListAdapter
 import com.example.petcare.databinding.FragmentPetListBinding
+import com.example.petcare.viewmodels.PetViewModel
+import com.example.petcare.viewmodels.PetViewModelFactory
 
 
 class PetListFragment : Fragment() {
     private var _binding: FragmentPetListBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: PetCareViewModel by activityViewModels {
+    /*private val petViewModel: PetCareViewModel by activityViewModels {
         PetCareViewModelFactory(
             (activity?.application as PetCareApplication).database.petDao(),
             (activity?.application as PetCareApplication).database.vaccineDao()
         )
+    }*/
+
+    private val petViewModel: PetViewModel by activityViewModels {
+        PetViewModelFactory((activity?.application as PetCareApplication).database.petDao())
     }
     // ------------------------------------------------------------------------------------
 
@@ -48,7 +52,7 @@ class PetListFragment : Fragment() {
         }
         binding.recyclerView.adapter = adapter
 
-        viewModel.allPets.observe(this.viewLifecycleOwner) { pets ->
+        this.petViewModel.allPets.observe(this.viewLifecycleOwner) { pets ->
             pets.let { adapter.submitList(it) }
         }
 

@@ -10,22 +10,26 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.petcare.PetCareApplication
-import com.example.petcare.PetCareViewModel
-import com.example.petcare.PetCareViewModelFactory
 import com.example.petcare.R
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.databinding.FragmentAddPetBinding
+import com.example.petcare.viewmodels.PetViewModel
+import com.example.petcare.viewmodels.PetViewModelFactory
 
 
 class AddPetFragment : Fragment() {
     private var _binding: FragmentAddPetBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: PetCareViewModel by activityViewModels {
+    /*private val petViewModel: PetCareViewModel by activityViewModels {
         PetCareViewModelFactory(
             (activity?.application as PetCareApplication).database.petDao(),
             (activity?.application as PetCareApplication).database.vaccineDao()
         )
+    }*/
+
+    private val petViewModel: PetViewModel by activityViewModels {
+        PetViewModelFactory((activity?.application as PetCareApplication).database.petDao())
     }
 
     lateinit var pet: Pet
@@ -47,7 +51,7 @@ class AddPetFragment : Fragment() {
 
         val id = navigationArgs.petId
         if (id > 0) {
-            viewModel.retrievePet(id).observe(this.viewLifecycleOwner) { selectedPet ->
+            this.petViewModel.retrievePet(id).observe(this.viewLifecycleOwner) { selectedPet ->
                 pet = selectedPet
                 bind(pet)
             }
@@ -62,7 +66,7 @@ class AddPetFragment : Fragment() {
     }
 
     private fun isEntryValid(): Boolean {
-        return viewModel.isEntryValid(
+        return this.petViewModel.isEntryValid(
             binding.petName.text.toString(),
             binding.petSpecies.text.toString(),
             binding.petBreed.text.toString(),
@@ -75,7 +79,7 @@ class AddPetFragment : Fragment() {
 
     private fun addNewPet() {
         if (isEntryValid()) {
-            viewModel.addNewPet(
+            this.petViewModel.addNewPet(
                 binding.petName.text.toString(),
                 binding.petSpecies.text.toString(),
                 binding.petBreed.text.toString(),
@@ -103,7 +107,7 @@ class AddPetFragment : Fragment() {
 
     private fun updatePet() {
         if (isEntryValid()) {
-            viewModel.updatePet(
+            this.petViewModel.updatePet(
                 this.navigationArgs.petId,
                 this.binding.petName.text.toString(),
                 this.binding.petSpecies.text.toString(),

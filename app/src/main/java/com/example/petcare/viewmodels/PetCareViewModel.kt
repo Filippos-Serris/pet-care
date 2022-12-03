@@ -1,18 +1,21 @@
-package com.example.petcare
+package com.example.petcare.viewmodels
 
 import androidx.lifecycle.*
+import com.example.petcare.database.medication.MedicationDao
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.database.pet.PetDao
 import com.example.petcare.database.vaccine.Vaccine
 import com.example.petcare.database.vaccine.VaccineDao
 import kotlinx.coroutines.launch
 
-class PetCareViewModel(private val petDao: PetDao, private val vaccineDao: VaccineDao) :
+class PetCareViewModel(
+    private val petDao: PetDao,
+    private val vaccineDao: VaccineDao,
+) :
     ViewModel() {
     lateinit var pet: Pet
 
     val allPets: LiveData<List<Pet>> = petDao.getPets().asLiveData()
-    //val allVaccines: LiveData<List<Vaccine>> = vaccineDao.getPetsVaccines().asLiveData()
 
     //---------------------------------------------------------------------- Pet ----------------------------------------------------------------------------------------------------------
     // ---------------- Insert data to the database ---------------------
@@ -30,10 +33,6 @@ class PetCareViewModel(private val petDao: PetDao, private val vaccineDao: Vacci
 
     fun deletePet(pet: Pet) {
         viewModelScope.launch { petDao.deletePet(pet) }
-    }
-
-    private fun insertVaccine(vaccine: Vaccine) {
-        viewModelScope.launch { vaccineDao.insertVaccine(vaccine) }
     }
 
 
@@ -142,6 +141,10 @@ class PetCareViewModel(private val petDao: PetDao, private val vaccineDao: Vacci
 
     // ---------------------------------------------------------------------------- Vaccine ---------------------------------------------------------------------------------------------
 
+    private fun insertVaccine(vaccine: Vaccine) {
+        viewModelScope.launch { vaccineDao.insertVaccine(vaccine) }
+    }
+
     fun retrieveVaccines(id: Int): LiveData<List<Vaccine>> {
         return vaccineDao.getVaccines(id).asLiveData()
     }
@@ -238,9 +241,15 @@ class PetCareViewModel(private val petDao: PetDao, private val vaccineDao: Vacci
         }
         return true
     }
+
+    // ------------------------------------------------------------------------------ Medication ----------------------------------------------------------------------------------------
+
 }
 
-class PetCareViewModelFactory(private val petDao: PetDao, private val vaccineDao: VaccineDao) :
+class PetCareViewModelFactory(
+    private val petDao: PetDao,
+    private val vaccineDao: VaccineDao
+) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PetCareViewModel::class.java)) {

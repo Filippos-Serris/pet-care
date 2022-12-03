@@ -10,11 +10,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.petcare.PetCareApplication
-import com.example.petcare.PetCareViewModel
-import com.example.petcare.PetCareViewModelFactory
 import com.example.petcare.adapters.VaccineListAdapter
 import com.example.petcare.database.vaccine.Vaccine
 import com.example.petcare.databinding.FragmentVaccineListBinding
+import com.example.petcare.viewmodels.VaccineViewModel
+import com.example.petcare.viewmodels.VaccineViewModelFactory
 
 
 class VaccineListFragment : Fragment() {
@@ -25,11 +25,15 @@ class VaccineListFragment : Fragment() {
 
     private val navigationArgs: VaccineListFragmentArgs by navArgs()
 
-    private val viewModel: PetCareViewModel by activityViewModels {
+    /*private val vaccineViewModel: PetCareViewModel by activityViewModels {
         PetCareViewModelFactory(
             (activity?.application as PetCareApplication).database.petDao(),
             (activity?.application as PetCareApplication).database.vaccineDao()
         )
+    }*/
+
+    private val vaccineViewModel: VaccineViewModel by activityViewModels {
+        VaccineViewModelFactory((activity?.application as PetCareApplication).database.vaccineDao())
     }
     //-------------------------------------------------------------------------------------------
 
@@ -55,7 +59,7 @@ class VaccineListFragment : Fragment() {
 
         val petId = navigationArgs.petId
 
-        viewModel.retrieveVaccines(petId).observe(this.viewLifecycleOwner) { vaccines ->
+        this.vaccineViewModel.retrieveVaccines(petId).observe(this.viewLifecycleOwner) { vaccines ->
             vaccines.let { adapter.submitList(it) }
         }
 

@@ -12,12 +12,9 @@ interface VaccineDao {
     @Query("select * from vaccine where petId = :id")
     fun getVaccines(id: Int): Flow<List<Vaccine>>
 
-    @Delete
-    suspend fun deleteVaccine(vaccine: Vaccine)
+    @Query("select * from vaccine where vaccineId = :id")
+    fun getVaccine(id: Int): Flow<Vaccine>
 
     @Update
     suspend fun updateVaccine(vaccine: Vaccine)
-
-    @Query("select * from vaccine where vaccineId = :id")
-    fun getVaccine(id: Int): Flow<Vaccine>
 }

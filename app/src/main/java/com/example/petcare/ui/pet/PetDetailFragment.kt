@@ -1,7 +1,6 @@
 package com.example.petcare.ui.pet
 
 import android.os.Bundle
-import android.security.identity.AccessControlProfileId
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,16 +9,27 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.petcare.PetCareApplication
-import com.example.petcare.PetCareViewModel
-import com.example.petcare.PetCareViewModelFactory
 import com.example.petcare.R
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.databinding.FragmentPetDetailBinding
+import com.example.petcare.viewmodels.PetViewModel
+import com.example.petcare.viewmodels.PetViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class PetDetailFragment : Fragment() {
     private var _binding: FragmentPetDetailBinding? = null
     private val binding get() = _binding!!
+
+    /*private val petViewModel: PetCareViewModel by activityViewModels {
+        PetCareViewModelFactory(
+            (activity?.application as PetCareApplication).database.petDao(),
+            (activity?.application as PetCareApplication).database.vaccineDao()
+        )
+    }*/
+
+    private val petViewModel: PetViewModel by activityViewModels {
+        PetViewModelFactory((activity?.application as PetCareApplication).database.petDao())
+    }
 
     lateinit var pet: Pet
 
@@ -40,18 +50,13 @@ class PetDetailFragment : Fragment() {
 
         val id = navigationArgs.petId
 
-        viewModel.retrievePet(id).observe(this.viewLifecycleOwner) { selectedPet ->
+        this.petViewModel.retrievePet(id).observe(this.viewLifecycleOwner) { selectedPet ->
             pet = selectedPet
             bind(pet)
         }
     }
 
-    private val viewModel: PetCareViewModel by activityViewModels {
-        PetCareViewModelFactory(
-            (activity?.application as PetCareApplication).database.petDao(),
-            (activity?.application as PetCareApplication).database.vaccineDao()
-        )
-    }
+
 
     private fun bind(pet: Pet) {
         binding.apply {
@@ -73,7 +78,7 @@ class PetDetailFragment : Fragment() {
     }
 
     private fun deletePet() {
-        viewModel.deletePet(pet)
+        this.petViewModel.deletePet(pet)
         findNavController().navigateUp()
     }
 
