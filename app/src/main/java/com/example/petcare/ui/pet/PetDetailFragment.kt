@@ -74,6 +74,10 @@ class PetDetailFragment : Fragment() {
                     PetDetailFragmentDirections.actionPetDetailFragmentToVaccineListFragment(navigationArgs.petId)
                 findNavController().navigate(action)
             }
+            petMedication.setOnClickListener {
+                val action = PetDetailFragmentDirections.actionPetDetailFragmentToMedicationListFragment(navigationArgs.petId)
+                findNavController().navigate(action)
+            }
         }
     }
 

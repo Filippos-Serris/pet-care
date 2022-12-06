@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/card"
     android:maxWidth="350dp"
@@ -23,79 +23,83 @@
             app:srcCompat="@android:drawable/btn_star_big_on" />
     </androidx.cardview.widget.CardView>
 
-
-    <TextView
-        android:id="@+id/pet_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pet_name"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/pet_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/pet_name_label"
-        tools:text="Pet name" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="20sp"
+        android:textStyle="italic|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:text="Mpoumpou" />
 
     <TextView
         android:id="@+id/pet_sex_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="@string/pet_sex"
         app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/pet_name" />
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/pet_sex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/pet_sex_label"
         app:layout_constraintTop_toBottomOf="@+id/pet_sex_label"
-        tools:text="Pet sex" />
+        tools:text="Female" />
 
     <TextView
         android:id="@+id/pet_colour_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="@string/pet_colour"
-        app:layout_constraintStart_toEndOf="@+id/pet_sex_label"
-        app:layout_constraintStart_toStartOf="@+id/pet_colour"
-        app:layout_constraintTop_toBottomOf="@+id/pet_name" />
+        app:layout_constraintStart_toEndOf="@+id/pet_sex"
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/pet_colour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/pet_sex"
+        app:layout_constraintStart_toStartOf="@+id/pet_colour_label"
         app:layout_constraintTop_toBottomOf="@+id/pet_colour_label"
-        tools:text="Pet colour" />
+        tools:text="White - Brown" />
 
     <TextView
         android:id="@+id/pet_chip_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/pet_chip"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/pet_sex_label"
         app:layout_constraintTop_toBottomOf="@+id/pet_sex" />
 
     <TextView
         android:id="@+id/pet_chip"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="1dp"
+        android:singleLine="false"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/pet_chip_label"
         app:layout_constraintTop_toBottomOf="@+id/pet_chip_label"
         tools:text="00000000000000000000000" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

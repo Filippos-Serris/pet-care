@@ -1,7 +1,6 @@
 package com.example.petcare.viewmodels
 
 import androidx.lifecycle.*
-import com.example.petcare.database.medication.MedicationDao
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.database.pet.PetDao
 import com.example.petcare.database.vaccine.Vaccine
@@ -167,7 +166,7 @@ class PetCareViewModel(
     ): Vaccine {
         return Vaccine(
             petId = petId,
-            name = vaccineName,
+            vaccineName = vaccineName,
             vaccineDescription = vaccineDescription,
             vaccinationDate = vaccinationDate,
             nextVaccinationDate = nextVaccinationDate
@@ -203,7 +202,7 @@ class PetCareViewModel(
         return Vaccine(
             vaccineId = vaccineId,
             petId = petId,
-            name = vaccineName,
+            vaccineName = vaccineName,
             vaccineDescription = vaccineDescription,
             vaccinationDate = vaccinationDate,
             nextVaccinationDate = nextVaccinationDate

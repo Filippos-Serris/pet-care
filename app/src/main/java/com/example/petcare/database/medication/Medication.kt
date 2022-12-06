@@ -18,9 +18,10 @@ import com.example.petcare.database.pet.Pet
 data class Medication(
     @PrimaryKey(autoGenerate = true) val medicationId: Int = 0,
     @ColumnInfo(name = "petId") val petId: Int,
-    @ColumnInfo(name = "medicationDescription") val medicationDescription: String,
-    @ColumnInfo(name = "medicationDosage") val medicationDosage: String,
-    @ColumnInfo(name = "medicationStartDate") val medicationStartDate: String,
-    @ColumnInfo(name = "medicationEndDate") val medicationEndDate: String,
-    @ColumnInfo(name = "medicationRepetition") val medicationRepetition: String
+    @ColumnInfo(name = "name") val medicationName: String,
+    @ColumnInfo(name = "description") val medicationDescription: String,
+    @ColumnInfo(name = "dosage") val medicationDosage: String,
+    @ColumnInfo(name = "startDate") val medicationStartDate: String,
+    @ColumnInfo(name = "endDate") val medicationEndDate: String,
+    @ColumnInfo(name = "repetition") val medicationRepetition: String
 )

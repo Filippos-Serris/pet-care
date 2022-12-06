@@ -89,7 +89,7 @@ class AddVaccineFragment : Fragment() {
 
     private fun bind(vaccine: Vaccine) {
         binding.apply {
-            vaccineName.setText(vaccine.name, TextView.BufferType.SPANNABLE)
+            vaccineName.setText(vaccine.vaccineName, TextView.BufferType.SPANNABLE)
             vaccineDescription.setText(vaccine.vaccineDescription, TextView.BufferType.SPANNABLE)
             vaccinationDate.setText(vaccine.vaccinationDate, TextView.BufferType.SPANNABLE)
             nextVaccinationDate.setText(vaccine.nextVaccinationDate, TextView.BufferType.SPANNABLE)

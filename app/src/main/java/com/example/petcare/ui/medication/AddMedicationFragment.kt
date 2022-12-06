@@ -5,56 +5,65 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
+import com.example.petcare.PetCareApplication
 import com.example.petcare.R
+import com.example.petcare.database.medication.Medication
+import com.example.petcare.databinding.FragmentAddMedicationBinding
+import com.example.petcare.viewmodels.MedicationViewModel
+import com.example.petcare.viewmodels.MedicationViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddMedicationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddMedicationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentAddMedicationBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val medicationViewModel: MedicationViewModel by activityViewModels {
+        MedicationViewModelFactory((activity?.application as PetCareApplication).database.medicationDao())
+    }
+
+    lateinit var medication: Medication
+
+    private val navigationArgs: AddMedicationFragmentArgs by navArgs()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentAddMedicationBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.saveButton.setOnClickListener { addNewMedication() }
+    }
+
+    private fun isEntryValid(): Boolean {
+        return this.medicationViewModel.isEntryValid(
+            binding.medicationName.text.toString(),
+            binding.medicationDescription.text.toString(),
+            binding.medicationDosage.text.toString(),
+            binding.medicationStartDate.text.toString(),
+            binding.medicationEndDate.text.toString(),
+            binding.medicationRepetition.text.toString()
+        )
+    }
+
+    private fun addNewMedication() {
+        if (isEntryValid()) {
+            this.medicationViewModel.addNewMedication(
+                navigationArgs.petId,
+                binding.medicationName.text.toString(),
+                binding.medicationDescription.text.toString(),
+                binding.medicationDosage.text.toString(),
+                binding.medicationStartDate.text.toString(),
+                binding.medicationEndDate.text.toString(),
+                binding.medicationRepetition.text.toString()
+            )
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_medication, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddMedicationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddMedicationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

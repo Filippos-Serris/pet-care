@@ -18,7 +18,7 @@ class VaccineViewModel(private val vaccineDao: VaccineDao) : ViewModel() {
         return vaccineDao.getVaccine(id).asLiveData()
     }
 
-    fun updateVaccine(vaccine: Vaccine) {
+    private fun updateVaccine(vaccine: Vaccine) {
         viewModelScope.launch { vaccineDao.updateVaccine(vaccine) }
     }
 
@@ -31,7 +31,7 @@ class VaccineViewModel(private val vaccineDao: VaccineDao) : ViewModel() {
     ): Vaccine {
         return Vaccine(
             petId = petId,
-            name = vaccineName,
+            vaccineName = vaccineName,
             vaccineDescription = vaccineDescription,
             vaccinationDate = vaccinationDate,
             nextVaccinationDate = nextVaccinationDate
@@ -67,7 +67,7 @@ class VaccineViewModel(private val vaccineDao: VaccineDao) : ViewModel() {
         return Vaccine(
             vaccineId = vaccineId,
             petId = petId,
-            name = vaccineName,
+            vaccineName = vaccineName,
             vaccineDescription = vaccineDescription,
             vaccinationDate = vaccinationDate,
             nextVaccinationDate = nextVaccinationDate

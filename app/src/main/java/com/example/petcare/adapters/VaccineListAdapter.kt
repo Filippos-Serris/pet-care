@@ -25,7 +25,7 @@ class VaccineListAdapter(private val onVaccineClicked: (Vaccine) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(vaccine: Vaccine) {
             binding.apply {
-                vaccineName.text = /*vaccine.vaccines.elementAt(0).toString()*/vaccine.name
+                vaccineName.text = /*vaccine.vaccines.elementAt(0).toString()*/vaccine.vaccineName
                 vaccineDescription.text = vaccine.vaccineDescription
                 vaccinationDate.text = vaccine.vaccinationDate
                 nextVaccinationDate.text = vaccine.nextVaccinationDate
@@ -41,7 +41,7 @@ class VaccineListAdapter(private val onVaccineClicked: (Vaccine) -> Unit) :
             }
 
             override fun areContentsTheSame(oldVaccine: Vaccine, newVaccine: Vaccine): Boolean {
-                return oldVaccine.name == newVaccine.name
+                return oldVaccine.vaccineName == newVaccine.vaccineName
             }
         }
     }

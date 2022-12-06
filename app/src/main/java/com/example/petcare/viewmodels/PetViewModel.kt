@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 class PetViewModel(
     private val petDao: PetDao
 ) : ViewModel() {
-    lateinit var pet: Pet
+    //lateinit var pet: Pet
 
     val allPets: LiveData<List<Pet>> = petDao.getPets().asLiveData()
 
