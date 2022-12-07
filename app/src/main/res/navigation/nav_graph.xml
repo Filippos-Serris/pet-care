@@ -40,7 +40,8 @@
         tools:layout="@layout/fragment_pet_detail">
         <action
             android:id="@+id/action_petDetailFragment_to_petListFragment"
-            app:destination="@id/petListFragment" />
+            app:destination="@id/petListFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="pet_id"
             app:argType="integer" />

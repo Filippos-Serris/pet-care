@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.petcare.PetCareApplication
 import com.example.petcare.R
@@ -64,6 +65,11 @@ class AddMedicationFragment : Fragment() {
                 binding.medicationRepetition.text.toString()
             )
         }
+        val action =
+            AddMedicationFragmentDirections.actionAddMedicationFragmentToMedicationListFragment(
+                navigationArgs.petId
+            )
+        findNavController().navigate(action)
     }
 
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/medication_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/medication_name" />
+
+    <TextView
+        android:id="@+id/medication_description"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/medication_name"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/medication_description" />
+
+    <TextView
+        android:id="@+id/medication_dosage"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/medication_dosage"
+        app:layout_constraintStart_toEndOf="@+id/medication_description"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/medication_start_date"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/medication_dosage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/medication_start_date" />
+
+    <TextView
+        android:id="@+id/medication_end_date"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/medication_start_date"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/medication_end_date" />
+
+    <TextView
+        android:id="@+id/medication_repetition"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/medication_end_date"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/medication_repetition" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
