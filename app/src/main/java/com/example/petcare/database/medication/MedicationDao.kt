@@ -18,7 +18,7 @@ interface MedicationDao {
     fun getMedications(id: Int): Flow<List<Medication>>
 
     @Query("select * from medication where medicationId= :id")
-    fun gerMedication(id: Int): Flow<Medication>
+    fun getMedication(id: Int): Flow<Medication>
 
     @Update
     suspend fun updateMedication(medication: Medication)

@@ -43,7 +43,12 @@ class MedicationListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = MedicationListAdapter {
-
+            val action =
+                MedicationListFragmentDirections.actionMedicationListFragmentToAddMedicationFragment(
+                    it.petId,
+                    it.medicationId
+                )
+            findNavController().navigate(action)
         }
         binding.medicationRecycler.adapter = adapter
 
@@ -54,7 +59,7 @@ class MedicationListFragment : Fragment() {
                 medications.let { adapter.submitList(it) }
             }
 
-        binding.medicationRecycler.layoutManager=LinearLayoutManager(this.context)
+        binding.medicationRecycler.layoutManager = LinearLayoutManager(this.context)
 
 
         binding.addButton.setOnClickListener {

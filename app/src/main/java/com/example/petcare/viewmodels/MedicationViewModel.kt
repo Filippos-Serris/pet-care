@@ -15,6 +15,10 @@ class MedicationViewModel(private val medicationDao: MedicationDao) : ViewModel(
         return medicationDao.getMedications(id).asLiveData()
     }
 
+    fun retrieveMedication(id: Int): LiveData<Medication> {
+        return medicationDao.getMedication(id).asLiveData()
+    }
+
     private fun updateMedication(medication: Medication) {
         viewModelScope.launch { medicationDao.updateMedication(medication) }
     }
@@ -59,6 +63,54 @@ class MedicationViewModel(private val medicationDao: MedicationDao) : ViewModel(
         )
         insertMedication(newMedication)
     }
+
+    // ----------------------------------------------------------------------------------------
+
+    private fun getUpdatedMedicationEntry(
+        medicationId: Int,
+        petId: Int,
+        medicationName: String,
+        medicationDescription: String,
+        medicationDosage: String,
+        medicationStartDate: String,
+        medicationEndDate: String,
+        medicationRepetition: String
+    ): Medication {
+        return Medication(
+            medicationId = medicationId,
+            petId = petId,
+            medicationName = medicationName,
+            medicationDescription = medicationDescription,
+            medicationDosage = medicationDosage,
+            medicationStartDate = medicationStartDate,
+            medicationEndDate = medicationEndDate,
+            medicationRepetition = medicationRepetition
+        )
+    }
+
+    fun updateMedication(
+        medicationId: Int,
+        petId: Int,
+        medicationName: String,
+        medicationDescription: String,
+        medicationDosage: String,
+        medicationStartDate: String,
+        medicationEndDate: String,
+        medicationRepetition: String
+    ) {
+        val updatedMedication = getUpdatedMedicationEntry(
+            medicationId,
+            petId,
+            medicationName,
+            medicationDescription,
+            medicationDosage,
+            medicationStartDate,
+            medicationEndDate,
+            medicationRepetition
+        )
+        updateMedication(updatedMedication)
+    }
+
 
     fun isEntryValid(
         medicationName: String,

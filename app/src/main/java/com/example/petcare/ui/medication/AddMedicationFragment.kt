@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -39,7 +40,16 @@ class AddMedicationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.saveButton.setOnClickListener { addNewMedication() }
+        val medicationId = navigationArgs.medicationId
+        if (medicationId > 0) {
+            this.medicationViewModel.retrieveMedication(medicationId)
+                .observe(this.viewLifecycleOwner) { selectedMedication ->
+                    medication = selectedMedication
+                    bind(medication)
+                }
+        } else {
+            binding.saveButton.setOnClickListener { addNewMedication() }
+        }
     }
 
     private fun isEntryValid(): Boolean {
@@ -63,6 +73,47 @@ class AddMedicationFragment : Fragment() {
                 binding.medicationStartDate.text.toString(),
                 binding.medicationEndDate.text.toString(),
                 binding.medicationRepetition.text.toString()
+            )
+        }
+        val action =
+            AddMedicationFragmentDirections.actionAddMedicationFragmentToMedicationListFragment(
+                navigationArgs.petId
+            )
+        findNavController().navigate(action)
+    }
+
+    private fun bind(medication: Medication) {
+        binding.apply {
+            medicationName.setText(medication.medicationName, TextView.BufferType.SPANNABLE)
+            medicationDescription.setText(
+                medication.medicationDescription,
+                TextView.BufferType.SPANNABLE
+            )
+            medicationDosage.setText(medication.medicationDosage, TextView.BufferType.SPANNABLE)
+            medicationStartDate.setText(
+                medication.medicationStartDate,
+                TextView.BufferType.SPANNABLE
+            )
+            medicationEndDate.setText(medication.medicationEndDate, TextView.BufferType.SPANNABLE)
+            medicationRepetition.setText(
+                medication.medicationRepetition,
+                TextView.BufferType.SPANNABLE
+            )
+            saveButton.setOnClickListener { updateMedication() }
+        }
+    }
+
+    private fun updateMedication() {
+        if (isEntryValid()) {
+            this.medicationViewModel.updateMedication(
+                this.navigationArgs.medicationId,
+                this.navigationArgs.petId,
+                this.binding.medicationName.text.toString(),
+                this.binding.medicationDescription.text.toString(),
+                this.binding.medicationDosage.text.toString(),
+                this.binding.medicationStartDate.text.toString(),
+                this.binding.medicationEndDate.text.toString(),
+                this.binding.medicationRepetition.text.toString()
             )
         }
         val action =

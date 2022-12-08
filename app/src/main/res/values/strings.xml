@@ -27,6 +27,10 @@
     <string name="medication_end_date">End date</string>
     <string name="medication_repetition">Repetition</string>
 
+    <!-- Bath -->
+    <string name="bath_date">Date of bath</string>
+    <string name="next_bath">Next bath</string>
+
     <!-- Buttons -->
     <string name="add">Add</string>
     <string name="edit">Edit</string>

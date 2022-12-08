@@ -46,7 +46,6 @@ class AddVaccineFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val petId = navigationArgs.petId
         val vaccineId = navigationArgs.vacccineId
 
         if (vaccineId > 0) {

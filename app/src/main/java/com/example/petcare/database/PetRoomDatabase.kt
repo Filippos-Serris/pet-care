@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.petcare.database.bath.Bath
 import com.example.petcare.database.medication.Medication
 import com.example.petcare.database.medication.MedicationDao
 import com.example.petcare.database.pet.Pet
@@ -12,8 +13,8 @@ import com.example.petcare.database.vaccine.Vaccine
 import com.example.petcare.database.vaccine.VaccineDao
 
 @Database(
-    entities = [Pet::class, Vaccine::class, Medication::class],
-    version = 7,
+    entities = [Pet::class, Vaccine::class, Medication::class, Bath::class],
+    version = 8,
     exportSchema = false
 )
 abstract class PetRoomDatabase : RoomDatabase() {
