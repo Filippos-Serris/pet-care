@@ -57,7 +57,6 @@ class PetDetailFragment : Fragment() {
     }
 
 
-
     private fun bind(pet: Pet) {
         binding.apply {
             petName.text = pet.petName
@@ -71,11 +70,22 @@ class PetDetailFragment : Fragment() {
             editButton.setOnClickListener { editPet() }
             petVaccine.setOnClickListener {
                 val action =
-                    PetDetailFragmentDirections.actionPetDetailFragmentToVaccineListFragment(navigationArgs.petId)
+                    PetDetailFragmentDirections.actionPetDetailFragmentToVaccineListFragment(
+                        navigationArgs.petId
+                    )
                 findNavController().navigate(action)
             }
             petMedication.setOnClickListener {
-                val action = PetDetailFragmentDirections.actionPetDetailFragmentToMedicationListFragment(navigationArgs.petId)
+                val action =
+                    PetDetailFragmentDirections.actionPetDetailFragmentToMedicationListFragment(
+                        navigationArgs.petId
+                    )
+                findNavController().navigate(action)
+            }
+            petBath.setOnClickListener {
+                val action = PetDetailFragmentDirections.actionPetDetailFragmentToBathListFragment(
+                    navigationArgs.petId
+                )
                 findNavController().navigate(action)
             }
         }

@@ -1,11 +1,14 @@
 package com.example.petcare.ui.pet
 
+import android.app.DatePickerDialog
+import android.icu.util.Calendar
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -35,6 +38,9 @@ class AddPetFragment : Fragment() {
     lateinit var pet: Pet
 
     private val navigationArgs: AddPetFragmentArgs by navArgs()
+
+    var cal = Calendar.getInstance()
+
     // ------------------------------------------------------------------------------------
 
     override fun onCreateView(
@@ -58,7 +64,11 @@ class AddPetFragment : Fragment() {
         } else {
             binding.saveInfoButton.setOnClickListener { addNewPet() }
         }
+
+        /*setting date
+        binding.petDateOfBirth.setOnClickListener {}*/
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

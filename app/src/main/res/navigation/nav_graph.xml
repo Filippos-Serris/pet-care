@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_petDetailFragment_to_medicationListFragment"
             app:destination="@id/medicationListFragment" />
+        <action
+            android:id="@+id/action_petDetailFragment_to_bathListFragment"
+            app:destination="@id/bathListFragment" />
     </fragment>
     <fragment
         android:id="@+id/vaccineListFragment"
@@ -107,5 +110,31 @@
         <action
             android:id="@+id/action_addMedicationFragment_to_medicationListFragment"
             app:destination="@id/medicationListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bathListFragment"
+        android:name="com.example.petcare.ui.bath.BathListFragment"
+        android:label="fragment_bath_list"
+        tools:layout="@layout/fragment_bath_list" >
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_bathListFragment_to_addBathFragment"
+            app:destination="@id/addBathFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addBathFragment"
+        android:name="com.example.petcare.ui.bath.AddBathFragment"
+        android:label="fragment_add_bath"
+        tools:layout="@layout/fragment_add_bath" >
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
+        <argument android:name="bath_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_addBathFragment_to_bathListFragment"
+            app:destination="@id/bathListFragment" />
     </fragment>
 </navigation>

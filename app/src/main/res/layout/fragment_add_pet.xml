@@ -86,12 +86,13 @@
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- PetSpecies -->
+        <!-- PetSpecies , android:focusable="false"-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/pet_date_of_birth_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:layout_marginEnd="339dp"
             android:hint="@string/pet_date_of_birth"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
