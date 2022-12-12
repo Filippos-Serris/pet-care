@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_petDetailFragment_to_bathListFragment"
             app:destination="@id/bathListFragment" />
+        <action
+            android:id="@+id/action_petDetailFragment_to_groomingListFragment"
+            app:destination="@id/groomingListFragment" />
     </fragment>
     <fragment
         android:id="@+id/vaccineListFragment"
@@ -136,5 +139,32 @@
         <action
             android:id="@+id/action_addBathFragment_to_bathListFragment"
             app:destination="@id/bathListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groomingListFragment"
+        android:name="com.example.petcare.ui.grooming.GroomingListFragment"
+        android:label="fragment_grooming_list"
+        tools:layout="@layout/fragment_grooming_list" >
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_groomingListFragment_to_addGroomingFragment"
+            app:destination="@id/addGroomingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGroomingFragment"
+        android:name="com.example.petcare.ui.grooming.AddGroomingFragment"
+        android:label="fragment_add_grooming"
+        tools:layout="@layout/fragment_add_grooming" >
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
+        <argument
+            android:name="grooming_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_addGroomingFragment_to_groomingListFragment"
+            app:destination="@id/groomingListFragment" />
     </fragment>
 </navigation>

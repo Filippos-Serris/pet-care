@@ -1,8 +1,6 @@
 package com.example.petcare.viewmodels
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.petcare.database.bath.Bath
 import com.example.petcare.database.bath.BathDao
 import com.example.petcare.database.medication.MedicationDao
@@ -11,6 +9,10 @@ import kotlinx.coroutines.launch
 class BathViewModel(private val bathDao: BathDao) : ViewModel() {
     private fun insertBath(bath: Bath) {
         viewModelScope.launch { bathDao.insertBath(bath) }
+    }
+
+    fun retrieveBaths(id: Int): LiveData<List<Bath>> {
+        return bathDao.getBaths(id).asLiveData()
     }
 
     //------------------------------------------------------------------------

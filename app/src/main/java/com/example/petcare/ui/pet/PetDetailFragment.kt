@@ -88,6 +88,13 @@ class PetDetailFragment : Fragment() {
                 )
                 findNavController().navigate(action)
             }
+            petGrooming.setOnClickListener {
+                val action =
+                    PetDetailFragmentDirections.actionPetDetailFragmentToGroomingListFragment(
+                        navigationArgs.petId
+                    )
+                findNavController().navigate(action)
+            }
         }
     }
 
