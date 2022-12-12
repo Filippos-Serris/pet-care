@@ -17,7 +17,7 @@
         android:id="@+id/next_bath_date"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bath_date"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/next_bath" />
 

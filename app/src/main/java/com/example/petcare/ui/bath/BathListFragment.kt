@@ -42,6 +42,11 @@ class BathListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = BathListAdapter {
+            val action = BathListFragmentDirections.actionBathListFragmentToAddBathFragment(
+                it.petId,
+                it.bathId
+            )
+            findNavController().navigate(action)
 
         }
         binding.bathRecycler.adapter = adapter

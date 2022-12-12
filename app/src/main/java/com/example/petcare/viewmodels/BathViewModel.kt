@@ -3,7 +3,6 @@ package com.example.petcare.viewmodels
 import androidx.lifecycle.*
 import com.example.petcare.database.bath.Bath
 import com.example.petcare.database.bath.BathDao
-import com.example.petcare.database.medication.MedicationDao
 import kotlinx.coroutines.launch
 
 class BathViewModel(private val bathDao: BathDao) : ViewModel() {
@@ -32,6 +31,23 @@ class BathViewModel(private val bathDao: BathDao) : ViewModel() {
     fun addNewBath(petId: Int, bathDate: String, nextBathDate: String) {
         val newBath = getNewBathEntry(petId, bathDate, nextBathDate)
         insertBath(newBath)
+    }
+
+    //--------------------------------------------------------------------------------------------
+    private fun getUpdateBathEntry(
+        bathId: Int, petId: Int, bathDate: String, nextBathDate: String
+    ): Bath {
+        return Bath(
+            bathId = bathId,
+            petId = petId,
+            bathDate = bathDate,
+            nextBathDate = nextBathDate
+        )
+    }
+
+    fun updateBath(bathId: Int, petId: Int, bathDate: String, nextBathDate: String) {
+        val updatedBath = getUpdateBathEntry(bathId, petId, bathDate, nextBathDate)
+        updateBath(updatedBath)
     }
 
     //--------------------------------------------------------------------------------------------
