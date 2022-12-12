@@ -43,12 +43,28 @@ class AddGroomingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.saveInfoButton.setOnClickListener {
-            val action =
-                AddGroomingFragmentDirections.actionAddGroomingFragmentToGroomingListFragment(
-                    navigationArg.petId
-                )
-            findNavController().navigate(action)
+        binding.saveInfoButton.setOnClickListener { addNewGrooming() }
+    }
+
+    private fun isEntryValid(): Boolean {
+        return this.groomingViewModel.isEntryValid(
+            binding.groomingDate.text.toString(),
+            binding.nextGroomingDate.text.toString()
+        )
+    }
+
+
+    private fun addNewGrooming() {
+        if (isEntryValid()) {
+            this.groomingViewModel.addNewGrooming(
+                navigationArg.petId,
+                binding.groomingDate.text.toString(), binding.nextGroomingDate.text.toString()
+            )
         }
+        val action =
+            AddGroomingFragmentDirections.actionAddGroomingFragmentToGroomingListFragment(
+                navigationArg.petId
+            )
+        findNavController().navigate(action)
     }
 }

@@ -7,7 +7,7 @@ import com.example.petcare.database.medication.MedicationDao
 import kotlinx.coroutines.launch
 
 class GroomingViewModel(private val groomingDao: GroomingDao) : ViewModel() {
-    private fun insetGrooming(grooming: Grooming) {
+    private fun insertGrooming(grooming: Grooming) {
         viewModelScope.launch { groomingDao.insertGrooming(grooming) }
     }
 
@@ -21,6 +21,33 @@ class GroomingViewModel(private val groomingDao: GroomingDao) : ViewModel() {
 
     private fun updateGrooming(grooming: Grooming) {
         viewModelScope.launch { groomingDao.updateGrooming(grooming) }
+    }
+
+    //-------------------------------------------------------------------
+
+    private fun getNewGroomingEntry(
+        petId: Int,
+        groomingDate: String,
+        nextGrooming: String
+    ): Grooming {
+        return Grooming(petId = petId, groomingDate = groomingDate, nextGroomingDate = nextGrooming)
+    }
+
+    fun addNewGrooming(
+        petId: Int,
+        groomingDate: String,
+        nextGroomingDate: String
+    ) {
+        val newGrooming = getNewGroomingEntry(petId, groomingDate, nextGroomingDate)
+        insertGrooming(newGrooming)
+    }
+
+    //---------------------------------------------------------------------------------------------------
+
+    fun isEntryValid(groomingDate: String, nextGroomingDate: String): Boolean {
+        if (groomingDate.isBlank() || nextGroomingDate.isBlank())
+            return false
+        return true
     }
 }
 

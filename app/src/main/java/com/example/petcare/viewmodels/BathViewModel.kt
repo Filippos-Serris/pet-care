@@ -15,6 +15,14 @@ class BathViewModel(private val bathDao: BathDao) : ViewModel() {
         return bathDao.getBaths(id).asLiveData()
     }
 
+    fun retrieveBath(id: Int): LiveData<Bath> {
+        return bathDao.getBath(id).asLiveData()
+    }
+
+    fun updateBath(bath: Bath) {
+        viewModelScope.launch { bathDao.updateBath(bath) }
+    }
+
     //------------------------------------------------------------------------
 
     private fun getNewBathEntry(petId: Int, bathDate: String, nextBathDate: String): Bath {
