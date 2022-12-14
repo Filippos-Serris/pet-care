@@ -1,12 +1,14 @@
 package com.example.petcare.ui.pet
 
+import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -18,18 +20,13 @@ import com.example.petcare.database.pet.Pet
 import com.example.petcare.databinding.FragmentAddPetBinding
 import com.example.petcare.viewmodels.PetViewModel
 import com.example.petcare.viewmodels.PetViewModelFactory
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class AddPetFragment : Fragment() {
     private var _binding: FragmentAddPetBinding? = null
     private val binding get() = _binding!!
-
-    /*private val petViewModel: PetCareViewModel by activityViewModels {
-        PetCareViewModelFactory(
-            (activity?.application as PetCareApplication).database.petDao(),
-            (activity?.application as PetCareApplication).database.vaccineDao()
-        )
-    }*/
 
     private val petViewModel: PetViewModel by activityViewModels {
         PetViewModelFactory((activity?.application as PetCareApplication).database.petDao())
@@ -39,7 +36,15 @@ class AddPetFragment : Fragment() {
 
     private val navigationArgs: AddPetFragmentArgs by navArgs()
 
-    var cal = Calendar.getInstance()
+    private var cal = Calendar.getInstance()
+
+    private val dateSetListener =
+        DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            updateDateInView()
+        }
 
     // ------------------------------------------------------------------------------------
 
@@ -65,8 +70,10 @@ class AddPetFragment : Fragment() {
             binding.saveInfoButton.setOnClickListener { addNewPet() }
         }
 
-        /*setting date
-        binding.petDateOfBirth.setOnClickListener {}*/
+        binding.petDateOfBirth.setOnClickListener {
+            pickDateOfBirth()
+            context?.hideKeyboard(it)
+        }
     }
 
 
@@ -130,5 +137,25 @@ class AddPetFragment : Fragment() {
             val action = AddPetFragmentDirections.actionAddPetFragmentToPetListFragment()
             findNavController().navigate(action)
         }
+    }
+
+    private fun pickDateOfBirth() {
+        DatePickerDialog(
+            requireContext(), dateSetListener, cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)
+        ).show()
+    }
+
+    private fun updateDateInView() {
+        val myFormat = "dd/MM/yyyy" // mention the format you need
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        binding.petDateOfBirth.setText(sdf.format(cal.time))
+    }
+
+    private fun Context.hideKeyboard(view: View) {
+        val inputMethodManager =
+            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

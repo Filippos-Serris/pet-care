@@ -1,21 +1,27 @@
 package com.example.petcare.ui.grooming
 
+import android.app.Activity
+import android.app.DatePickerDialog
+import android.content.Context
+import android.icu.util.Calendar
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.petcare.PetCareApplication
-import com.example.petcare.R
 import com.example.petcare.database.grooming.Grooming
 import com.example.petcare.databinding.FragmentAddGroomingBinding
-import com.example.petcare.databinding.FragmentAddMedicationBinding
-import com.example.petcare.databinding.FragmentPetDetailBinding
 import com.example.petcare.viewmodels.GroomingViewModel
 import com.example.petcare.viewmodels.GroomingViewModelFactory
+import com.google.android.material.textfield.TextInputEditText
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddGroomingFragment : Fragment() {
     private var _binding: FragmentAddGroomingBinding? = null
@@ -28,6 +34,24 @@ class AddGroomingFragment : Fragment() {
     lateinit var grooming: Grooming
 
     private val navigationArg: AddGroomingFragmentArgs by navArgs()
+
+    private var cal = Calendar.getInstance()
+
+    private val dateSetListener =
+        DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            updateDateInView(binding.groomingDate)
+        }
+
+    private val nextDateSetListener =
+        DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            updateDateInView(binding.nextGroomingDate)
+        }
 
     //----------------------------------------------------------------------------------------------------------
 
@@ -43,7 +67,18 @@ class AddGroomingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.saveInfoButton.setOnClickListener { addNewGrooming() }
+        if (navigationArg.groomingId > 0) {
+            this.groomingViewModel.retrieveGrooming(navigationArg.groomingId)
+                .observe(this.viewLifecycleOwner) { selectedGrooming ->
+                    grooming = selectedGrooming
+                    bind(grooming)
+                }
+        } else {
+            binding.saveInfoButton.setOnClickListener { addNewGrooming() }
+        }
+
+        binding.groomingDate.setOnClickListener { pickDate(binding.groomingDate) }
+        binding.nextGroomingDate.setOnClickListener { pickDate(binding.nextGroomingDate) }
     }
 
     private fun isEntryValid(): Boolean {
@@ -66,5 +101,57 @@ class AddGroomingFragment : Fragment() {
                 navigationArg.petId
             )
         findNavController().navigate(action)
+    }
+
+    private fun bind(grooming: Grooming) {
+        binding.apply {
+            groomingDate.setText(grooming.groomingDate, TextView.BufferType.SPANNABLE)
+            nextGroomingDate.setText(grooming.nextGroomingDate, TextView.BufferType.SPANNABLE)
+            saveInfoButton.setOnClickListener { updateGrooming() }
+        }
+    }
+
+    private fun updateGrooming() {
+        if (isEntryValid()) {
+            this.groomingViewModel.updateGrooming(
+                this.navigationArg.groomingId,
+                this.navigationArg.petId,
+                this.binding.groomingDate.text.toString(),
+                this.binding.nextGroomingDate.text.toString()
+            )
+        }
+        val action =
+            AddGroomingFragmentDirections.actionAddGroomingFragmentToGroomingListFragment(
+                navigationArg.petId
+            )
+        findNavController().navigate(action)
+    }
+
+    private fun pickDate(date: TextInputEditText) {
+        if (date == binding.groomingDate) {
+            DatePickerDialog(
+                requireContext(), dateSetListener, cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        } else {
+            DatePickerDialog(
+                requireContext(), nextDateSetListener, cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+    }
+
+    private fun updateDateInView(date: TextInputEditText) {
+        val myFormat = "dd/MM/yyyy" // mention the format you need
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        date.setText(sdf.format(cal.time))
+    }
+
+    private fun Context.hideKeyboard(view: View) {
+        val inputMethodManager =
+            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

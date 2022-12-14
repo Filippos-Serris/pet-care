@@ -45,7 +45,12 @@ class GroomingListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = GroomingListAdapter {
-
+            val action =
+                GroomingListFragmentDirections.actionGroomingListFragmentToAddGroomingFragment(
+                    it.petId,
+                    it.groomingId
+                )
+            findNavController().navigate(action)
         }
         binding.groomingRecycler.adapter = adapter
 

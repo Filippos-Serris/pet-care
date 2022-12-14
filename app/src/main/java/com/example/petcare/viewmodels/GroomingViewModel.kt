@@ -3,7 +3,6 @@ package com.example.petcare.viewmodels
 import androidx.lifecycle.*
 import com.example.petcare.database.grooming.Grooming
 import com.example.petcare.database.grooming.GroomingDao
-import com.example.petcare.database.medication.MedicationDao
 import kotlinx.coroutines.launch
 
 class GroomingViewModel(private val groomingDao: GroomingDao) : ViewModel() {
@@ -43,6 +42,32 @@ class GroomingViewModel(private val groomingDao: GroomingDao) : ViewModel() {
     }
 
     //---------------------------------------------------------------------------------------------------
+    private fun getUpdatedGroomingEntry(
+        groomingId: Int,
+        petId: Int,
+        groomingDate: String,
+        nextGroomingDate: String
+    ): Grooming {
+        return Grooming(
+            groomingId = groomingId,
+            petId = petId,
+            groomingDate = groomingDate,
+            nextGroomingDate = nextGroomingDate
+        )
+    }
+
+    fun updateGrooming(
+        groomingId: Int,
+        petId: Int,
+        groomingDate: String,
+        nextGroomingDate: String
+    ) {
+        val updatedGrooming =
+            getUpdatedGroomingEntry(groomingId, petId, groomingDate, nextGroomingDate)
+        updateGrooming(updatedGrooming)
+    }
+
+    // --------------------------------------------------------------------------------------------------
 
     fun isEntryValid(groomingDate: String, nextGroomingDate: String): Boolean {
         if (groomingDate.isBlank() || nextGroomingDate.isBlank())

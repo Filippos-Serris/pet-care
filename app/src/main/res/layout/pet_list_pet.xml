@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/pet_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:srcCompat="@android:drawable/btn_star_big_on" />
