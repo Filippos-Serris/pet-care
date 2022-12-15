@@ -2,7 +2,6 @@ package com.example.petcare.ui.pet
 
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.app.ProgressDialog.show
 import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -10,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -140,6 +138,8 @@ class AddPetFragment : Fragment() {
             )
             val action = AddPetFragmentDirections.actionAddPetFragmentToPetListFragment()
             findNavController().navigate(action)
+        } else {
+            Toast.makeText(context, getString(R.string.pet_fields), Toast.LENGTH_LONG).show()
         }
     }
 

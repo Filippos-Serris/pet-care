@@ -2,14 +2,12 @@ package com.example.petcare.ui.grooming
 
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
@@ -123,12 +121,15 @@ class AddGroomingFragment : Fragment() {
                 this.binding.groomingDate.text.toString(),
                 this.binding.nextGroomingDate.text.toString()
             )
+            val action =
+                AddGroomingFragmentDirections.actionAddGroomingFragmentToGroomingListFragment(
+                    navigationArg.petId
+                )
+            findNavController().navigate(action)
+        } else {
+            Toast.makeText(context, getString(R.string.grooming_fields), Toast.LENGTH_SHORT).show()
         }
-        val action =
-            AddGroomingFragmentDirections.actionAddGroomingFragmentToGroomingListFragment(
-                navigationArg.petId
-            )
-        findNavController().navigate(action)
+
     }
 
     private fun pickDate(date: TextInputEditText) {
@@ -151,11 +152,5 @@ class AddGroomingFragment : Fragment() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         date.setText(sdf.format(cal.time))
-    }
-
-    private fun Context.hideKeyboard(view: View) {
-        val inputMethodManager =
-            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

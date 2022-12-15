@@ -2,7 +2,6 @@ package com.example.petcare.ui.bath
 
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.app.ProgressDialog.show
 import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -13,7 +12,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -127,10 +125,13 @@ class AddBathFragment : Fragment() {
                 this.binding.bathDate.text.toString(),
                 this.binding.nextBathDate.text.toString()
             )
+            val action =
+                AddBathFragmentDirections.actionAddBathFragmentToBathListFragment(navigationArgs.petId)
+            findNavController().navigate(action)
+        } else {
+            Toast.makeText(context, getString(R.string.bath_fields), Toast.LENGTH_SHORT).show()
         }
-        val action =
-            AddBathFragmentDirections.actionAddBathFragmentToBathListFragment(navigationArgs.petId)
-        findNavController().navigate(action)
+
     }
 
     private fun pickDate(date: TextInputEditText) {

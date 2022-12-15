@@ -152,12 +152,16 @@ class AddMedicationFragment : Fragment() {
                 this.binding.medicationEndDate.text.toString(),
                 this.binding.medicationRepetition.text.toString()
             )
+            val action =
+                AddMedicationFragmentDirections.actionAddMedicationFragmentToMedicationListFragment(
+                    navigationArgs.petId
+                )
+            findNavController().navigate(action)
+        } else {
+            Toast.makeText(context, getString(R.string.medication_fields), Toast.LENGTH_LONG)
+                .show()
         }
-        val action =
-            AddMedicationFragmentDirections.actionAddMedicationFragmentToMedicationListFragment(
-                navigationArgs.petId
-            )
-        findNavController().navigate(action)
+
     }
 
     private fun pickDate(date: TextInputEditText) {

@@ -21,6 +21,7 @@
             android:id="@+id/pet_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:contentDescription="@string/pet_image"
             app:srcCompat="@android:drawable/btn_star_big_on" />
     </androidx.cardview.widget.CardView>
 
@@ -60,25 +61,25 @@
         tools:text="Female" />
 
     <TextView
-        android:id="@+id/pet_colour_label"
+        android:id="@+id/pet_species_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="@string/pet_colour"
+        android:text="@string/pet_species"
         app:layout_constraintStart_toEndOf="@+id/pet_sex"
         app:layout_constraintTop_toTopOf="@+id/cardView" />
 
     <TextView
-        android:id="@+id/pet_colour"
+        android:id="@+id/pet_species"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/pet_colour_label"
-        app:layout_constraintTop_toBottomOf="@+id/pet_colour_label"
-        tools:text="White - Brown" />
+        app:layout_constraintStart_toStartOf="@+id/pet_species_label"
+        app:layout_constraintTop_toBottomOf="@+id/pet_species_label"
+        tools:text="Dog" />
 
     <TextView
         android:id="@+id/pet_chip_label"

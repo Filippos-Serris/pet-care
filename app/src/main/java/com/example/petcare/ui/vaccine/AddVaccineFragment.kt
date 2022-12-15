@@ -112,7 +112,7 @@ class AddVaccineFragment : Fragment() {
                 )
             findNavController().navigate(action)
         } else {
-            Toast.makeText(context,getString(R.string.vaccine_fields),Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.vaccine_fields), Toast.LENGTH_LONG).show()
         }
 
     }
@@ -138,11 +138,14 @@ class AddVaccineFragment : Fragment() {
                 this.binding.vaccinationDate.text.toString(),
                 this.binding.nextVaccinationDate.text.toString()
             )
+            val action = AddVaccineFragmentDirections.actionAddVaccineFragmentToVaccineListFragment(
+                navigationArgs.petId
+            )
+            findNavController().navigate(action)
+        } else {
+            Toast.makeText(context, getString(R.string.vaccine_fields), Toast.LENGTH_LONG).show()
         }
-        val action = AddVaccineFragmentDirections.actionAddVaccineFragmentToVaccineListFragment(
-            navigationArgs.petId
-        )
-        findNavController().navigate(action)
+
     }
 
     private fun pickDate(date: TextInputEditText) {
