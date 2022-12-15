@@ -18,22 +18,33 @@
         android:id="@+id/next_bath_date"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:text="@string/next_bath"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bath_date"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="3dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@id/bath_scrollview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/next_bath_date" />
+
     <ScrollView
+        android:id="@+id/bath_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bath_date">
+        app:layout_constraintTop_toBottomOf="@+id/divider">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bath_recycler"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bath_date" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </ScrollView>
 
     <Button

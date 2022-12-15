@@ -83,7 +83,6 @@ class AddBathFragment : Fragment() {
 
         binding.bathDate.setOnClickListener {
             pickDate(binding.bathDate)
-            context?.hideKeyboard(it)
         }
         binding.nextBathDate.setOnClickListener { pickDate(binding.nextBathDate) }
     }
@@ -155,11 +154,5 @@ class AddBathFragment : Fragment() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         date.setText(sdf.format(cal.time))
-    }
-
-    private fun Context.hideKeyboard(view: View) {
-        val inputMethodManager =
-            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

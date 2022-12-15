@@ -178,6 +178,59 @@
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <TextView
+            android:id="@+id/pet_image_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/pet_image"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pet_chip_label" />
+
+        <RadioGroup
+            android:id="@+id/pet_image_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/pet_image_label"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/dog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/dog"/>
+            <RadioButton
+                android:id="@+id/cat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/cat"/>
+            <RadioButton
+                android:id="@+id/bird"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/bird"/>
+            <RadioButton
+                android:id="@+id/fish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/fish"/>
+            <RadioButton
+                android:id="@+id/livestock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/livestock"/>
+
+            <RadioButton
+                android:id="@+id/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@android:drawable/ic_menu_add" />
+        </RadioGroup>
+
         <Button
             android:id="@+id/save_info_button"
             android:layout_width="wrap_content"
@@ -186,7 +239,7 @@
             android:text="@string/save_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pet_chip_label" />
+            app:layout_constraintTop_toBottomOf="@+id/pet_image_selector" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

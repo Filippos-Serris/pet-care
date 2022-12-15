@@ -11,7 +11,7 @@
     <string name="pet_date_of_birth">Pet date of birth</string>
     <string name="pet_colour">Pet colour</string>
     <string name="pet_chip">Pet chip number</string>
-    <string name="pet_image">pet image</string>
+    <string name="pet_image">Pet image</string>
 
     <!-- Vaccine -->
     <string name="vaccine_name">Name</string>

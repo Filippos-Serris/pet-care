@@ -18,8 +18,9 @@
         android:id="@+id/next_grooming_date_header"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:text="@string/next_grooming_date"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/grooming_date_header"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
