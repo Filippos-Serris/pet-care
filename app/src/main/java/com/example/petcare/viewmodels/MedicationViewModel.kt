@@ -114,13 +114,10 @@ class MedicationViewModel(private val medicationDao: MedicationDao) : ViewModel(
 
     fun isEntryValid(
         medicationName: String,
-        medicationDescription: String,
         medicationDosage: String,
-        medicationStartDate: String,
-        medicationEndDate: String,
-        medicationRepetition: String
+        medicationStartDate: String
     ): Boolean {
-        if (medicationName.isBlank() || medicationDescription.isBlank() || medicationDosage.isBlank() || medicationStartDate.isBlank() || medicationEndDate.isBlank() || medicationRepetition.isBlank()) {
+        if (medicationName.isBlank() || medicationDosage.isBlank() || medicationStartDate.isBlank()) {
             return false
         }
         return true

@@ -2,6 +2,7 @@ package com.example.petcare.ui.pet
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.app.ProgressDialog.show
 import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -9,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.RadioButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -71,9 +74,11 @@ class AddPetFragment : Fragment() {
         }
 
         binding.petDateOfBirth.setOnClickListener {
-            pickDateOfBirth()
             context?.hideKeyboard(it)
+            pickDateOfBirth()
         }
+
+        //binding.radioMale.setOnClickListener{Toast.makeText(context,"Male checked",Toast.LENGTH_LONG).show()}
     }
 
 
@@ -86,11 +91,8 @@ class AddPetFragment : Fragment() {
         return this.petViewModel.isEntryValid(
             binding.petName.text.toString(),
             binding.petSpecies.text.toString(),
-            binding.petBreed.text.toString(),
             binding.petSex.text.toString(),
-            binding.petDateOfBirth.text.toString(),
-            binding.petColour.text.toString(),
-            binding.petChip.text.toString()
+            binding.petDateOfBirth.text.toString()
         )
     }
 
@@ -106,6 +108,8 @@ class AddPetFragment : Fragment() {
                 binding.petChip.text.toString()
             )
             findNavController().navigate(R.id.action_addPetFragment_to_petListFragment)
+        } else {
+            Toast.makeText(context, getString(R.string.pet_fields), Toast.LENGTH_LONG).show()
         }
     }
 

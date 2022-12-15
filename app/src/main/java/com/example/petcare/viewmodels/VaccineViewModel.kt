@@ -96,11 +96,10 @@ class VaccineViewModel(private val vaccineDao: VaccineDao) : ViewModel() {
 
     fun isEntryValid(
         vaccineName: String,
-        vaccineDescription: String,
         vaccinationDate: String,
         nextVaccinationDate: String
     ): Boolean {
-        if (vaccineName.isBlank() || vaccineDescription.isBlank() || vaccinationDate.isBlank() || nextVaccinationDate.isBlank()) {
+        if (vaccineName.isBlank() || vaccinationDate.isBlank() || nextVaccinationDate.isBlank()) {
             return false
         }
         return true

@@ -19,9 +19,9 @@ data class Medication(
     @PrimaryKey(autoGenerate = true) val medicationId: Int = 0,
     @ColumnInfo(name = "petId") val petId: Int,
     @ColumnInfo(name = "name") val medicationName: String,
-    @ColumnInfo(name = "description") val medicationDescription: String,
+    @ColumnInfo(name = "description") val medicationDescription: String?,
     @ColumnInfo(name = "dosage") val medicationDosage: String,
     @ColumnInfo(name = "startDate") val medicationStartDate: String,
-    @ColumnInfo(name = "endDate") val medicationEndDate: String,
-    @ColumnInfo(name = "repetition") val medicationRepetition: String
+    @ColumnInfo(name = "endDate") val medicationEndDate: String?,
+    @ColumnInfo(name = "repetition") val medicationRepetition: String?
 )

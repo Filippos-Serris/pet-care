@@ -73,7 +73,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:hint="Pet sex"
+            android:hint="@string/pet_sex"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pet_breed_label">
@@ -85,6 +85,39 @@
                 android:inputType="textCapWords"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <!--
+        <TextView
+            android:id="@+id/pet_sex_label_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pet_sex"
+            app:layout_constraintTop_toBottomOf="@+id/save_info_button"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pet_sex_label_2">
+
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male" />
+
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
+        </RadioGroup>
+        -->
 
         <!-- PetDateOfBirth-->
         <com.google.android.material.textfield.TextInputLayout

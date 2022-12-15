@@ -12,11 +12,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.petcare.PetCareApplication
+import com.example.petcare.R
 import com.example.petcare.database.bath.Bath
 import com.example.petcare.databinding.FragmentAddBathBinding
 import com.example.petcare.viewmodels.BathViewModel
@@ -90,8 +92,7 @@ class AddBathFragment : Fragment() {
 
     private fun isEntryValid(): Boolean {
         return this.bathViewModel.isEntryValid(
-            binding.bathDate.text.toString(),
-            binding.nextBathDate.text.toString()
+            binding.bathDate.text.toString()
         )
     }
 
@@ -102,10 +103,12 @@ class AddBathFragment : Fragment() {
                 binding.bathDate.text.toString(),
                 binding.nextBathDate.text.toString()
             )
+            val action =
+                AddBathFragmentDirections.actionAddBathFragmentToBathListFragment(navigationArgs.petId)
+            findNavController().navigate(action)
+        } else {
+            Toast.makeText(context, getString(R.string.bath_fields), Toast.LENGTH_SHORT).show()
         }
-        val action =
-            AddBathFragmentDirections.actionAddBathFragmentToBathListFragment(navigationArgs.petId)
-        findNavController().navigate(action)
     }
 
     private fun bind(bath: Bath) {

@@ -19,5 +19,5 @@ data class Bath(
     @PrimaryKey(autoGenerate = true) val bathId: Int = 0,
     @ColumnInfo(name = "petId") val petId: Int,
     @ColumnInfo(name = "bathDate") val bathDate: String,
-    @ColumnInfo(name = "nextBathDate") val nextBathDate: String
+    @ColumnInfo(name = "nextBathDate") val nextBathDate: String?
 )

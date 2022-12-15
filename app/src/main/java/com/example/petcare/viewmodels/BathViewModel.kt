@@ -52,8 +52,8 @@ class BathViewModel(private val bathDao: BathDao) : ViewModel() {
 
     //--------------------------------------------------------------------------------------------
 
-    fun isEntryValid(bathDate: String, nextBathDate: String): Boolean {
-        if (bathDate.isBlank() || nextBathDate.isBlank())
+    fun isEntryValid(bathDate: String): Boolean {
+        if (bathDate.isBlank())
             return false
         return true
     }

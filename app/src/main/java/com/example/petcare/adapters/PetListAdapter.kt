@@ -28,7 +28,7 @@ class PetListAdapter(private val onPetClicked: (Pet) -> Unit) :
                 petName.text = pet.petName
                 petSex.text = pet.petSex
                 petColour.text = pet.petColour
-                petChip.text=pet.petChip
+                petChip.text = pet.petChip
             }
         }
     }

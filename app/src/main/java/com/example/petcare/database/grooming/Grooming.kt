@@ -19,5 +19,5 @@ data class Grooming(
     @PrimaryKey(autoGenerate = true) val groomingId: Int = 0,
     @ColumnInfo(name = "petId") val petId: Int,
     @ColumnInfo(name = "groomingDate") val groomingDate: String,
-    @ColumnInfo(name = "nextGroomingDate") val nextGroomingDate: String
+    @ColumnInfo(name = "nextGroomingDate") val nextGroomingDate: String?
 )

@@ -69,6 +69,8 @@ class GroomingListFragment : Fragment() {
                 )
             findNavController().navigate(action)
         }
+
+
     }
 
 }

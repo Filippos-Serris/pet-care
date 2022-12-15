@@ -8,7 +8,6 @@ import kotlinx.coroutines.launch
 class PetViewModel(
     private val petDao: PetDao
 ) : ViewModel() {
-    //lateinit var pet: Pet
 
     val allPets: LiveData<List<Pet>> = petDao.getPets().asLiveData()
 
@@ -118,13 +117,10 @@ class PetViewModel(
     fun isEntryValid(
         petName: String,
         petSpecies: String,
-        petBreed: String,
         petSex: String,
-        petDateOfBirth: String,
-        petColour: String,
-        petChip: String
+        petDateOfBirth: String
     ): Boolean {
-        if (petName.isBlank() || petSpecies.isBlank() || petBreed.isBlank() || petSex.isBlank() || petDateOfBirth.isBlank() || petColour.isBlank() || petChip.isBlank()) {
+        if (petName.isBlank() || petSpecies.isBlank() || petSex.isBlank() || petDateOfBirth.isBlank()) {
             return false
         }
         return true

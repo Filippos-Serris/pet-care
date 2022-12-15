@@ -11,10 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.petcare.PetCareApplication
+import com.example.petcare.R
 import com.example.petcare.database.grooming.Grooming
 import com.example.petcare.databinding.FragmentAddGroomingBinding
 import com.example.petcare.viewmodels.GroomingViewModel
@@ -83,8 +85,7 @@ class AddGroomingFragment : Fragment() {
 
     private fun isEntryValid(): Boolean {
         return this.groomingViewModel.isEntryValid(
-            binding.groomingDate.text.toString(),
-            binding.nextGroomingDate.text.toString()
+            binding.groomingDate.text.toString()
         )
     }
 
@@ -95,12 +96,15 @@ class AddGroomingFragment : Fragment() {
                 navigationArg.petId,
                 binding.groomingDate.text.toString(), binding.nextGroomingDate.text.toString()
             )
+            val action =
+                AddGroomingFragmentDirections.actionAddGroomingFragmentToGroomingListFragment(
+                    navigationArg.petId
+                )
+            findNavController().navigate(action)
+        } else {
+            Toast.makeText(context, getString(R.string.grooming_fields), Toast.LENGTH_SHORT).show()
         }
-        val action =
-            AddGroomingFragmentDirections.actionAddGroomingFragmentToGroomingListFragment(
-                navigationArg.petId
-            )
-        findNavController().navigate(action)
+
     }
 
     private fun bind(grooming: Grooming) {

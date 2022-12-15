@@ -4,15 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".ui.medication.MedicationListFragment">
 
+
     <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medication_name_header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="fill_parent">
 
             <TextView
                 android:id="@+id/medication_name_header"
@@ -65,7 +69,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/medication_recycler"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintHeight_percent="0.8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/medication_name_header" />
 
@@ -73,13 +79,12 @@
                 android:id="@+id/add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="50dp"
                 android:text="@string/add"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/medication_recycler" />
+                app:layout_constraintTop_toBottomOf="@+id/medication_recycler" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
-
-
 </ScrollView>

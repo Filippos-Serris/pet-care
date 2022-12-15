@@ -69,8 +69,8 @@ class GroomingViewModel(private val groomingDao: GroomingDao) : ViewModel() {
 
     // --------------------------------------------------------------------------------------------------
 
-    fun isEntryValid(groomingDate: String, nextGroomingDate: String): Boolean {
-        if (groomingDate.isBlank() || nextGroomingDate.isBlank())
+    fun isEntryValid(groomingDate: String): Boolean {
+        if (groomingDate.isBlank())
             return false
         return true
     }
