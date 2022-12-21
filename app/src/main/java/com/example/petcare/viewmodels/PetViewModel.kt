@@ -1,9 +1,17 @@
 package com.example.petcare.viewmodels
 
+import android.icu.util.Calendar
 import androidx.lifecycle.*
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.database.pet.PetDao
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.Period
+import java.time.format.DateTimeFormatter
+import java.util.*
+import java.util.Locale.US
 
 class PetViewModel(
     private val petDao: PetDao
@@ -114,6 +122,20 @@ class PetViewModel(
         updatePet(updatedPet)
     }
 
+    //----------------------------------- Age of pet --------------------------------
+
+    fun calculatePetAge(dateOfBirth: String): String {
+        val currentDate = LocalDate.now()
+
+        val petDateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd/MM/yyy"))
+
+        val period = Period.between(petDateOfBirth, currentDate)
+        val year = period.years
+
+        return year.toString()
+    }
+
+    //-------------------------------------------------------------------------------
     fun isEntryValid(
         petName: String,
         petSpecies: String,

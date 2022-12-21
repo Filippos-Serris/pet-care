@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pet.PetDetailFragment">
+    tools:context=".ui.pet.PetDetailFragment"
+    >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,9 +17,11 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
-            android:text="@string/pet_name"
+            android:text="@string/detail_pet_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="20dp"
+            />
 
         <TextView
             android:id="@+id/pet_name"
@@ -35,9 +38,10 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
-            android:text="@string/pet_species"
+            android:text="@string/detail_pet_species"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_name" />
+            app:layout_constraintTop_toBottomOf="@id/pet_name"
+            android:layout_marginStart="20dp"/>
 
         <TextView
             android:id="@+id/pet_species"
@@ -55,7 +59,8 @@
             android:layout_marginTop="16dp"
             android:text="@string/pet_breed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_species" />
+            app:layout_constraintTop_toBottomOf="@id/pet_species"
+            android:layout_marginStart="20dp"/>
 
         <TextView
             android:id="@+id/pet_breed"
@@ -71,9 +76,10 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
-            android:text="@string/pet_sex"
+            android:text="@string/detail_pet_sex"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_breed" />
+            app:layout_constraintTop_toBottomOf="@id/pet_breed"
+            android:layout_marginStart="20dp"/>
 
         <TextView
             android:id="@+id/pet_sex"
@@ -89,9 +95,10 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
-            android:text="@string/pet_date_of_birth"
+            android:text="@string/pet_age"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_sex" />
+            app:layout_constraintTop_toBottomOf="@id/pet_sex"
+            android:layout_marginStart="20dp"/>
 
         <TextView
             android:id="@+id/pet_date_of_birth"
@@ -109,7 +116,8 @@
             android:layout_marginTop="16dp"
             android:text="@string/pet_colour"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_date_of_birth" />
+            app:layout_constraintTop_toBottomOf="@id/pet_date_of_birth"
+            android:layout_marginStart="20dp"/>
 
         <TextView
             android:id="@+id/pet_colour"
@@ -127,7 +135,8 @@
             android:layout_marginTop="16dp"
             android:text="@string/pet_chip"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_colour" />
+            app:layout_constraintTop_toBottomOf="@id/pet_colour"
+            android:layout_marginStart="20dp"/>
 
         <TextView
             android:id="@+id/pet_chip"

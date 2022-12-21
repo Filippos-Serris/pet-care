@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.bath.AddBathFragment">
 
+    <TextView
+        android:id="@+id/info_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/mandatory_fields"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/bath_date_label"
         android:layout_width="0dp"
@@ -14,14 +23,14 @@
         android:hint="@string/bath_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/info_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/bath_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:singleLine="true"
-            android:focusableInTouchMode="false" />
+            android:focusableInTouchMode="false"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -38,8 +47,8 @@
             android:id="@+id/next_bath_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:singleLine="true"
-            android:focusableInTouchMode="false"/>
+            android:focusableInTouchMode="false"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

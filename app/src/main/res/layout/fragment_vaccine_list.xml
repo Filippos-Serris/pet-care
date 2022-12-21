@@ -15,7 +15,7 @@
         app:layout_constraintTop_toBottomOf="@+id/vaccine_name_header">
 
         <HorizontalScrollView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -28,7 +28,10 @@
                     android:id="@+id/vaccine_name_header"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@string/vaccine_name"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +39,10 @@
                     android:id="@+id/vaccine_description_header"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
                     android:text="@string/vaccine_description"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/vaccine_name_header"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +50,10 @@
                     android:id="@+id/vaccination_date_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
                     android:text="@string/vaccination_date"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/vaccine_description_header"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,16 +61,31 @@
                     android:id="@+id/next_vaccination_date_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
                     android:text="@string/next_vaccination_date"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@id/vaccination_date_header"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="3dp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintBottom_toTopOf="@+id/vaccine_recycler"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vaccine_name_header" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/vaccine_recycler"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/next_vaccination_date_header" />
+                    app:layout_constraintTop_toBottomOf="@id/divider" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

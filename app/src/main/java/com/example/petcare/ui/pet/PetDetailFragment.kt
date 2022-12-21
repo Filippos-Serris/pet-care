@@ -21,13 +21,6 @@ class PetDetailFragment : Fragment() {
     private var _binding: FragmentPetDetailBinding? = null
     private val binding get() = _binding!!
 
-    /*private val petViewModel: PetCareViewModel by activityViewModels {
-        PetCareViewModelFactory(
-            (activity?.application as PetCareApplication).database.petDao(),
-            (activity?.application as PetCareApplication).database.vaccineDao()
-        )
-    }*/
-
     private val petViewModel: PetViewModel by activityViewModels {
         PetViewModelFactory((activity?.application as PetCareApplication).database.petDao())
     }
@@ -64,7 +57,7 @@ class PetDetailFragment : Fragment() {
             petSpecies.text = pet.petSpecies
             petBreed.text = pet.petBreed
             petSex.text = pet.petSex
-            petDateOfBirth.text = pet.petDateOfBirth
+            petDateOfBirth.text = petViewModel.calculatePetAge(pet.petDateOfBirth)
             petColour.text = pet.petColour
             petChip.text = pet.petChip
             deleteButton.setOnClickListener { confirmDialog() }

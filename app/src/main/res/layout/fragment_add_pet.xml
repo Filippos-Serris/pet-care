@@ -10,6 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/mandatory_fields"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <!-- PetName -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/pet_name_label"
@@ -19,7 +28,7 @@
             android:hint="@string/pet_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/info_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pet_name"
@@ -178,58 +187,64 @@
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--
+                <TextView
+                    android:id="@+id/pet_image_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/pet_image"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pet_chip_label" />
 
-        <TextView
-            android:id="@+id/pet_image_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/pet_image"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pet_chip_label" />
 
-        <RadioGroup
-            android:id="@+id/pet_image_selector"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/pet_image_label"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="16dp"
-            android:orientation="horizontal">
+                <RadioGroup
+                    android:id="@+id/pet_image_selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/pet_image_label">
 
-            <RadioButton
-                android:id="@+id/dog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/dog"/>
-            <RadioButton
-                android:id="@+id/cat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/cat"/>
-            <RadioButton
-                android:id="@+id/bird"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/bird"/>
-            <RadioButton
-                android:id="@+id/fish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/fish"/>
-            <RadioButton
-                android:id="@+id/livestock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/livestock"/>
+                    <RadioButton
+                        android:id="@+id/dog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/dog" />
 
-            <RadioButton
-                android:id="@+id/custom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@android:drawable/ic_menu_add" />
-        </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/cat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/cat" />
+
+                    <RadioButton
+                        android:id="@+id/bird"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/bird" />
+
+                    <RadioButton
+                        android:id="@+id/fish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/fish" />
+
+                    <RadioButton
+                        android:id="@+id/livestock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/livestock" />
+
+                    <RadioButton
+                        android:id="@+id/custom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@android:drawable/ic_menu_add" />
+                </RadioGroup>
+                -->
 
         <Button
             android:id="@+id/save_info_button"
@@ -239,8 +254,7 @@
             android:text="@string/save_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pet_image_selector" />
-
+            app:layout_constraintTop_toBottomOf="@id/pet_chip_label" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

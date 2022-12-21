@@ -19,22 +19,25 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/vaccine_name"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/vaccine_description" />
+        tools:text="@string/vaccine_description"
+        android:layout_marginStart="20dp"/>
 
     <TextView
         android:id="@+id/vaccination_date"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/vaccine_description"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/vaccination_date" />
+        tools:text="@string/vaccination_date"
+        android:layout_marginStart="20dp"/>
 
     <TextView
         android:id="@+id/next_vaccination_date"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/vaccination_date"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/next_vaccination_date" />
+        tools:text="@string/next_vaccination_date"
+        android:layout_marginStart="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
