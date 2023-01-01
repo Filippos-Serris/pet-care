@@ -107,7 +107,7 @@ class PetDetailFragment : Fragment() {
     private fun confirmDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(android.R.string.dialog_alert_title))
-            .setMessage(getString(R.string.delete_question))
+            .setMessage(getString(R.string.delete_question) + " " + pet.petName)
             .setCancelable(false)
             .setNegativeButton(getString(R.string.no)) { _, _ -> }
             .setPositiveButton(getString(R.string.yes)) { _, _ ->
@@ -117,8 +117,9 @@ class PetDetailFragment : Fragment() {
     }
 
     private fun editPet() {
+        val title = "edit" + pet.petName
         val action = PetDetailFragmentDirections.actionPetDetailFragmentToAddPetFragment(
-            getString(R.string.edit_pet_title),
+            /*getString(R.string.edit_pet_title)*/title,
             pet.petId
         )
         this.findNavController().navigate(action)

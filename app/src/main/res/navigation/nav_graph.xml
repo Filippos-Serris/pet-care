@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    android:label="@string/add"
+    android:label="@string/grooming"
     app:startDestination="@id/petListFragment">
 
     <fragment
@@ -31,12 +31,13 @@
             app:argType="string" />
         <argument
             android:name="pet_id"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/petDetailFragment"
         android:name="com.example.petcare.ui.pet.PetDetailFragment"
+        android:label="{title}"
         tools:layout="@layout/fragment_pet_detail">
         <action
             android:id="@+id/action_petDetailFragment_to_petListFragment"
@@ -60,12 +61,15 @@
         <action
             android:id="@+id/action_petDetailFragment_to_groomingListFragment"
             app:destination="@id/groomingListFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/vaccineListFragment"
         android:name="com.example.petcare.ui.vaccine.VaccineListFragment"
-        android:label="fragment_vaccine_list"
-        tools:layout="@layout/fragment_vaccine_list" >
+        android:label="@string/vaccines"
+        tools:layout="@layout/fragment_vaccine_list">
         <action
             android:id="@+id/action_vaccineListFragment_to_addVaccineFragment"
             app:destination="@id/addVaccineFragment" />
@@ -76,8 +80,8 @@
     <fragment
         android:id="@+id/addVaccineFragment"
         android:name="com.example.petcare.ui.vaccine.AddVaccineFragment"
-        android:label="fragment_add_vaccine"
-        tools:layout="@layout/fragment_add_vaccine" >
+        android:label="@string/add_new_vaccine"
+        tools:layout="@layout/fragment_add_vaccine">
         <argument
             android:name="pet_id"
             app:argType="integer" />
@@ -91,9 +95,10 @@
     <fragment
         android:id="@+id/medicationListFragment"
         android:name="com.example.petcare.ui.medication.MedicationListFragment"
-        android:label="fragment_medication_list"
-        tools:layout="@layout/fragment_medication_list" >
-        <argument android:name="pet_id"
+        android:label="@string/medication"
+        tools:layout="@layout/fragment_medication_list">
+        <argument
+            android:name="pet_id"
             app:argType="integer" />
         <action
             android:id="@+id/action_medicationListFragment_to_addMedicationFragment"
@@ -102,8 +107,8 @@
     <fragment
         android:id="@+id/addMedicationFragment"
         android:name="com.example.petcare.ui.medication.AddMedicationFragment"
-        android:label="fragment_add_medication"
-        tools:layout="@layout/fragment_add_medication" >
+        android:label="@string/add_new_medication"
+        tools:layout="@layout/fragment_add_medication">
         <argument
             android:name="pet_id"
             app:argType="integer" />
@@ -117,8 +122,8 @@
     <fragment
         android:id="@+id/bathListFragment"
         android:name="com.example.petcare.ui.bath.BathListFragment"
-        android:label="fragment_bath_list"
-        tools:layout="@layout/fragment_bath_list" >
+        android:label="@string/bath"
+        tools:layout="@layout/fragment_bath_list">
         <argument
             android:name="pet_id"
             app:argType="integer" />
@@ -129,12 +134,13 @@
     <fragment
         android:id="@+id/addBathFragment"
         android:name="com.example.petcare.ui.bath.AddBathFragment"
-        android:label="fragment_add_bath"
-        tools:layout="@layout/fragment_add_bath" >
+        android:label="@string/add_bath"
+        tools:layout="@layout/fragment_add_bath">
         <argument
             android:name="pet_id"
             app:argType="integer" />
-        <argument android:name="bath_id"
+        <argument
+            android:name="bath_id"
             app:argType="integer" />
         <action
             android:id="@+id/action_addBathFragment_to_bathListFragment"
@@ -143,8 +149,8 @@
     <fragment
         android:id="@+id/groomingListFragment"
         android:name="com.example.petcare.ui.grooming.GroomingListFragment"
-        android:label="fragment_grooming_list"
-        tools:layout="@layout/fragment_grooming_list" >
+        android:label="@string/grooming"
+        tools:layout="@layout/fragment_grooming_list">
         <argument
             android:name="pet_id"
             app:argType="integer" />
@@ -155,8 +161,8 @@
     <fragment
         android:id="@+id/addGroomingFragment"
         android:name="com.example.petcare.ui.grooming.AddGroomingFragment"
-        android:label="fragment_add_grooming"
-        tools:layout="@layout/fragment_add_grooming" >
+        android:label="@string/add_grooming"
+        tools:layout="@layout/fragment_add_grooming">
         <argument
             android:name="pet_id"
             app:argType="integer" />

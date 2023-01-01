@@ -46,8 +46,9 @@ class PetListFragment : Fragment() {
 
         val adapter = PetListAdapter {
             //findNavController().navigate(R.id.action_petListFragment_to_petDetailFragment)
+            val title = it.petName + " information"
             val action =
-                PetListFragmentDirections.actionPetListFragmentToPetDetailFragment(it.petId)
+                PetListFragmentDirections.actionPetListFragmentToPetDetailFragment(it.petId, title)
             this.findNavController().navigate(action)
         }
         binding.recyclerView.adapter = adapter

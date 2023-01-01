@@ -108,7 +108,7 @@ class AddVaccineFragment : Fragment() {
             )
             val action =
                 AddVaccineFragmentDirections.actionAddVaccineFragmentToVaccineListFragment(
-                    navigationArgs.petId
+                    navigationArgs.petId,
                 )
             findNavController().navigate(action)
         } else {
