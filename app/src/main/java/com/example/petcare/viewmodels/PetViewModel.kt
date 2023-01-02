@@ -1,21 +1,21 @@
 package com.example.petcare.viewmodels
 
-import android.icu.util.Calendar
 import androidx.lifecycle.*
+import com.example.petcare.R
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.database.pet.PetDao
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.Period
 import java.time.format.DateTimeFormatter
 import java.util.*
-import java.util.Locale.US
 
 class PetViewModel(
     private val petDao: PetDao
 ) : ViewModel() {
+
+    private val _sex = MutableLiveData<String>("")
+    val sex: LiveData<String> = _sex
 
     val allPets: LiveData<List<Pet>> = petDao.getPets().asLiveData()
 
@@ -74,6 +74,10 @@ class PetViewModel(
             petChip
         )
         insertPet(newPet)
+    }
+
+    fun setSex(sex: String) {
+        _sex.value = sex
     }
 
     // -------------------- Update Pet --------------------------

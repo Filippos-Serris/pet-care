@@ -2,13 +2,13 @@
     <string name="app_name">Pet Care</string>
 
     <!-- Pet -->
-    <string name="pet_name">*Pet name</string>
-    <string name="detail_pet_name">Pet name</string>
-    <string name="pet_species">*Pet species</string>
-    <string name="detail_pet_species">Pet species</string>
+    <string name="pet_name_star">*Pet name</string>
+    <string name="pet_name">Pet name</string>
+    <string name="pet_species_star">*Pet species</string>
+    <string name="pet_species">Pet species</string>
     <string name="pet_breed">Pet breed</string>
-    <string name="pet_sex">*Pet sex</string>
-    <string name="detail_pet_sex">Pet sex</string>
+    <string name="pet_sex_star">*Pet sex</string>
+    <string name="pet_sex">Pet sex</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="pet_date_of_birth">*Pet date of birth</string>
@@ -75,4 +75,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mpla2">male</string>
 </resources>

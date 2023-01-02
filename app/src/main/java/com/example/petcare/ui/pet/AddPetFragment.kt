@@ -68,6 +68,8 @@ class AddPetFragment : Fragment() {
                 bind(pet)
             }
         } else {
+            binding.radioMale.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
+            binding.radioFemale.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
             binding.saveInfoButton.setOnClickListener { addNewPet() }
         }
 
@@ -89,7 +91,7 @@ class AddPetFragment : Fragment() {
         return this.petViewModel.isEntryValid(
             binding.petName.text.toString(),
             binding.petSpecies.text.toString(),
-            binding.petSex.text.toString(),
+            binding.petSex.text.toString(),/*function that gets the groups string */
             binding.petDateOfBirth.text.toString()
         )
     }
