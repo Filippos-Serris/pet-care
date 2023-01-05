@@ -74,6 +74,7 @@ class PetViewModel(
             petChip
         )
         insertPet(newPet)
+        _sex.value = ""
     }
 
     fun setSex(sex: String) {
@@ -124,6 +125,7 @@ class PetViewModel(
             petChip
         )
         updatePet(updatedPet)
+        _sex.value = ""
     }
 
     //----------------------------------- Age of pet --------------------------------

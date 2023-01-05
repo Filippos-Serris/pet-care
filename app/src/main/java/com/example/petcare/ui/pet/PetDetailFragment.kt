@@ -119,7 +119,7 @@ class PetDetailFragment : Fragment() {
     private fun editPet() {
         val title = "edit" + pet.petName
         val action = PetDetailFragmentDirections.actionPetDetailFragmentToAddPetFragment(
-            /*getString(R.string.edit_pet_title)*/title,
+            title,
             pet.petId
         )
         this.findNavController().navigate(action)

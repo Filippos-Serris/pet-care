@@ -68,9 +68,9 @@ class AddPetFragment : Fragment() {
                 bind(pet)
             }
         } else {
-            binding.radioMale.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
-            binding.radioFemale.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
-            binding.saveInfoButton.setOnClickListener { addNewPet() }
+            binding.apply {
+                saveInfoButton.setOnClickListener { addNewPet() }
+            }
         }
 
         binding.petDateOfBirth.setOnClickListener {
@@ -78,20 +78,24 @@ class AddPetFragment : Fragment() {
             pickDateOfBirth()
         }
 
-        //binding.radioMale.setOnClickListener{Toast.makeText(context,"Male checked",Toast.LENGTH_LONG).show()}
+        binding.radioMale.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
+        binding.radioFemale.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        petViewModel.setSex("")
+
     }
+
+    // ----------------------------------------------------------------------------
 
     private fun isEntryValid(): Boolean {
         return this.petViewModel.isEntryValid(
             binding.petName.text.toString(),
             binding.petSpecies.text.toString(),
-            binding.petSex.text.toString(),/*function that gets the groups string */
+            petViewModel.sex.value.toString(),
             binding.petDateOfBirth.text.toString()
         )
     }
@@ -102,7 +106,7 @@ class AddPetFragment : Fragment() {
                 binding.petName.text.toString(),
                 binding.petSpecies.text.toString(),
                 binding.petBreed.text.toString(),
-                binding.petSex.text.toString(),
+                petViewModel.sex.value.toString(),//binding.petSex.text.toString(),
                 binding.petDateOfBirth.text.toString(),
                 binding.petColour.text.toString(),
                 binding.petChip.text.toString()
@@ -113,16 +117,25 @@ class AddPetFragment : Fragment() {
         }
     }
 
+    // ----------------------------------------------------------------------------
+
     private fun bind(pet: Pet) {
         binding.apply {
             petName.setText(pet.petName, TextView.BufferType.SPANNABLE)
             petSpecies.setText(pet.petSpecies, TextView.BufferType.SPANNABLE)
             petBreed.setText(pet.petBreed, TextView.BufferType.SPANNABLE)
-            petSex.setText(pet.petSex, TextView.BufferType.SPANNABLE)
             petDateOfBirth.setText(pet.petDateOfBirth, TextView.BufferType.SPANNABLE)
             petColour.setText(pet.petColour, TextView.BufferType.SPANNABLE)
             petChip.setText(pet.petChip, TextView.BufferType.SPANNABLE)
             saveInfoButton.setOnClickListener { updatePet() }
+        }
+
+        if (pet.petSex == getString(R.string.male)) {
+            petViewModel.setSex(getString(R.string.male))
+            binding.radioMale.isChecked = true
+        } else {
+            petViewModel.setSex(getString(R.string.female))
+            binding.radioFemale.isChecked = true
         }
     }
 
@@ -133,7 +146,7 @@ class AddPetFragment : Fragment() {
                 this.binding.petName.text.toString(),
                 this.binding.petSpecies.text.toString(),
                 this.binding.petBreed.text.toString(),
-                this.binding.petSex.text.toString(),
+                petViewModel.sex.value.toString(),
                 this.binding.petDateOfBirth.text.toString(),
                 this.binding.petColour.text.toString(),
                 this.binding.petChip.text.toString()
@@ -144,6 +157,8 @@ class AddPetFragment : Fragment() {
             Toast.makeText(context, getString(R.string.pet_fields), Toast.LENGTH_LONG).show()
         }
     }
+
+    // ----------------------------------------------------------------------------
 
     private fun pickDateOfBirth() {
         DatePickerDialog(
@@ -159,6 +174,8 @@ class AddPetFragment : Fragment() {
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         binding.petDateOfBirth.setText(sdf.format(cal.time))
     }
+
+    // ----------------------------------------------------------------------------
 
     private fun Context.hideKeyboard(view: View) {
         val inputMethodManager =
