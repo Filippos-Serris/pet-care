@@ -5,8 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.petcare.R
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.databinding.PetListPetBinding
+import com.example.petcare.ui.pet.PetListFragment
+import kotlinx.coroutines.withContext
 
 class PetListAdapter(private val onPetClicked: (Pet) -> Unit) :
     ListAdapter<Pet, PetListAdapter.PetViewHolder>(DiffCallback) {
@@ -25,6 +29,7 @@ class PetListAdapter(private val onPetClicked: (Pet) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(pet: Pet) {
             binding.apply {
+                //petImg.setImageResource()
                 petName.text = pet.petName
                 petSex.text = pet.petSex
                 petSpecies.text = pet.petSpecies

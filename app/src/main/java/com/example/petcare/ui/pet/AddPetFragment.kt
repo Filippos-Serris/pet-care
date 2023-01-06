@@ -78,8 +78,17 @@ class AddPetFragment : Fragment() {
             pickDateOfBirth()
         }
 
-        binding.radioMale.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
-        binding.radioFemale.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
+        binding.apply {
+            dog.setOnClickListener { petViewModel.setImage("R.drawable.dog") }
+            cat.setOnClickListener { }
+            bird.setOnClickListener { }
+            fish.setOnClickListener { }
+            livestock.setOnClickListener { }
+            custom.setOnClickListener { }
+
+            radioMale.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
+            radioFemale.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
+        }
     }
 
     override fun onDestroy() {
@@ -103,6 +112,7 @@ class AddPetFragment : Fragment() {
     private fun addNewPet() {
         if (isEntryValid()) {
             this.petViewModel.addNewPet(
+                "petImage",
                 binding.petName.text.toString(),
                 binding.petSpecies.text.toString(),
                 binding.petBreed.text.toString(),
@@ -143,6 +153,7 @@ class AddPetFragment : Fragment() {
         if (isEntryValid()) {
             this.petViewModel.updatePet(
                 this.navigationArgs.petId,
+                "petImage",
                 this.binding.petName.text.toString(),
                 this.binding.petSpecies.text.toString(),
                 this.binding.petBreed.text.toString(),

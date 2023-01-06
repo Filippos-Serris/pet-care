@@ -73,6 +73,11 @@
     <string name="add_bath">Add bath</string>
     <string name="add_grooming">Add grooming</string>
 
+    <!-- Toast messages -->
+    <string name="pet_insert">Pet register was successful</string>
+    <string name="pet_delete">Delete of pet was successful</string>
+    <string name="pet_update">Pet update was successful</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

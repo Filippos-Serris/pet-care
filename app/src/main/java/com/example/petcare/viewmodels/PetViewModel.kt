@@ -14,6 +14,9 @@ class PetViewModel(
     private val petDao: PetDao
 ) : ViewModel() {
 
+    private val _image = MutableLiveData<String>("")
+    val image: LiveData<String> = _image
+
     private val _sex = MutableLiveData<String>("")
     val sex: LiveData<String> = _sex
 
@@ -36,6 +39,7 @@ class PetViewModel(
     }
 
     private fun getNewPetEntry(
+        petImage: String,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -45,6 +49,7 @@ class PetViewModel(
         petChip: String
     ): Pet {
         return Pet(
+            petImage = petImage,
             petName = petName,
             petSpecies = petSpecies,
             petBreed = petBreed,
@@ -56,6 +61,7 @@ class PetViewModel(
     }
 
     fun addNewPet(
+        petImage: String,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -65,6 +71,7 @@ class PetViewModel(
         petChip: String
     ) {
         val newPet = getNewPetEntry(
+            petImage,
             petName,
             petSpecies,
             petBreed,
@@ -77,6 +84,10 @@ class PetViewModel(
         _sex.value = ""
     }
 
+    fun setImage(image: String) {
+        _image.value = image
+    }
+
     fun setSex(sex: String) {
         _sex.value = sex
     }
@@ -84,6 +95,7 @@ class PetViewModel(
     // -------------------- Update Pet --------------------------
     private fun getUpdatedPetEntry(
         petId: Int,
+        petImage: String,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -94,6 +106,7 @@ class PetViewModel(
     ): Pet {
         return Pet(
             petId = petId,
+            petImage = petImage,
             petName = petName,
             petSpecies = petSpecies,
             petBreed = petBreed,
@@ -106,6 +119,7 @@ class PetViewModel(
 
     fun updatePet(
         petId: Int,
+        petImage: String,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -116,6 +130,7 @@ class PetViewModel(
     ) {
         val updatedPet = getUpdatedPetEntry(
             petId,
+            petImage,
             petName,
             petSpecies,
             petBreed,

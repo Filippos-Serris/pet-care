@@ -20,13 +20,6 @@ class PetListFragment : Fragment() {
     private var _binding: FragmentPetListBinding? = null
     private val binding get() = _binding!!
 
-    /*private val petViewModel: PetCareViewModel by activityViewModels {
-        PetCareViewModelFactory(
-            (activity?.application as PetCareApplication).database.petDao(),
-            (activity?.application as PetCareApplication).database.vaccineDao()
-        )
-    }*/
-
     private val petViewModel: PetViewModel by activityViewModels {
         PetViewModelFactory((activity?.application as PetCareApplication).database.petDao())
     }
@@ -69,5 +62,9 @@ class PetListFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    fun givePetIcon(){
+
     }
 }

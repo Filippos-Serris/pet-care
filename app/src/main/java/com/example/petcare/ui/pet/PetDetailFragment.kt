@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.petcare.PetCareApplication
 import com.example.petcare.R
 import com.example.petcare.database.pet.Pet
@@ -49,7 +50,6 @@ class PetDetailFragment : Fragment() {
             bind(pet)
         }
     }
-
 
     private fun bind(pet: Pet) {
         binding.apply {
