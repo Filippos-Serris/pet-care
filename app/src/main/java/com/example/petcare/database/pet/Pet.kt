@@ -9,7 +9,7 @@ import androidx.room.Relation
 @Entity(tableName = "pet")
 data class Pet(
     @PrimaryKey(autoGenerate = true) val petId: Int = 0,
-    @ColumnInfo(name="image") val petImage: String?,
+    @ColumnInfo(name = "image") val petImage: Int?,
     @ColumnInfo(name = "name") val petName: String,
     @ColumnInfo(name = "species") val petSpecies: String,
     @ColumnInfo(name = "breed") val petBreed: String?,

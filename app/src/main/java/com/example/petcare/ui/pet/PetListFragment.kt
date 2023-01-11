@@ -38,7 +38,6 @@ class PetListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = PetListAdapter {
-            //findNavController().navigate(R.id.action_petListFragment_to_petDetailFragment)
             val title = it.petName + " information"
             val action =
                 PetListFragmentDirections.actionPetListFragmentToPetDetailFragment(it.petId, title)
@@ -64,7 +63,7 @@ class PetListFragment : Fragment() {
         _binding = null
     }
 
-    fun givePetIcon(){
+    fun givePetIcon() {
 
     }
 }

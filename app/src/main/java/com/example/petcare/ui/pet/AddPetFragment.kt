@@ -3,14 +3,17 @@ package com.example.petcare.ui.pet
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -79,12 +82,12 @@ class AddPetFragment : Fragment() {
         }
 
         binding.apply {
-            dog.setOnClickListener { petViewModel.setImage("R.drawable.dog") }
-            cat.setOnClickListener { }
-            bird.setOnClickListener { }
-            fish.setOnClickListener { }
-            livestock.setOnClickListener { }
-            custom.setOnClickListener { }
+            dog.setOnClickListener { petViewModel.setImage(R.drawable.dog) }
+            cat.setOnClickListener { petViewModel.setImage(R.drawable.cat) }
+            bird.setOnClickListener { petViewModel.setImage(R.drawable.bird) }
+            fish.setOnClickListener { petViewModel.setImage(R.drawable.fish) }
+            livestock.setOnClickListener { petViewModel.setImage(R.drawable.livestock) }
+            custom.setOnClickListener { setCustomImage() }
 
             radioMale.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
             radioFemale.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
@@ -95,10 +98,11 @@ class AddPetFragment : Fragment() {
         super.onDestroy()
         _binding = null
         petViewModel.setSex("")
+        petViewModel.setImage(R.drawable.image)
 
     }
 
-    // ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
     private fun isEntryValid(): Boolean {
         return this.petViewModel.isEntryValid(
@@ -112,7 +116,7 @@ class AddPetFragment : Fragment() {
     private fun addNewPet() {
         if (isEntryValid()) {
             this.petViewModel.addNewPet(
-                "petImage",
+                petViewModel.image.value!!,
                 binding.petName.text.toString(),
                 binding.petSpecies.text.toString(),
                 binding.petBreed.text.toString(),
@@ -127,7 +131,7 @@ class AddPetFragment : Fragment() {
         }
     }
 
-    // ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
     private fun bind(pet: Pet) {
         binding.apply {
@@ -153,7 +157,7 @@ class AddPetFragment : Fragment() {
         if (isEntryValid()) {
             this.petViewModel.updatePet(
                 this.navigationArgs.petId,
-                "petImage",
+                petViewModel.image.value!!,
                 this.binding.petName.text.toString(),
                 this.binding.petSpecies.text.toString(),
                 this.binding.petBreed.text.toString(),
@@ -169,7 +173,7 @@ class AddPetFragment : Fragment() {
         }
     }
 
-    // ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
     private fun pickDateOfBirth() {
         DatePickerDialog(
@@ -186,11 +190,16 @@ class AddPetFragment : Fragment() {
         binding.petDateOfBirth.setText(sdf.format(cal.time))
     }
 
-    // ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
     private fun Context.hideKeyboard(view: View) {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun setCustomImage(){
+        val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+        startActivity(gallery)
     }
 }

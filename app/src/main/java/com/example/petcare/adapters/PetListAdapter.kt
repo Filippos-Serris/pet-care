@@ -1,5 +1,6 @@
 package com.example.petcare.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,14 +10,16 @@ import com.bumptech.glide.Glide
 import com.example.petcare.R
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.databinding.PetListPetBinding
-import com.example.petcare.ui.pet.PetListFragment
-import kotlinx.coroutines.withContext
+import java.security.AccessControlContext
+import java.security.AccessController.getContext
 
-class PetListAdapter(private val onPetClicked: (Pet) -> Unit) :
+class PetListAdapter(/*private val context:Context, */private val onPetClicked: (Pet) -> Unit) :
     ListAdapter<Pet, PetListAdapter.PetViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
-        return PetViewHolder(PetListPetBinding.inflate(LayoutInflater.from(parent.context)))
+        return PetViewHolder(
+            PetListPetBinding.inflate(LayoutInflater.from(parent.context))
+        )
     }
 
     override fun onBindViewHolder(holder: PetViewHolder, position: Int) {
@@ -29,7 +32,7 @@ class PetListAdapter(private val onPetClicked: (Pet) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(pet: Pet) {
             binding.apply {
-                //petImg.setImageResource()
+                Glide.with(petImg).load(pet.petImage).into(petImg)
                 petName.text = pet.petName
                 petSex.text = pet.petSex
                 petSpecies.text = pet.petSpecies

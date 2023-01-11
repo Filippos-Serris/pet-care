@@ -17,7 +17,7 @@ import com.example.petcare.database.vaccine.VaccineDao
 
 @Database(
     entities = [Pet::class, Vaccine::class, Medication::class, Bath::class, Grooming::class],
-    version = 14,
+    version = 15,
     exportSchema = false
 )
 abstract class PetRoomDatabase : RoomDatabase() {

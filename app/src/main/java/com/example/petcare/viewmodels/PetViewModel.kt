@@ -14,8 +14,8 @@ class PetViewModel(
     private val petDao: PetDao
 ) : ViewModel() {
 
-    private val _image = MutableLiveData<String>("")
-    val image: LiveData<String> = _image
+    private val _image = MutableLiveData<Int>(R.drawable.image)
+    val image: LiveData<Int> = _image
 
     private val _sex = MutableLiveData<String>("")
     val sex: LiveData<String> = _sex
@@ -39,7 +39,7 @@ class PetViewModel(
     }
 
     private fun getNewPetEntry(
-        petImage: String,
+        petImage: Int,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -61,7 +61,7 @@ class PetViewModel(
     }
 
     fun addNewPet(
-        petImage: String,
+        petImage: Int,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -82,9 +82,10 @@ class PetViewModel(
         )
         insertPet(newPet)
         _sex.value = ""
+        _image.value = R.drawable.image
     }
 
-    fun setImage(image: String) {
+    fun setImage(image: Int) {
         _image.value = image
     }
 
@@ -95,7 +96,7 @@ class PetViewModel(
     // -------------------- Update Pet --------------------------
     private fun getUpdatedPetEntry(
         petId: Int,
-        petImage: String,
+        petImage: Int,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -119,7 +120,7 @@ class PetViewModel(
 
     fun updatePet(
         petId: Int,
-        petImage: String,
+        petImage: Int,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -141,6 +142,7 @@ class PetViewModel(
         )
         updatePet(updatedPet)
         _sex.value = ""
+        _image.value = R.drawable.image
     }
 
     //----------------------------------- Age of pet --------------------------------
