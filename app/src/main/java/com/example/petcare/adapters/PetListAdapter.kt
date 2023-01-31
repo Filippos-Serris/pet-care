@@ -1,19 +1,15 @@
 package com.example.petcare.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.petcare.R
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.databinding.PetListPetBinding
-import java.security.AccessControlContext
-import java.security.AccessController.getContext
 
-class PetListAdapter(/*private val context:Context, */private val onPetClicked: (Pet) -> Unit) :
+class PetListAdapter(private val onPetClicked: (Pet) -> Unit) :
     ListAdapter<Pet, PetListAdapter.PetViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
@@ -32,7 +28,15 @@ class PetListAdapter(/*private val context:Context, */private val onPetClicked: 
         RecyclerView.ViewHolder(binding.root) {
         fun bind(pet: Pet) {
             binding.apply {
-                Glide.with(petImg).load(pet.petImage).into(petImg)
+                if (pet.petImage!!.contains(".jpg")) {
+                    Glide.with(petImg).load(pet.petImage).into(petImg)
+                } else {
+                    Glide.with(petImg).load(pet.petImage!!.toInt()).into(petImg)
+                }
+
+                /*val x = pet.petImage.toString()
+                val y = x.toInt()*/
+
                 petName.text = pet.petName
                 petSex.text = pet.petSex
                 petSpecies.text = pet.petSpecies

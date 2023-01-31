@@ -3,17 +3,18 @@ package com.example.petcare.ui.pet
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.icu.util.Calendar
+import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -24,6 +25,9 @@ import com.example.petcare.database.pet.Pet
 import com.example.petcare.databinding.FragmentAddPetBinding
 import com.example.petcare.viewmodels.PetViewModel
 import com.example.petcare.viewmodels.PetViewModelFactory
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -43,7 +47,7 @@ class AddPetFragment : Fragment() {
     private var cal = Calendar.getInstance()
 
     private val dateSetListener =
-        DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
             cal.set(Calendar.MONTH, monthOfYear)
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -82,13 +86,12 @@ class AddPetFragment : Fragment() {
         }
 
         binding.apply {
-            dog.setOnClickListener { petViewModel.setImage(R.drawable.dog) }
-            cat.setOnClickListener { petViewModel.setImage(R.drawable.cat) }
-            bird.setOnClickListener { petViewModel.setImage(R.drawable.bird) }
-            fish.setOnClickListener { petViewModel.setImage(R.drawable.fish) }
-            livestock.setOnClickListener { petViewModel.setImage(R.drawable.livestock) }
-            custom.setOnClickListener { setCustomImage() }
-
+            dog.setOnClickListener { petViewModel.setImage(R.drawable.dog.toString()) }
+            cat.setOnClickListener { petViewModel.setImage(R.drawable.cat.toString()) }
+            bird.setOnClickListener { petViewModel.setImage(R.drawable.bird.toString()) }
+            fish.setOnClickListener { petViewModel.setImage(R.drawable.fish.toString()) }
+            livestock.setOnClickListener { petViewModel.setImage(R.drawable.livestock.toString()) }
+            custom.setOnClickListener { selectImageFromGalleryResult.launch("image/*") }
             radioMale.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
             radioFemale.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
         }
@@ -98,7 +101,7 @@ class AddPetFragment : Fragment() {
         super.onDestroy()
         _binding = null
         petViewModel.setSex("")
-        petViewModel.setImage(R.drawable.image)
+        petViewModel.setImage(R.drawable.image.toString())
 
     }
 
@@ -151,6 +154,26 @@ class AddPetFragment : Fragment() {
             petViewModel.setSex(getString(R.string.female))
             binding.radioFemale.isChecked = true
         }
+
+        if (pet.petImage == R.drawable.dog.toString()) {
+            petViewModel.setImage(R.drawable.dog.toString())
+            binding.dog.isChecked = true
+        } else if (pet.petImage == R.drawable.cat.toString()) {
+            petViewModel.setImage(R.drawable.cat.toString())
+            binding.cat.isChecked = true
+        } else if (pet.petImage == R.drawable.bird.toString()) {
+            petViewModel.setImage(R.drawable.bird.toString())
+            binding.bird.isChecked = true
+        } else if (pet.petImage == R.drawable.fish.toString()) {
+            petViewModel.setImage(R.drawable.fish.toString())
+            binding.fish.isChecked = true
+        } else if (pet.petImage == R.drawable.livestock.toString()) {
+            petViewModel.setImage(R.drawable.livestock.toString())
+            binding.livestock.isChecked = true
+        } else {
+            // TODO: set the value of the custom image so the update function don't empty the field
+            binding.dog.isChecked = true
+        }
     }
 
     private fun updatePet() {
@@ -198,8 +221,43 @@ class AddPetFragment : Fragment() {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    private fun setCustomImage(){
-        val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-        startActivity(gallery)
+// ----------------------------------------------------------------------------
+
+    private val selectImageFromGalleryResult =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            try {
+                if (uri != null && uri.toString().contains("content://")) {
+                    saveImageToInternalStorage(uri)
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+
+    private fun saveImageToInternalStorage(uri: Uri) {
+        val prefix = UUID.randomUUID()
+        val extension = ".jpg"
+        val fileName = "$prefix" + extension
+
+        requireContext().openFileOutput(fileName, Context.MODE_PRIVATE)
+            .use { stream ->
+                val source =
+                    ImageDecoder.createSource(requireContext().contentResolver, uri)
+                val bitmap = ImageDecoder.decodeBitmap(source)
+
+                val bos = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos)
+                val bitmapData = bos.toByteArray()
+
+                stream.write(bitmapData)
+
+                val path = requireContext().filesDir.absolutePath
+                val file = File(
+                    "$path/$fileName"
+                )
+                petViewModel.setImage(file.path.toString())
+            }
     }
+
+// ----------------------------------------------------------------------------
 }

@@ -1,10 +1,9 @@
 package com.example.petcare
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.petcare.databinding.ActivityMainBinding
 
@@ -22,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         setupActionBarWithNavController(navController)
-        //NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

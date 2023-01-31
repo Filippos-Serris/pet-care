@@ -14,10 +14,10 @@ class PetViewModel(
     private val petDao: PetDao
 ) : ViewModel() {
 
-    private val _image = MutableLiveData<Int>(R.drawable.image)
-    val image: LiveData<Int> = _image
+    private val _image = MutableLiveData(R.drawable.image.toString())
+    val image: LiveData<String> = _image
 
-    private val _sex = MutableLiveData<String>("")
+    private val _sex = MutableLiveData("")
     val sex: LiveData<String> = _sex
 
     val allPets: LiveData<List<Pet>> = petDao.getPets().asLiveData()
@@ -39,7 +39,7 @@ class PetViewModel(
     }
 
     private fun getNewPetEntry(
-        petImage: Int,
+        petImage: String,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -61,7 +61,7 @@ class PetViewModel(
     }
 
     fun addNewPet(
-        petImage: Int,
+        petImage: String,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -82,10 +82,10 @@ class PetViewModel(
         )
         insertPet(newPet)
         _sex.value = ""
-        _image.value = R.drawable.image
+        _image.value = R.drawable.image.toString()
     }
 
-    fun setImage(image: Int) {
+    fun setImage(image: String) {
         _image.value = image
     }
 
@@ -96,7 +96,7 @@ class PetViewModel(
     // -------------------- Update Pet --------------------------
     private fun getUpdatedPetEntry(
         petId: Int,
-        petImage: Int,
+        petImage: String,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -120,7 +120,7 @@ class PetViewModel(
 
     fun updatePet(
         petId: Int,
-        petImage: Int,
+        petImage: String,
         petName: String,
         petSpecies: String,
         petBreed: String,
@@ -142,7 +142,7 @@ class PetViewModel(
         )
         updatePet(updatedPet)
         _sex.value = ""
-        _image.value = R.drawable.image
+        _image.value = R.drawable.image.toString()
     }
 
     //----------------------------------- Age of pet --------------------------------
