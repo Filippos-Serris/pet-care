@@ -170,6 +170,9 @@ class PetViewModel(
         }
         return true
     }
+
+    //-------------------------------------------------------------------------------
+
 }
 
 class PetViewModelFactory(private val petDao: PetDao) : ViewModelProvider.Factory {

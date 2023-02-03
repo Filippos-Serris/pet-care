@@ -64,6 +64,9 @@
         <argument
             android:name="title"
             app:argType="string" />
+        <action
+            android:id="@+id/action_petDetailFragment_to_examListFragment"
+            app:destination="@id/examListFragment" />
     </fragment>
     <fragment
         android:id="@+id/vaccineListFragment"
@@ -175,5 +178,21 @@
         <action
             android:id="@+id/action_addGroomingFragment_to_groomingListFragment"
             app:destination="@id/groomingListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/examListFragment"
+        android:name="com.example.petcare.ui.exams.ExamListFragment"
+        android:label="ExamListFragment" >
+        <action
+            android:id="@+id/action_examListFragment_to_addExamFragment"
+            app:destination="@id/addExamFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addExamFragment"
+        android:name="com.example.petcare.ui.exams.AddExamFragment"
+        android:label="AddExamFragment" >
+        <action
+            android:id="@+id/action_addExamFragment_to_examListFragment"
+            app:destination="@id/examListFragment" />
     </fragment>
 </navigation>
