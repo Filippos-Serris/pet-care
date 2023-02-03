@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.petcare.database.bath.Bath
 import com.example.petcare.database.bath.BathDao
+import com.example.petcare.database.exams.Exams
+import com.example.petcare.database.exams.ExamsDao
 import com.example.petcare.database.grooming.Grooming
 import com.example.petcare.database.grooming.GroomingDao
 import com.example.petcare.database.medication.Medication
@@ -16,8 +18,8 @@ import com.example.petcare.database.vaccine.Vaccine
 import com.example.petcare.database.vaccine.VaccineDao
 
 @Database(
-    entities = [Pet::class, Vaccine::class, Medication::class, Bath::class, Grooming::class],
-    version = 18,
+    entities = [Pet::class, Vaccine::class, Medication::class, Bath::class, Grooming::class, Exams::class],
+    version = 19,
     exportSchema = false
 )
 abstract class PetRoomDatabase : RoomDatabase() {
@@ -27,6 +29,7 @@ abstract class PetRoomDatabase : RoomDatabase() {
     abstract fun medicationDao(): MedicationDao
     abstract fun bathDao(): BathDao
     abstract fun groomingDao(): GroomingDao
+    abstract fun examsDao(): ExamsDao
 
     companion object {
         @Volatile

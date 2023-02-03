@@ -171,8 +171,8 @@ class AddPetFragment : Fragment() {
             petViewModel.setImage(R.drawable.livestock.toString())
             binding.livestock.isChecked = true
         } else {
-            // TODO: set the value of the custom image so the update function don't empty the field
-            binding.dog.isChecked = true
+            petViewModel.setImage(pet.petImage.toString())
+            binding.custom.isChecked = true
         }
     }
 
@@ -228,6 +228,10 @@ class AddPetFragment : Fragment() {
             try {
                 if (uri != null && uri.toString().contains("content://")) {
                     saveImageToInternalStorage(uri)
+
+                // TODO: delete old image and create new one for change in the id icon
+                    //val file = File(pet.petImage)
+                    //file.delete()
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
@@ -235,10 +239,7 @@ class AddPetFragment : Fragment() {
         }
 
     private fun saveImageToInternalStorage(uri: Uri) {
-        val prefix = UUID.randomUUID()
-        val extension = ".jpg"
-        val fileName = "$prefix" + extension
-
+        val fileName = "${UUID.randomUUID()}" + ".jpg"
         requireContext().openFileOutput(fileName, Context.MODE_PRIVATE)
             .use { stream ->
                 val source =
@@ -257,6 +258,11 @@ class AddPetFragment : Fragment() {
                 )
                 petViewModel.setImage(file.path.toString())
             }
+
+    }
+
+    private fun replaceImageToInternalStorage(path: String) {
+        val uri = Uri.parse(path)
     }
 
 // ----------------------------------------------------------------------------
