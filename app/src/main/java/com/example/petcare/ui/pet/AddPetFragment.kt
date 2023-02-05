@@ -227,11 +227,12 @@ class AddPetFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             try {
                 if (uri != null && uri.toString().contains("content://")) {
-                    saveImageToInternalStorage(uri)
-
-                // TODO: delete old image and create new one for change in the id icon
-                    //val file = File(pet.petImage)
-                    //file.delete()
+                    if (navigationArgs.petId != -1) {
+                        deleteImageFromInternalStorage(uri)
+                        saveImageToInternalStorage(uri)
+                    } else if (navigationArgs.petId == -1) {
+                        saveImageToInternalStorage(uri)
+                    }
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
@@ -261,9 +262,9 @@ class AddPetFragment : Fragment() {
 
     }
 
-    private fun replaceImageToInternalStorage(path: String) {
-        val uri = Uri.parse(path)
+    private fun deleteImageFromInternalStorage(uri: Uri) {
+        val file = File(pet.petImage)
+        file.delete()
     }
-
 // ----------------------------------------------------------------------------
 }

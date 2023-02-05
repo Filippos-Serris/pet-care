@@ -79,6 +79,7 @@
     <string name="medication_fields">Medications name, dosage and start date are required</string>
     <string name="pet_fields">Pets name, species, sex and date of birth are required</string>
     <string name="vaccine_fields">Vaccines name, vaccination date and next vaccination date are required</string>
+    <string name="exams_fields">Exam type and examination date are required</string>
 
     <!-- Fragment titles -->
     <string name="edit_pet_title">Edit pet</string>
