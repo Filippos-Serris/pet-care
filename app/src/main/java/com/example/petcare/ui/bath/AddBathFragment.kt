@@ -1,18 +1,14 @@
 package com.example.petcare.ui.bath
 
-import android.app.Activity
 import android.app.DatePickerDialog
-import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -79,7 +75,7 @@ class AddBathFragment : Fragment() {
                     bind(bath)
                 }
         } else {
-            binding.saveButton.setOnClickListener { addNewBath() }
+            binding.addButton.setOnClickListener { addNewBath() }
         }
 
         binding.bathDate.setOnClickListener {
@@ -113,7 +109,7 @@ class AddBathFragment : Fragment() {
         binding.apply {
             bathDate.setText(bath.bathDate, TextView.BufferType.SPANNABLE)
             nextBathDate.setText(bath.nextBathDate, TextView.BufferType.SPANNABLE)
-            saveButton.setOnClickListener { updateBath() }
+            addButton.setOnClickListener { updateBath() }
         }
     }
 

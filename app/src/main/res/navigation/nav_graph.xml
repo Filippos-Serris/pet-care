@@ -186,6 +186,9 @@
         <action
             android:id="@+id/action_examListFragment_to_addExamFragment"
             app:destination="@id/addExamFragment" />
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/addExamFragment"
@@ -194,5 +197,11 @@
         <action
             android:id="@+id/action_addExamFragment_to_examListFragment"
             app:destination="@id/examListFragment" />
+        <argument
+            android:name="pet_id"
+            app:argType="integer" />
+        <argument
+            android:name="exams_id"
+            app:argType="integer" />
     </fragment>
 </navigation>

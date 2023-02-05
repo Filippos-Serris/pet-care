@@ -32,7 +32,7 @@
 
 
         <RadioGroup
-            android:id="@+id/pet_image_selector"
+            android:id="@+id/pet_img_radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -86,7 +86,7 @@
             android:hint="@string/pet_name_star"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_image_selector">
+            app:layout_constraintTop_toBottomOf="@id/pet_img_radio_group">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pet_name"
@@ -111,7 +111,6 @@
                 android:id="@+id/pet_species"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textCapWords"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -130,13 +129,12 @@
                 android:id="@+id/pet_breed"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textCapWords"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- PetSex -->
         <TextView
-            android:id="@+id/pet_sex_label_2"
+            android:id="@+id/pet_sex_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -147,7 +145,7 @@
             app:layout_constraintTop_toBottomOf="@+id/pet_breed_label" />
 
         <RadioGroup
-            android:id="@+id/radio_group_sex"
+            android:id="@+id/sex_radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -155,16 +153,16 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pet_sex_label_2">
+            app:layout_constraintTop_toBottomOf="@+id/pet_sex_label">
 
             <RadioButton
-                android:id="@+id/radio_male"
+                android:id="@+id/male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/male" />
 
             <RadioButton
-                android:id="@+id/radio_female"
+                android:id="@+id/female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/female" />
@@ -176,19 +174,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:layout_marginEnd="339dp"
             android:hint="@string/pet_date_of_birth"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_group_sex">
+            app:layout_constraintTop_toBottomOf="@+id/sex_radio_group">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pet_date_of_birth"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:focusableInTouchMode="false"
-                android:inputType="textCapWords"
-                android:singleLine="true" />
+                android:focusableInTouchMode="false" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- PetColor -->
@@ -206,7 +201,6 @@
                 android:id="@+id/pet_colour"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textCapWords"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -225,7 +219,6 @@
                 android:id="@+id/pet_chip"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textCapWords"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 

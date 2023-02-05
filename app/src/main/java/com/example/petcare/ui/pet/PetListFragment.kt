@@ -1,10 +1,10 @@
 package com.example.petcare.ui.pet
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,15 +43,15 @@ class PetListFragment : Fragment() {
                 PetListFragmentDirections.actionPetListFragmentToPetDetailFragment(it.petId, title)
             this.findNavController().navigate(action)
         }
-        binding.recyclerView.adapter = adapter
+        binding.recycler.adapter = adapter
 
         this.petViewModel.allPets.observe(this.viewLifecycleOwner) { pets ->
             pets.let { adapter.submitList(it) }
         }
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.recycler.layoutManager = LinearLayoutManager(this.context)
 
-        binding.newPetButton.setOnClickListener {
+        binding.addButton.setOnClickListener {
             val action =
                 PetListFragmentDirections.actionPetListFragmentToAddPetFragment(getString(R.string.add_pet_title))
             this.findNavController().navigate(action)

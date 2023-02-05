@@ -1,16 +1,15 @@
 package com.example.petcare.ui.medication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.petcare.PetCareApplication
-import com.example.petcare.R
 import com.example.petcare.adapters.MedicationListAdapter
 import com.example.petcare.database.medication.Medication
 import com.example.petcare.databinding.FragmentMedicationListBinding
@@ -50,7 +49,7 @@ class MedicationListFragment : Fragment() {
                 )
             findNavController().navigate(action)
         }
-        binding.medicationRecycler.adapter = adapter
+        binding.recycler.adapter = adapter
 
         val petId = navigationArgs.petId
 
@@ -59,7 +58,7 @@ class MedicationListFragment : Fragment() {
                 medications.let { adapter.submitList(it) }
             }
 
-        binding.medicationRecycler.layoutManager = LinearLayoutManager(this.context)
+        binding.recycler.layoutManager = LinearLayoutManager(this.context)
 
 
         binding.addButton.setOnClickListener {

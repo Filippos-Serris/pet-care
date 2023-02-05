@@ -1,17 +1,15 @@
 package com.example.petcare.ui.bath
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.petcare.PetCareApplication
-import com.example.petcare.R
 import com.example.petcare.adapters.BathListAdapter
 import com.example.petcare.database.bath.Bath
 import com.example.petcare.databinding.FragmentBathListBinding
@@ -50,12 +48,12 @@ class BathListFragment : Fragment() {
             findNavController().navigate(action)
 
         }
-        binding.bathRecycler.adapter = adapter
+        binding.recycler.adapter = adapter
 
         this.bathViewModel.retrieveBaths(navigationArgs.petId)
             .observe(this.viewLifecycleOwner) { baths -> baths.let { adapter.submitList(it) } }
 
-        binding.bathRecycler.layoutManager = LinearLayoutManager(this.context)
+        binding.recycler.layoutManager = LinearLayoutManager(this.context)
 
         binding.addButton.setOnClickListener {
             val action =

@@ -156,7 +156,7 @@
             app:layout_constraintTop_toBottomOf="@id/pet_chip_label" />
 
         <Button
-            android:id="@+id/pet_vaccine"
+            android:id="@+id/vaccine_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -167,7 +167,7 @@
             app:layout_constraintTop_toBottomOf="@id/pet_chip" />
 
         <Button
-            android:id="@+id/pet_medication"
+            android:id="@+id/medication_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -175,10 +175,10 @@
             android:text="@string/medication"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_vaccine" />
+            app:layout_constraintTop_toBottomOf="@id/vaccine_button" />
 
         <Button
-            android:id="@+id/pet_exams"
+            android:id="@+id/exams_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -186,10 +186,10 @@
             android:text="@string/exams"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_medication" />
+            app:layout_constraintTop_toBottomOf="@id/medication_button" />
 
         <Button
-            android:id="@+id/pet_bath"
+            android:id="@+id/bath_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -197,10 +197,10 @@
             android:text="@string/bath"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_exams" />
+            app:layout_constraintTop_toBottomOf="@id/exams_button" />
 
         <Button
-            android:id="@+id/pet_grooming"
+            android:id="@+id/grooming_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -208,7 +208,7 @@
             android:text="@string/grooming"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_bath" />
+            app:layout_constraintTop_toBottomOf="@id/bath_button" />
 
         <Button
             android:id="@+id/edit_button"
@@ -218,7 +218,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/edit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_grooming" />
+            app:layout_constraintTop_toBottomOf="@id/grooming_button" />
 
         <Button
             android:id="@+id/delete_button"
@@ -229,7 +229,7 @@
             android:backgroundTint="@color/red_400"
             android:text="@string/delete"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pet_grooming" />
+            app:layout_constraintTop_toBottomOf="@id/grooming_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

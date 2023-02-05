@@ -1,16 +1,15 @@
 package com.example.petcare.ui.grooming
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.petcare.PetCareApplication
-import com.example.petcare.R
 import com.example.petcare.adapters.GroomingListAdapter
 import com.example.petcare.database.grooming.Grooming
 import com.example.petcare.databinding.FragmentGroomingListBinding
@@ -52,14 +51,14 @@ class GroomingListFragment : Fragment() {
                 )
             findNavController().navigate(action)
         }
-        binding.groomingRecycler.adapter = adapter
+        binding.recycler.adapter = adapter
 
         this.groomingViewModel.retrieveGroomings(navigationArgs.petId)
             .observe(this.viewLifecycleOwner) { groomings ->
                 groomings.let { adapter.submitList(it) }
             }
 
-        binding.groomingRecycler.layoutManager = LinearLayoutManager(this.context)
+        binding.recycler.layoutManager = LinearLayoutManager(this.context)
 
         binding.addButton.setOnClickListener {
             val action =

@@ -5,13 +5,13 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -76,7 +76,7 @@ class AddVaccineFragment : Fragment() {
                     bind(vaccine)
                 }
         } else {
-            binding.saveButton.setOnClickListener { addNewVaccine() }
+            binding.saveInfoButton.setOnClickListener { addNewVaccine() }
         }
 
         binding.vaccinationDate.setOnClickListener {
@@ -123,7 +123,7 @@ class AddVaccineFragment : Fragment() {
             vaccineDescription.setText(vaccine.vaccineDescription, TextView.BufferType.SPANNABLE)
             vaccinationDate.setText(vaccine.vaccinationDate, TextView.BufferType.SPANNABLE)
             nextVaccinationDate.setText(vaccine.nextVaccinationDate, TextView.BufferType.SPANNABLE)
-            saveButton.setOnClickListener { updateVaccine() }
+            saveInfoButton.setOnClickListener { updateVaccine() }
 
         }
     }

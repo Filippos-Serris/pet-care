@@ -9,15 +9,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/mandatory_fields"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/vaccine_name_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:hint="@string/vaccine_name"
+            android:hint="@string/vaccine_name_star"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/info_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/vaccine_name"
@@ -41,7 +50,6 @@
                 android:id="@+id/vaccine_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textCapWords"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:hint="@string/vaccination_date"
+            android:hint="@string/vaccination_date_star"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vaccine_description_label">
@@ -59,8 +67,6 @@
                 android:id="@+id/vaccination_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textCapWords"
-                android:singleLine="true"
                 android:focusableInTouchMode="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:hint="@string/next_vaccination_date"
+            android:hint="@string/next_vaccination_date_star"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vaccination_date_label">
@@ -78,13 +84,11 @@
                 android:id="@+id/next_vaccination_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textCapWords"
-                android:singleLine="true"
                 android:focusableInTouchMode="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/save_button"
+            android:id="@+id/save_info_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

@@ -20,7 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="@string/bath_date"
+        android:hint="@string/bath_date_star"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/info_text">
@@ -29,8 +29,7 @@
             android:id="@+id/bath_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:focusableInTouchMode="false"
-            android:singleLine="true" />
+            android:focusableInTouchMode="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -47,12 +46,11 @@
             android:id="@+id/next_bath_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:focusableInTouchMode="false"
-            android:singleLine="true" />
+            android:focusableInTouchMode="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/save_button"
+        android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

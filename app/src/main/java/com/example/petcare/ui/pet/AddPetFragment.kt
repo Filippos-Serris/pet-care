@@ -92,8 +92,8 @@ class AddPetFragment : Fragment() {
             fish.setOnClickListener { petViewModel.setImage(R.drawable.fish.toString()) }
             livestock.setOnClickListener { petViewModel.setImage(R.drawable.livestock.toString()) }
             custom.setOnClickListener { selectImageFromGalleryResult.launch("image/*") }
-            radioMale.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
-            radioFemale.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
+            male.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
+            female.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
         }
     }
 
@@ -149,10 +149,10 @@ class AddPetFragment : Fragment() {
 
         if (pet.petSex == getString(R.string.male)) {
             petViewModel.setSex(getString(R.string.male))
-            binding.radioMale.isChecked = true
+            binding.male.isChecked = true
         } else {
             petViewModel.setSex(getString(R.string.female))
-            binding.radioFemale.isChecked = true
+            binding.female.isChecked = true
         }
 
         if (pet.petImage == R.drawable.dog.toString()) {
