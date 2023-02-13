@@ -67,6 +67,8 @@
     <string name="exams">Exams</string>
     <string name="bath">Bath</string>
     <string name="grooming">Grooming</string>
+    <string name="add_image">Add image</string>
+    <string name="add_file">Add file</string>
 
     <!-- Dialogues -->
     <string name="delete_question">Are you sure you want to delete </string>

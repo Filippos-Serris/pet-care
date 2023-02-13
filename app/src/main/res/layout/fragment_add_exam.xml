@@ -1,8 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.exams.AddExamFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,7 +94,10 @@
             android:id="@+id/add_image_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="80dp"
+            android:drawableLeft="@drawable/image"
+            android:text="@string/add_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/next_examination_date_label" />
 
@@ -102,9 +105,23 @@
             android:id="@+id/add_file_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="30dp"
+            android:drawableLeft="@drawable/file"
+            android:text="@string/add_file"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/next_examination_date_label" />
+
+        <Button
+            android:id="@+id/save_info_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/save_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_file_button" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

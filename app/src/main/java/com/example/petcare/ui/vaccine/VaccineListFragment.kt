@@ -50,7 +50,8 @@ class VaccineListFragment : Fragment() {
 
         val adapter = VaccineListAdapter {
             val action =
-                VaccineListFragmentDirections.actionVaccineListFragmentToAddVaccineFragment(it.petId,
+                VaccineListFragmentDirections.actionVaccineListFragmentToAddVaccineFragment(
+                    it.petId,
                     it.vaccineId
                 )
             findNavController().navigate(action)
@@ -59,7 +60,7 @@ class VaccineListFragment : Fragment() {
 
         val petId = navigationArgs.petId
 
-        this.vaccineViewModel.retrieveVaccines(petId).observe(this.viewLifecycleOwner) { vaccines ->
+        vaccineViewModel.retrieveVaccines(petId).observe(this.viewLifecycleOwner) { vaccines ->
             vaccines.let { adapter.submitList(it) }
         }
 

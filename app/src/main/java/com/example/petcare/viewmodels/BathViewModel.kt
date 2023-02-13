@@ -18,7 +18,7 @@ class BathViewModel(private val bathDao: BathDao) : ViewModel() {
         return bathDao.getBath(id).asLiveData()
     }
 
-    fun updateBath(bath: Bath) {
+    private fun updateBath(bath: Bath) {
         viewModelScope.launch { bathDao.updateBath(bath) }
     }
 

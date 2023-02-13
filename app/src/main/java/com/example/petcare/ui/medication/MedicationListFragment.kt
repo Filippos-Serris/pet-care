@@ -53,7 +53,7 @@ class MedicationListFragment : Fragment() {
 
         val petId = navigationArgs.petId
 
-        this.medicationViewModel.retrieveMedications(petId)
+        medicationViewModel.retrieveMedications(petId)
             .observe(this.viewLifecycleOwner) { medications ->
                 medications.let { adapter.submitList(it) }
             }

@@ -45,7 +45,7 @@ class PetListFragment : Fragment() {
         }
         binding.recycler.adapter = adapter
 
-        this.petViewModel.allPets.observe(this.viewLifecycleOwner) { pets ->
+        petViewModel.allPets.observe(this.viewLifecycleOwner) { pets ->
             pets.let { adapter.submitList(it) }
         }
 

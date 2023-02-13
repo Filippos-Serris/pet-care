@@ -182,7 +182,8 @@
     <fragment
         android:id="@+id/examListFragment"
         android:name="com.example.petcare.ui.exams.ExamListFragment"
-        android:label="ExamListFragment" >
+        android:label="ExamListFragment"
+        tools:layout="@layout/fragment_exam_list">
         <action
             android:id="@+id/action_examListFragment_to_addExamFragment"
             app:destination="@id/addExamFragment" />
@@ -193,7 +194,8 @@
     <fragment
         android:id="@+id/addExamFragment"
         android:name="com.example.petcare.ui.exams.AddExamFragment"
-        android:label="AddExamFragment" >
+        android:label="AddExamFragment"
+        tools:layout="@layout/fragment_add_exam">
         <action
             android:id="@+id/action_addExamFragment_to_examListFragment"
             app:destination="@id/examListFragment" />

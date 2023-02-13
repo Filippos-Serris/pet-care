@@ -53,7 +53,7 @@ class GroomingListFragment : Fragment() {
         }
         binding.recycler.adapter = adapter
 
-        this.groomingViewModel.retrieveGroomings(navigationArgs.petId)
+        groomingViewModel.retrieveGroomings(navigationArgs.petId)
             .observe(this.viewLifecycleOwner) { groomings ->
                 groomings.let { adapter.submitList(it) }
             }

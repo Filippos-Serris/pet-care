@@ -75,7 +75,7 @@ class AddBathFragment : Fragment() {
                     bind(bath)
                 }
         } else {
-            binding.addButton.setOnClickListener { addNewBath() }
+            binding.saveInfoButton.setOnClickListener { addNewBath() }
         }
 
         binding.bathDate.setOnClickListener {
@@ -83,6 +83,9 @@ class AddBathFragment : Fragment() {
         }
         binding.nextBathDate.setOnClickListener { pickDate(binding.nextBathDate) }
     }
+
+    //------------------------------------------------------------------------------------------------------
+
 
     private fun isEntryValid(): Boolean {
         return this.bathViewModel.isEntryValid(
@@ -109,7 +112,7 @@ class AddBathFragment : Fragment() {
         binding.apply {
             bathDate.setText(bath.bathDate, TextView.BufferType.SPANNABLE)
             nextBathDate.setText(bath.nextBathDate, TextView.BufferType.SPANNABLE)
-            addButton.setOnClickListener { updateBath() }
+            saveInfoButton.setOnClickListener { updateBath() }
         }
     }
 

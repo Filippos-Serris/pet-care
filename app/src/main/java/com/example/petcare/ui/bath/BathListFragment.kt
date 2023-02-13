@@ -50,7 +50,7 @@ class BathListFragment : Fragment() {
         }
         binding.recycler.adapter = adapter
 
-        this.bathViewModel.retrieveBaths(navigationArgs.petId)
+        bathViewModel.retrieveBaths(navigationArgs.petId)
             .observe(this.viewLifecycleOwner) { baths -> baths.let { adapter.submitList(it) } }
 
         binding.recycler.layoutManager = LinearLayoutManager(this.context)
