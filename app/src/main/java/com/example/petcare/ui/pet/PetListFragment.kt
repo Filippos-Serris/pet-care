@@ -38,7 +38,7 @@ class PetListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = PetListAdapter {
-            val title = it.petName + " information"
+            val title = "${it.petName}'s information"
             val action =
                 PetListFragmentDirections.actionPetListFragmentToPetDetailFragment(it.petId, title)
             this.findNavController().navigate(action)
@@ -53,7 +53,7 @@ class PetListFragment : Fragment() {
 
         binding.addButton.setOnClickListener {
             val action =
-                PetListFragmentDirections.actionPetListFragmentToAddPetFragment(getString(R.string.add_pet_title))
+                PetListFragmentDirections.actionPetListFragmentToAddPetFragment(getString(R.string.add_pet))
             this.findNavController().navigate(action)
         }
     }

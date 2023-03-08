@@ -75,11 +75,6 @@ class PetDetailFragment : Fragment() {
                 findNavController().navigate(action)
             }
             examsButton.setOnClickListener {
-                /*Toast.makeText(
-                    context,
-                    "Not yet implemented",
-                    Toast.LENGTH_LONG
-                ).show()*/
                 val action = PetDetailFragmentDirections.actionPetDetailFragmentToExamListFragment(
                     navigationArgs.petId
                 )
@@ -119,7 +114,7 @@ class PetDetailFragment : Fragment() {
     }
 
     private fun editPet() {
-        val title = "edit" + pet.petName
+        val title = "Edit ${pet.petName}'s information"
         val action = PetDetailFragmentDirections.actionPetDetailFragmentToAddPetFragment(
             title,
             pet.petId

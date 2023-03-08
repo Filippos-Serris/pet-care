@@ -4,24 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
     tools:context=".ui.grooming.GroomingListFragment">
 
-    <TextView
-        android:id="@+id/grooming_date_header"
-        android:layout_width="100dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_container"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/grooming_date"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/next_grooming_date_header"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:text="@string/next_grooming_date"
-        app:layout_constraintStart_toEndOf="@+id/grooming_date_header"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/grooming_date_header"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/grooming_date"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/next_grooming_date_header"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/next_grooming_date"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/grooming_date_header"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <View
         android:id="@+id/divider"
@@ -30,33 +46,47 @@
         android:layout_marginTop="1dp"
         android:layout_marginBottom="3dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@id/grooming_scrollview"
+        app:layout_constraintBottom_toTopOf="@id/content_container"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/grooming_date_header" />
+        app:layout_constraintTop_toBottomOf="@id/header_container" />
 
-    <ScrollView
-        android:id="@+id/grooming_scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_container"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent=".8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grooming_date_header">
+        app:layout_constraintTop_toBottomOf="@id/header_container">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ScrollView
+            android:id="@+id/grooming_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/grooming_date_header" />
-    </ScrollView>
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/grooming_date_header" />
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <Button
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/add"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content_container" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

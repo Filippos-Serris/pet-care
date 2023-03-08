@@ -3,54 +3,143 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="10dp">
 
-    <TextView
-        android:id="@+id/medication_name"
-        android:layout_width="100dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/card"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/medication_name" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/medication_description"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/medication_name"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/medication_description" />
+        <TextView
+            android:id="@+id/medication_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/medication_name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/medication_dosage"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="@string/medication_dosage"
-        app:layout_constraintStart_toEndOf="@+id/medication_description"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/medication_start_date_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/medication_start_date"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/medication_name" />
 
-    <TextView
-        android:id="@+id/medication_start_date"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/medication_dosage"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/medication_start_date" />
+        <TextView
+            android:id="@+id/medication_end_date_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/medication_end_date"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/medication_start_date_label"
+            app:layout_constraintTop_toBottomOf="@id/medication_name" />
 
-    <TextView
-        android:id="@+id/medication_end_date"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/medication_start_date"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/medication_end_date" />
+        <TextView
+            android:id="@+id/medication_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/medication_start_date_label"
+            tools:text="@string/medication_start_date" />
 
-    <TextView
-        android:id="@+id/medication_repetition"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/medication_end_date"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/medication_repetition" />
+        <TextView
+            android:id="@+id/medication_end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toStartOf="@id/medication_end_date_label"
+            app:layout_constraintTop_toBottomOf="@id/medication_start_date_label"
+            android:text="@string/empty_date" />
+
+        <TextView
+            android:id="@+id/medication_dosage_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/medication_dosage"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/medication_start_date" />
+
+        <TextView
+            android:id="@+id/medication_dosage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toEndOf="@+id/medication_dosage_label"
+            app:layout_constraintTop_toTopOf="@id/medication_dosage_label"
+            tools:text="@string/medication_dosage" />
+
+        <TextView
+            android:id="@+id/medication_repetition_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/medication_repetition"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/medication_dosage_label" />
+
+        <TextView
+            android:id="@+id/medication_repetition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toEndOf="@+id/medication_repetition_label"
+            app:layout_constraintTop_toTopOf="@id/medication_repetition_label"
+            tools:text="@string/medication_repetition" />
+
+
+        <TextView
+            android:id="@+id/description_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/vaccine_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/medication_repetition_label" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/description_card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_label">
+
+            <TextView
+                android:id="@id/medication_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/empty_description"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

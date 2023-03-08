@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:paddingBottom="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/card"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
@@ -111,9 +112,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--android:maxWidth="350dp"
-    android:minWidth="350dp"-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

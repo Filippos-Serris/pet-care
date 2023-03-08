@@ -33,7 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textCapWords"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:maxLength="15"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,7 +51,8 @@
                 android:id="@+id/vaccine_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:maxLength="50"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

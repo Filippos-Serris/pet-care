@@ -73,7 +73,6 @@
     <!-- Dialogues -->
     <string name="delete_question">Are you sure you want to delete </string>
 
-
     <!-- Field completion -->
     <string name="mandatory_fields">Fields annotated with * are required</string>
     <string name="bath_fields">Bath date is required</string>
@@ -84,21 +83,42 @@
     <string name="exams_fields">Exam type and examination date are required</string>
 
     <!-- Fragment titles -->
-    <string name="edit_pet_title">Edit pet</string>
-    <string name="add_pet_title">Add pet</string>
-    <string name="add_new_vaccine">Add new vaccine</string>
-    <string name="add_new_medication">Add new medication</string>
+    <string name="add_pet">Add pet</string>
+    <string name="update_pet">Update pet\'s Information</string>
+    <string name="add_vaccine">Add vaccine</string>
+    <string name="update_vaccine">Update pet\'s vaccine</string>
+    <string name="add_medication">Add medication</string>
+    <string name="update_medication">Update pet\'s medication</string>
+    <string name="add_exam">Add exam</string>
+    <string name="update_exam">Update pet\'s exam</string>
     <string name="add_bath">Add bath</string>
+    <string name="update_bath">Update pet\'s bath</string>
     <string name="add_grooming">Add grooming</string>
+    <string name="update_grooming">Update pet\'s grooming</string>
+
 
     <!-- Toast messages -->
     <string name="pet_insert">Pet register was successful</string>
     <string name="pet_delete">Delete of pet was successful</string>
     <string name="pet_update">Pet update was successful</string>
 
-    <!-- Image identifier -->
-    <string name="drawable">drawable</string>
-    <string name="uri">uri</string>
+    <string name="empty_description">No description added for this item</string>
+    <string name="empty_date">--/--/--</string>
+
+    <!-- Spinners -->
+    <string-array name="dosage_spinner">
+        <item>ml</item>
+        <item>cc</item>
+        <item>pill</item>
+        <item>dose</item>
+    </string-array>
+
+    <string-array name="repetition_spinner">
+        <item>days</item>
+        <item>weeks</item>
+        <item>months</item>
+        <item>year</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

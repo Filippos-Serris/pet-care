@@ -25,8 +25,10 @@ class VaccineListAdapter(private val onVaccineClicked: (Vaccine) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(vaccine: Vaccine) {
             binding.apply {
-                vaccineName.text =vaccine.vaccineName
-                vaccineDescription.text = vaccine.vaccineDescription
+                vaccineName.text = vaccine.vaccineName
+                if (!vaccine.vaccineDescription.isNullOrEmpty()) {
+                    vaccineDescription.text = vaccine.vaccineDescription
+                }
                 vaccinationDate.text = vaccine.vaccinationDate
                 nextVaccinationDate.text = vaccine.nextVaccinationDate
             }

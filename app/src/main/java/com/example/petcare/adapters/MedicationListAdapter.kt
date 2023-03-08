@@ -33,10 +33,14 @@ class MedicationListAdapter(private val onMedicationClicked: (Medication) -> Uni
         fun bind(medication: Medication) {
             binding.apply {
                 medicationName.text = medication.medicationName
-                medicationDescription.text = medication.medicationDescription
+                if (!medication.medicationDescription.isNullOrEmpty()) {
+                    medicationDescription.text = medication.medicationDescription
+                }
                 medicationDosage.text = medication.medicationDosage
                 medicationStartDate.text = medication.medicationStartDate
-                medicationEndDate.text = medication.medicationEndDate
+                if(!medication.medicationEndDate.isNullOrEmpty()){
+                    medicationEndDate.text = medication.medicationEndDate
+                }
                 medicationRepetition.text = medication.medicationRepetition
             }
         }

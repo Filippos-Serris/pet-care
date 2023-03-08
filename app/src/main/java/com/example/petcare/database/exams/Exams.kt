@@ -22,5 +22,5 @@ data class Exams(
     @ColumnInfo(name = "description") val examDescription: String?,
     @ColumnInfo(name = "examinationDate") val examinationDate: String,
     @ColumnInfo(name = "nextExaminationDate") val nextExaminationDate: String?,
-    @ColumnInfo(name = "results") val examinationResults: String?
+    @ColumnInfo(name = "results") val examinationResults: List<String>?
 )

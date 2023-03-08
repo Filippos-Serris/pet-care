@@ -69,7 +69,7 @@ class AddBathFragment : Fragment() {
         val bathId = navigationArgs.bathId
 
         if (bathId > 0) {
-            this.bathViewModel.retrieveBath(bathId)
+            bathViewModel.retrieveBath(bathId)
                 .observe(this.viewLifecycleOwner) { selectedBath ->
                     bath = selectedBath
                     bind(bath)
@@ -95,7 +95,7 @@ class AddBathFragment : Fragment() {
 
     private fun addNewBath() {
         if (isEntryValid()) {
-            this.bathViewModel.addNewBath(
+            bathViewModel.addNewBath(
                 navigationArgs.petId,
                 binding.bathDate.text.toString(),
                 binding.nextBathDate.text.toString()

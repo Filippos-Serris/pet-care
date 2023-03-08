@@ -93,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textCapWords"
+                android:maxLength="15"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,6 +112,7 @@
                 android:id="@+id/pet_species"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLength="15"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,6 +131,7 @@
                 android:id="@+id/pet_breed"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLength="15"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -201,6 +204,7 @@
                 android:id="@+id/pet_colour"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLength="15"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -219,6 +223,8 @@
                 android:id="@+id/pet_chip"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="number"
+                android:maxLength="15"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 

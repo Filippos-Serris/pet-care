@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.petcare.PetCareApplication
+import com.example.petcare.R
 import com.example.petcare.adapters.BathListAdapter
 import com.example.petcare.database.bath.Bath
 import com.example.petcare.databinding.FragmentBathListBinding
@@ -43,7 +44,8 @@ class BathListFragment : Fragment() {
         val adapter = BathListAdapter {
             val action = BathListFragmentDirections.actionBathListFragmentToAddBathFragment(
                 it.petId,
-                it.bathId
+                it.bathId,
+                getString(R.string.update_bath)
             )
             findNavController().navigate(action)
 
@@ -59,7 +61,7 @@ class BathListFragment : Fragment() {
             val action =
                 BathListFragmentDirections.actionBathListFragmentToAddBathFragment(
                     navigationArgs.petId,
-                    -1
+                    -1, getString(R.string.add_bath)
                 )
             findNavController().navigate(action)
         }

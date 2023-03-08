@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.petcare.database.grooming.Grooming
-import com.example.petcare.database.medication.Medication
 import com.example.petcare.databinding.GroomingListGroomingBinding
 
 class GroomingListAdapter(private val onGroomingClicked: (Grooming) -> Unit) :
@@ -17,7 +16,9 @@ class GroomingListAdapter(private val onGroomingClicked: (Grooming) -> Unit) :
         fun bind(grooming: Grooming) {
             binding.apply {
                 groomingDate.text = grooming.groomingDate
-                nextGroomingDate.text = grooming.nextGroomingDate
+                if (!grooming.nextGroomingDate.isNullOrEmpty()) {
+                    nextGroomingDate.text = grooming.nextGroomingDate
+                }
             }
         }
     }

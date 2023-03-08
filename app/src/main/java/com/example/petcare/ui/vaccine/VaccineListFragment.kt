@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.petcare.PetCareApplication
+import com.example.petcare.R
 import com.example.petcare.adapters.VaccineListAdapter
 import com.example.petcare.database.vaccine.Vaccine
 import com.example.petcare.databinding.FragmentVaccineListBinding
@@ -52,7 +53,8 @@ class VaccineListFragment : Fragment() {
             val action =
                 VaccineListFragmentDirections.actionVaccineListFragmentToAddVaccineFragment(
                     it.petId,
-                    it.vaccineId
+                    it.vaccineId,
+                    getString(R.string.update_vaccine)
                 )
             findNavController().navigate(action)
         }
@@ -69,7 +71,7 @@ class VaccineListFragment : Fragment() {
         binding.addButton.setOnClickListener {
             val action =
                 VaccineListFragmentDirections.actionVaccineListFragmentToAddVaccineFragment(
-                    petId, -1
+                    petId, -1, getString(R.string.add_vaccine)
                 )
             findNavController().navigate(action)
         }

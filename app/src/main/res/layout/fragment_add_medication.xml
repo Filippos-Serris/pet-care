@@ -16,8 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/mandatory_fields"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/medication_name_label"
@@ -34,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textCapWords"
+                android:maxLength="15"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,6 +52,7 @@
                 android:id="@+id/medication_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLength="50"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +70,9 @@
                 android:id="@+id/medication_dosage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:inputType="numberDecimal"
+                android:maxLength="5"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -85,7 +89,7 @@
                 android:id="@+id/medication_start_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:focusableInTouchMode="false"/>
+                android:focusableInTouchMode="false" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -102,7 +106,7 @@
                 android:id="@+id/medication_end_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:focusableInTouchMode="false"/>
+                android:focusableInTouchMode="false" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -119,7 +123,8 @@
                 android:id="@+id/medication_repetition"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:maxLength="15"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.petcare.database.bath.Bath
 import com.example.petcare.database.bath.BathDao
 import com.example.petcare.database.exams.Exams
@@ -19,9 +20,11 @@ import com.example.petcare.database.vaccine.VaccineDao
 
 @Database(
     entities = [Pet::class, Vaccine::class, Medication::class, Bath::class, Grooming::class, Exams::class],
-    version = 19,
+    version = 20,
     exportSchema = false
 )
+@TypeConverters(Converters::class)
+
 abstract class PetRoomDatabase : RoomDatabase() {
 
     abstract fun petDao(): PetDao

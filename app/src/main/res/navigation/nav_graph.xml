@@ -83,7 +83,7 @@
     <fragment
         android:id="@+id/addVaccineFragment"
         android:name="com.example.petcare.ui.vaccine.AddVaccineFragment"
-        android:label="@string/add_new_vaccine"
+        android:label="{title}"
         tools:layout="@layout/fragment_add_vaccine">
         <argument
             android:name="pet_id"
@@ -94,6 +94,9 @@
         <argument
             android:name="vacccine_id"
             app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/medicationListFragment"
@@ -110,7 +113,7 @@
     <fragment
         android:id="@+id/addMedicationFragment"
         android:name="com.example.petcare.ui.medication.AddMedicationFragment"
-        android:label="@string/add_new_medication"
+        android:label="{title}"
         tools:layout="@layout/fragment_add_medication">
         <argument
             android:name="pet_id"
@@ -121,6 +124,9 @@
         <action
             android:id="@+id/action_addMedicationFragment_to_medicationListFragment"
             app:destination="@id/medicationListFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/bathListFragment"
@@ -140,7 +146,7 @@
     <fragment
         android:id="@+id/addBathFragment"
         android:name="com.example.petcare.ui.bath.AddBathFragment"
-        android:label="@string/add_bath"
+        android:label="{title} "
         tools:layout="@layout/fragment_add_bath">
         <argument
             android:name="pet_id"
@@ -151,6 +157,9 @@
         <action
             android:id="@+id/action_addBathFragment_to_bathListFragment"
             app:destination="@id/bathListFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/groomingListFragment"
@@ -167,7 +176,7 @@
     <fragment
         android:id="@+id/addGroomingFragment"
         android:name="com.example.petcare.ui.grooming.AddGroomingFragment"
-        android:label="@string/add_grooming"
+        android:label="{title}"
         tools:layout="@layout/fragment_add_grooming">
         <argument
             android:name="pet_id"
@@ -178,11 +187,14 @@
         <action
             android:id="@+id/action_addGroomingFragment_to_groomingListFragment"
             app:destination="@id/groomingListFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/examListFragment"
         android:name="com.example.petcare.ui.exams.ExamListFragment"
-        android:label="ExamListFragment"
+        android:label="@string/exams"
         tools:layout="@layout/fragment_exam_list">
         <action
             android:id="@+id/action_examListFragment_to_addExamFragment"
@@ -190,11 +202,14 @@
         <argument
             android:name="pet_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_examListFragment_to_examDetailFragment"
+            app:destination="@id/examDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addExamFragment"
         android:name="com.example.petcare.ui.exams.AddExamFragment"
-        android:label="AddExamFragment"
+        android:label="{title}"
         tools:layout="@layout/fragment_add_exam">
         <action
             android:id="@+id/action_addExamFragment_to_examListFragment"
@@ -205,5 +220,32 @@
         <argument
             android:name="exams_id"
             app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/examDetailFragment"
+        android:name="com.example.petcare.ui.exams.ExamDetailFragment"
+        android:label="fragment_exam_detail"
+        tools:layout="@layout/fragment_exam_detail" >
+        <argument
+            android:name="exam_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_examDetailFragment_to_examListFragment"
+            app:destination="@id/examListFragment" />
+        <action
+            android:id="@+id/action_examDetailFragment_to_examResultPreviewFragment"
+            app:destination="@id/examResultPreviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/examResultPreviewFragment"
+        android:name="com.example.petcare.ui.exams.ExamResultPreviewFragment"
+        android:label="fragment_exam_result_preview"
+        tools:layout="@layout/fragment_exam_result_preview" >
+        <argument
+            android:name="uri"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -28,7 +28,9 @@ class BathListAdapter(private val onBathClicked: (Bath) -> Unit) :
         fun bind(bath: Bath) {
             binding.apply {
                 bathDate.text = bath.bathDate
-                nextBathDate.text = bath.nextBathDate
+                if (!bath.nextBathDate.isNullOrEmpty()) {
+                    nextBathDate.text = bath.nextBathDate
+                }
             }
         }
     }
