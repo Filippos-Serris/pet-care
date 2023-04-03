@@ -23,6 +23,10 @@ class ExamsViewModel(private val examsDao: ExamsDao) : ViewModel() {
         viewModelScope.launch { examsDao.updateExam(exams) }
     }
 
+    fun deleteExam(exam: Exams){
+        viewModelScope.launch { examsDao.deleteExam(exam)}
+    }
+
     //-------------
     private fun getNewExamsEntry(
         petId: Int,

@@ -229,8 +229,8 @@
     <fragment
         android:id="@+id/examDetailFragment"
         android:name="com.example.petcare.ui.exams.ExamDetailFragment"
-        android:label="fragment_exam_detail"
-        tools:layout="@layout/fragment_exam_detail" >
+        android:label="@string/exam_details"
+        tools:layout="@layout/fragment_exam_detail">
         <argument
             android:name="exam_id"
             app:argType="integer" />

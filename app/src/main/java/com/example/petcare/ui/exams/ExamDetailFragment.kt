@@ -11,10 +11,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.petcare.PetCareApplication
+import com.example.petcare.R
 import com.example.petcare.database.exams.Exams
 import com.example.petcare.databinding.FragmentExamDetailBinding
 import com.example.petcare.viewmodels.ExamsViewModel
 import com.example.petcare.viewmodels.ExamsViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.io.File
 
 class ExamDetailFragment : Fragment() {
     private var _binding: FragmentExamDetailBinding? = null
@@ -61,9 +64,39 @@ class ExamDetailFragment : Fragment() {
                 findNavController().navigate(action)
 
             }
+            recycler.adapter = adapter
+            recycler.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            deleteButton.setOnClickListener { confirmDialog() }
+        }
+    }
 
-            binding.recycler.adapter = adapter
-            binding.recycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+    private fun confirmDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage(getString(R.string.delete_vaccine_question))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.no)) { _, _ -> }
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                deleteExam()
+            }
+            .show()
+    }
+
+    private fun deleteExam() {
+        deleteResultsFromInternalStorage()
+        examsViewModel.deleteExam(exam)
+        findNavController().navigateUp()
+    }
+
+    private fun deleteResultsFromInternalStorage() {
+        var file: File
+
+        if (!exam.examinationResults.isNullOrEmpty()) {
+            for (result in exam.examinationResults!!) {
+                file = File(result)
+                file.delete()
+            }
         }
     }
 }

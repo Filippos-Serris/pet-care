@@ -100,4 +100,5 @@
     <string name="delete_medication_question">"Είσται σίγουρος/η πως θέλετε να διαγράψετε αυτές τις πληροφορίες για την συγκεκριμένη φαρμακευτική αγωγή; "</string>
     <string name="delete_bath_question">"Είσται σίγουρος/η πως θέλετε να διαγράψετε αυτές τις πληροφορίες για το συγκεκριμένο μπάνιο; "</string>
     <string name="delete_grooming_question">"Είσται σίγουρος/η πως θέλετε να διαγράψετε αυτές τις πληροφορίες για τον συγκεκριμένο καλλωπισμό; "</string>
+    <string name="exam_details">Πληροφορίες εξέτασης</string>
 </resources>
