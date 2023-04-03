@@ -10,6 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        // Photo View
+        maven { url "https://jitpack.io" }
     }
 }
 rootProject.name = "Pet Care"

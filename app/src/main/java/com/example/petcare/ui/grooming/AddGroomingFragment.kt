@@ -1,15 +1,14 @@
 package com.example.petcare.ui.grooming
 
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -19,6 +18,7 @@ import com.example.petcare.database.grooming.Grooming
 import com.example.petcare.databinding.FragmentAddGroomingBinding
 import com.example.petcare.viewmodels.GroomingViewModel
 import com.example.petcare.viewmodels.GroomingViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.*
@@ -75,10 +75,15 @@ class AddGroomingFragment : Fragment() {
                 }
         } else {
             binding.saveInfoButton.setOnClickListener { addNewGrooming() }
+            binding.deleteButton.isEnabled = false
         }
 
-        binding.groomingDate.setOnClickListener { pickDate(binding.groomingDate) }
-        binding.nextGroomingDate.setOnClickListener { pickDate(binding.nextGroomingDate) }
+        binding.apply {
+            groomingDate.setOnClickListener { pickDate(groomingDate) }
+            nextGroomingDate.setOnClickListener { pickDate(nextGroomingDate) }
+            clearGroomingDate.setOnClickListener { groomingDate.text = null }
+            clearNextGroomingDate.setOnClickListener { nextGroomingDate.text = null }
+        }
     }
 
     private fun isEntryValid(): Boolean {
@@ -110,6 +115,7 @@ class AddGroomingFragment : Fragment() {
             groomingDate.setText(grooming.groomingDate, TextView.BufferType.SPANNABLE)
             nextGroomingDate.setText(grooming.nextGroomingDate, TextView.BufferType.SPANNABLE)
             saveInfoButton.setOnClickListener { updateGrooming() }
+            deleteButton.setOnClickListener { confirmDialog() }
         }
     }
 
@@ -152,5 +158,22 @@ class AddGroomingFragment : Fragment() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         date.setText(sdf.format(cal.time))
+    }
+
+    private fun confirmDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage(getString(R.string.delete_grooming_question))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.no)) { _, _ -> }
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                deleteGrooming()
+            }
+            .show()
+    }
+
+    private fun deleteGrooming() {
+        groomingViewModel.deleteGrooming(grooming)
+        findNavController().navigateUp()
     }
 }

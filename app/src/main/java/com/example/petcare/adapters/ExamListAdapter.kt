@@ -32,9 +32,13 @@ class ExamListAdapter(private val onExamsClicked: (Exams) -> Unit) :
         fun bind(exams: Exams) {
             binding.apply {
                 examType.text = exams.examType
-                examDescription.text = exams.examDescription
+                if (!exams.examDescription.isNullOrEmpty()) {
+                    examDescription.text = exams.examDescription
+                }
                 examinationDate.text = exams.examinationDate
-                nextExaminationDate.text = exams.nextExaminationDate
+                if (!exams.nextExaminationDate.isNullOrEmpty()) {
+                    nextExaminationDate.text = exams.nextExaminationDate
+                }
             }
         }
 

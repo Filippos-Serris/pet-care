@@ -6,8 +6,6 @@ import com.example.petcare.database.exams.ExamsDao
 import kotlinx.coroutines.launch
 
 class ExamsViewModel(private val examsDao: ExamsDao) : ViewModel() {
-    //private val _examImages = MutableLiveData<List<String>>()
-    //var examImages: LiveData<List<String>> = _examImages
 
     private fun insertExam(exams: Exams) {
         viewModelScope.launch { examsDao.insertExam(exams) }
@@ -42,7 +40,6 @@ class ExamsViewModel(private val examsDao: ExamsDao) : ViewModel() {
             nextExaminationDate = nextExaminationDate,
             examinationResults = examsResult
         )
-
     }
 
     fun addNewExams(
@@ -63,7 +60,6 @@ class ExamsViewModel(private val examsDao: ExamsDao) : ViewModel() {
                 examResults
             )
         insertExam(newExam)
-
     }
 
     //-------------
@@ -106,7 +102,6 @@ class ExamsViewModel(private val examsDao: ExamsDao) : ViewModel() {
                 examinationResults
             )
         updateExams(updatedExam)
-
     }
 
     //----------

@@ -17,4 +17,7 @@ interface ExamsDao{
 
     @Update
     suspend fun updateExam(exams:Exams)
+
+    @Delete
+    suspend fun deleteExam(exam: Exams)
 }

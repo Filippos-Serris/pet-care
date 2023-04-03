@@ -50,8 +50,8 @@ class BathListFragment : Fragment() {
             findNavController().navigate(action)
 
         }
-        binding.recycler.adapter = adapter
 
+        binding.recycler.adapter = adapter
         bathViewModel.retrieveBaths(navigationArgs.petId)
             .observe(this.viewLifecycleOwner) { baths -> baths.let { adapter.submitList(it) } }
 

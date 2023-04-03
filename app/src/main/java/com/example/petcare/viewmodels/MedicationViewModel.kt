@@ -23,6 +23,10 @@ class MedicationViewModel(private val medicationDao: MedicationDao) : ViewModel(
         viewModelScope.launch { medicationDao.updateMedication(medication) }
     }
 
+    fun deleteMedication(medication: Medication){
+        viewModelScope.launch { medicationDao.deleteMedication(medication)}
+    }
+
     private fun getNewMedicationEntry(
         petId: Int,
         medicationName: String,
@@ -115,12 +119,16 @@ class MedicationViewModel(private val medicationDao: MedicationDao) : ViewModel(
     fun isEntryValid(
         medicationName: String,
         medicationDosage: String,
-        medicationStartDate: String
+        medicationDosageMeasurementUnit: String,
+        medicationStartDate: String,
+        medicationRepetition: String,
+        medicationRepetitionTimer: String
     ): Boolean {
-        if (medicationName.isBlank() || medicationDosage.isBlank() || medicationStartDate.isBlank()) {
-            return false
+        return if (medicationName.isBlank() || medicationDosage.isBlank() || medicationStartDate.isBlank() || medicationDosageMeasurementUnit.contains("---")) {
+            false
+        } else {
+            !(medicationRepetition.isNotBlank() && medicationRepetitionTimer.contains("---"))
         }
-        return true
     }
 }
 

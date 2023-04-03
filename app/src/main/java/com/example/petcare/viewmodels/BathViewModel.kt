@@ -22,6 +22,10 @@ class BathViewModel(private val bathDao: BathDao) : ViewModel() {
         viewModelScope.launch { bathDao.updateBath(bath) }
     }
 
+    fun deleteBath(bath: Bath){
+        viewModelScope.launch { bathDao.deleteBath(bath)}
+    }
+
     //------------------------------------------------------------------------
 
     private fun getNewBathEntry(petId: Int, bathDate: String, nextBathDate: String): Bath {

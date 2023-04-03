@@ -21,16 +21,26 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="@string/bath_date_star"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/info_text">
+        app:layout_constraintTop_toBottomOf="@id/info_text"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".6">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/bath_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:focusableInTouchMode="false"/>
+            android:focusableInTouchMode="false" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/clear_bath_date"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bath_date_label"
+        app:layout_constraintTop_toTopOf="@id/bath_date_label" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/next_bath_date_label"
@@ -38,9 +48,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="@string/next_bath"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bath_date_label">
+        app:layout_constraintTop_toBottomOf="@+id/bath_date_label"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".6">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/next_bath_date"
@@ -48,6 +59,15 @@
             android:layout_height="match_parent"
             android:focusableInTouchMode="false" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/clear_next_bath_date"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/next_bath_date_label"
+        app:layout_constraintTop_toTopOf="@id/next_bath_date_label" />
 
     <Button
         android:id="@+id/save_info_button"
@@ -58,6 +78,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/next_bath_date_label" />
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/red_400"
+        android:text="@string/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/save_info_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

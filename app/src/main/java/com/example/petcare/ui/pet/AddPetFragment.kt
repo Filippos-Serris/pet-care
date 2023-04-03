@@ -94,6 +94,7 @@ class AddPetFragment : Fragment() {
             custom.setOnClickListener { selectImageFromGalleryResult.launch("image/*") }
             male.setOnClickListener { petViewModel.setSex(getString(R.string.male)) }
             female.setOnClickListener { petViewModel.setSex(getString(R.string.female)) }
+            clearDateOfBirth.setOnClickListener { petDateOfBirth.text = null }
         }
     }
 
@@ -228,7 +229,7 @@ class AddPetFragment : Fragment() {
             try {
                 if (uri != null && uri.toString().contains("content://")) {
                     if (navigationArgs.petId != -1) {
-                        deleteImageFromInternalStorage(uri)
+                        deleteImageFromInternalStorage()
                         saveImageToInternalStorage(uri)
                     } else if (navigationArgs.petId == -1) {
                         saveImageToInternalStorage(uri)
@@ -262,7 +263,7 @@ class AddPetFragment : Fragment() {
 
     }
 
-    private fun deleteImageFromInternalStorage(uri: Uri) {
+    private fun deleteImageFromInternalStorage() {
         val file = File(pet.petImage)
         file.delete()
     }

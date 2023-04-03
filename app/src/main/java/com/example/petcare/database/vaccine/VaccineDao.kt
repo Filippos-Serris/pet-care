@@ -17,4 +17,7 @@ interface VaccineDao {
 
     @Update
     suspend fun updateVaccine(vaccine: Vaccine)
+
+    @Delete
+    suspend fun deleteVaccine(vaccine:Vaccine)
 }

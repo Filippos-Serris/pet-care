@@ -22,6 +22,10 @@ class VaccineViewModel(private val vaccineDao: VaccineDao) : ViewModel() {
         viewModelScope.launch { vaccineDao.updateVaccine(vaccine) }
     }
 
+    fun deleteVaccine(vaccine:Vaccine){
+        viewModelScope.launch { vaccineDao.deleteVaccine(vaccine)}
+    }
+
     private fun getNewVaccineEntry(
         petId: Int,
         vaccineName: String,

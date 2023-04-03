@@ -1,6 +1,7 @@
 package com.example.petcare.ui.pet
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.petcare.PetCareApplication
 import com.example.petcare.R
+import com.example.petcare.database.exams.Exams
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.databinding.FragmentPetDetailBinding
 import com.example.petcare.viewmodels.PetViewModel
 import com.example.petcare.viewmodels.PetViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.io.File
 
 class PetDetailFragment : Fragment() {
     private var _binding: FragmentPetDetailBinding? = null
@@ -25,6 +28,8 @@ class PetDetailFragment : Fragment() {
     }
 
     lateinit var pet: Pet
+    lateinit var examsList: List<Exams>
+    private var listOfExamsForDelete: MutableList<String> = mutableListOf()
 
     private val navigationArgs: PetDetailFragmentArgs by navArgs()
     // ------------------------------------------------------------------------------------------
@@ -43,10 +48,16 @@ class PetDetailFragment : Fragment() {
 
         val id = navigationArgs.petId
 
-        this.petViewModel.retrievePet(id).observe(this.viewLifecycleOwner) { selectedPet ->
+        petViewModel.retrievePet(id).observe(this.viewLifecycleOwner) { selectedPet ->
             pet = selectedPet
             bind(pet)
         }
+
+        petViewModel.retrievePetExamsForDelete(id)
+            .observe(this.viewLifecycleOwner) { exams ->
+                examsList = exams
+                Log.d("", "$examsList")
+            }
     }
 
     private fun bind(pet: Pet) {
@@ -97,6 +108,9 @@ class PetDetailFragment : Fragment() {
     }
 
     private fun deletePet() {
+        deleteImageFromInternalStorage()
+        deleteExamResultsFromInternalStorage()
+
         this.petViewModel.deletePet(pet)
         findNavController().navigateUp()
     }
@@ -120,6 +134,26 @@ class PetDetailFragment : Fragment() {
             pet.petId
         )
         this.findNavController().navigate(action)
+    }
+
+    private fun deleteImageFromInternalStorage() {
+        val file = File(pet.petImage)
+        file.delete()
+    }
+
+    private fun deleteExamResultsFromInternalStorage() {
+        for (exam in examsList) {
+            if (exam.examinationResults != null) {
+                for (result in exam.examinationResults) {
+                    listOfExamsForDelete.add(result)
+                }
+            }
+        }
+
+        for(result in listOfExamsForDelete){
+            val file = File(result)
+            file.delete()
+        }
     }
 }
 

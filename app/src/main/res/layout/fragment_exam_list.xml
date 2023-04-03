@@ -4,87 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="280dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent=".8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/exam_type_header"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="@string/exam_type"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/exam_description_header"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="@string/exam_description"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/exam_type_header"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/examination_date_header"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="@string/examination_date"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/exam_description_header"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/next_examination_date_header"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="@string/next_examination_date"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/examination_date_header"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="470dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="3dp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/exam_type_header" />
-
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </ScrollView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </HorizontalScrollView>
+    </ScrollView>
 
     <Button
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/add"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

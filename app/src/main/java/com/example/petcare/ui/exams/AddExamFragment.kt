@@ -45,7 +45,7 @@ class AddExamFragment : Fragment() {
 
     private var cal = Calendar.getInstance()
 
-    var imgList: List<String> = emptyList()
+    private var imgList: List<String> = emptyList()
 
     private val dateSetListener =
         DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
@@ -91,7 +91,9 @@ class AddExamFragment : Fragment() {
             examinationDate.setOnClickListener { pickDate(binding.examinationDate) }
             nextExaminationDate.setOnClickListener { pickDate(binding.nextExaminationDate) }
             addImageButton.setOnClickListener { selectImageFromGalleryResult.launch("image/*") }
-            addFileButton.setOnClickListener { }
+            //addFileButton.setOnClickListener { selectPdfFromStorage.launch("application/pdf/*") }
+            clearExaminationDate.setOnClickListener { examinationDate.text = null }
+            clearNextExaminationDate.setOnClickListener { nextExaminationDate.text = null }
         }
 
     }
@@ -209,8 +211,21 @@ class AddExamFragment : Fragment() {
                     mutableList.add(file.path.toString())
                 }
         }
-
         imgList = mutableList
     }
 
+    /*private val selectPdfFromStorage =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            try {
+                uri?.let { savePdfToInternalStorage(it) }
+                Toast.makeText(context, uri.toString(), Toast.LENGTH_LONG).show()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+
+    private fun savePdfToInternalStorage(uri: Uri) {
+        val fileName = "${UUID.randomUUID()}" + ".pdf"
+
+    }*/
 }

@@ -1,11 +1,7 @@
 package com.example.petcare.database.pet
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
+import com.example.petcare.database.exams.Exams
 import kotlinx.coroutines.flow.Flow
 
 
@@ -17,6 +13,9 @@ interface PetDao {
 
     @Query("select * from pet where petId = :id")
     fun getPet(id: Int): Flow<Pet>
+
+    @Query("select * from exams where petId= :id")
+    fun getExamsForDelete(id: Int): Flow<List<Exams>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertPet(pet: Pet)

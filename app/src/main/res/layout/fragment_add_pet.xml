@@ -131,6 +131,7 @@
                 android:id="@+id/pet_breed"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="textCapWords"
                 android:maxLength="15"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -178,9 +179,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="@string/pet_date_of_birth"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sex_radio_group">
+            app:layout_constraintTop_toBottomOf="@+id/sex_radio_group"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".6">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pet_date_of_birth"
@@ -188,6 +190,15 @@
                 android:layout_height="match_parent"
                 android:focusableInTouchMode="false" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/clear_date_of_birth"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pet_date_of_birth_label"
+            app:layout_constraintTop_toTopOf="@id/pet_date_of_birth_label" />
 
         <!-- PetColor -->
         <com.google.android.material.textfield.TextInputLayout

@@ -1,11 +1,6 @@
 package com.example.petcare.database.bath
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Transaction
-import androidx.room.Update
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -22,4 +17,7 @@ interface BathDao{
 
     @Update
     suspend fun updateBath(bath:Bath)
+
+    @Delete
+    suspend fun deleteBath(bath: Bath)
 }

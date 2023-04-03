@@ -2,6 +2,7 @@ package com.example.petcare.viewmodels
 
 import androidx.lifecycle.*
 import com.example.petcare.R
+import com.example.petcare.database.exams.Exams
 import com.example.petcare.database.pet.Pet
 import com.example.petcare.database.pet.PetDao
 import kotlinx.coroutines.launch
@@ -28,6 +29,10 @@ class PetViewModel(
 
     fun retrievePet(id: Int): LiveData<Pet> {
         return petDao.getPet(id).asLiveData()
+    }
+
+    fun retrievePetExamsForDelete(id: Int): LiveData<List<Exams>> {
+        return petDao.getExamsForDelete(id).asLiveData()
     }
 
     private fun updatePet(pet: Pet) {

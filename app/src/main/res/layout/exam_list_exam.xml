@@ -2,40 +2,104 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="10dp">
 
-    <TextView
-        android:id="@+id/exam_type"
-        android:layout_width="100dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/card"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tool:text="@string/exam_type" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/exam_description"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/exam_type"
-        app:layout_constraintTop_toTopOf="parent"
-        tool:text="@string/exam_description" />
+        <TextView
+            android:id="@+id/exam_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tool:text="@string/exam_type" />
+
+        <TextView
+            android:id="@+id/examination_date_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/examination_date"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/exam_type" />
+
+        <TextView
+            android:id="@+id/next_examination_date_label"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/next_examination_date"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/examination_date_label"
+            app:layout_constraintTop_toBottomOf="@+id/exam_type" />
+
+        <TextView
+            android:id="@id/examination_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/examination_date_label"
+            app:layout_constraintTop_toBottomOf="@id/examination_date_label"
+            tool:text="@string/examination_date" />
+
+        <TextView
+            android:id="@+id/next_examination_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_date"
+            app:layout_constraintStart_toStartOf="@id/next_examination_date_label"
+            app:layout_constraintTop_toBottomOf="@id/next_examination_date_label" />
+
+        <TextView
+            android:id="@+id/description_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/vaccine_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/examination_date" />
 
 
-    <TextView
-        android:id="@+id/examination_date"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="@string/examination_date"
-        app:layout_constraintStart_toEndOf="@+id/exam_description"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/description_card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_label">
 
-    <TextView
-        android:id="@+id/next_examination_date"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/examination_date"
-        app:layout_constraintStart_toEndOf="@+id/examination_date"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@id/exam_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/empty_description"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-

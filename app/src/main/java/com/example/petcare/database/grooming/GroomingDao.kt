@@ -2,7 +2,6 @@ package com.example.petcare.database.grooming
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.selects.select
 
 @Dao
 interface GroomingDao {
@@ -18,4 +17,7 @@ interface GroomingDao {
 
     @Update
     suspend fun updateGrooming(grooming: Grooming)
+
+    @Delete
+    suspend fun deleteGrooming(grooming: Grooming)
 }

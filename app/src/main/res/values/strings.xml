@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pet Care</string>
+    <string name="app_name" translatable="false">Pet Care</string>
 
     <!-- Pet -->
     <string name="pet_name_star">*Pet name</string>
@@ -72,6 +72,11 @@
 
     <!-- Dialogues -->
     <string name="delete_question">Are you sure you want to delete </string>
+    <string name="delete_vaccine_question">Are you sure you want to delete this vaccine information</string>
+    <string name="delete_medication_question">Are you sure you want to delete this medication information</string>
+    <string name="delete_exam_question">Are you sure you want to delete this exam information</string>
+    <string name="delete_bath_question">Are you sure you want to delete this bath information</string>
+    <string name="delete_grooming_question">Are you sure you want to delete this grooming information</string>
 
     <!-- Field completion -->
     <string name="mandatory_fields">Fields annotated with * are required</string>
@@ -95,31 +100,37 @@
     <string name="update_bath">Update pet\'s bath</string>
     <string name="add_grooming">Add grooming</string>
     <string name="update_grooming">Update pet\'s grooming</string>
-
+    <string name="results">Results</string>
 
     <!-- Toast messages -->
-    <string name="pet_insert">Pet register was successful</string>
-    <string name="pet_delete">Delete of pet was successful</string>
-    <string name="pet_update">Pet update was successful</string>
+    <string name="pet_insert" translatable="false">Pet register was successful</string>
+    <string name="pet_delete" translatable="false">Delete of pet was successful</string>
+    <string name="pet_update" translatable="false">Pet update was successful</string>
 
-    <string name="empty_description">No description added for this item</string>
-    <string name="empty_date">--/--/--</string>
+    <string name="empty_description">No description added for this field</string>
+    <string name="empty_date" translatable="false">--/--/--</string>
+
+    <!-- Date buttons -->
+    <string name="clear_date">Clear date</string>
 
     <!-- Spinners -->
     <string-array name="dosage_spinner">
+        <item>---</item>
         <item>ml</item>
         <item>cc</item>
         <item>pill</item>
         <item>dose</item>
+        <item>ampoule</item>
     </string-array>
 
     <string-array name="repetition_spinner">
+        <item>---</item>
         <item>days</item>
         <item>weeks</item>
         <item>months</item>
-        <item>year</item>
+        <item>years</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>

@@ -21,6 +21,7 @@ import com.example.petcare.database.vaccine.Vaccine
 import com.example.petcare.databinding.FragmentAddVaccineBinding
 import com.example.petcare.viewmodels.VaccineViewModel
 import com.example.petcare.viewmodels.VaccineViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.*
@@ -77,15 +78,20 @@ class AddVaccineFragment : Fragment() {
                 }
         } else {
             binding.saveInfoButton.setOnClickListener { addNewVaccine() }
+            binding.deleteButton.isEnabled = false
         }
 
-        binding.vaccinationDate.setOnClickListener {
-            context?.hideKeyboard(it)
-            pickDate(binding.vaccinationDate)
-        }
-        binding.nextVaccinationDate.setOnClickListener {
-            context?.hideKeyboard(it)
-            pickDate(binding.nextVaccinationDate)
+        binding.apply {
+            vaccinationDate.setOnClickListener {
+                context?.hideKeyboard(it)
+                pickDate(vaccinationDate)
+            }
+            nextVaccinationDate.setOnClickListener {
+                context?.hideKeyboard(it)
+                pickDate(nextVaccinationDate)
+            }
+            clearVaccinationDate.setOnClickListener { vaccinationDate.text = null }
+            clearNextVaccinationDate.setOnClickListener { nextVaccinationDate.text = null }
         }
     }
 
@@ -124,7 +130,7 @@ class AddVaccineFragment : Fragment() {
             vaccinationDate.setText(vaccine.vaccinationDate, TextView.BufferType.SPANNABLE)
             nextVaccinationDate.setText(vaccine.nextVaccinationDate, TextView.BufferType.SPANNABLE)
             saveInfoButton.setOnClickListener { updateVaccine() }
-
+            deleteButton.setOnClickListener { confirmDialog() }
         }
     }
 
@@ -174,5 +180,22 @@ class AddVaccineFragment : Fragment() {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun confirmDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage(getString(R.string.delete_vaccine_question))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.no)) { _, _ -> }
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                deleteVaccine()
+            }
+            .show()
+    }
+
+    private fun deleteVaccine(){
+        vaccineViewModel.deleteVaccine(vaccine)
+        findNavController().navigateUp()
     }
 }

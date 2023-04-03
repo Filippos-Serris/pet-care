@@ -62,18 +62,29 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="@string/medication_dosage_star"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/medication_description_label">
+            app:layout_constraintTop_toBottomOf="@+id/medication_description_label"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".6">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/medication_dosage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:singleLine="true"
                 android:inputType="numberDecimal"
-                android:maxLength="5"/>
+                android:maxLength="5"
+                android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/dosage_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toEndOf="@id/medication_dosage_label"
+            app:layout_constraintTop_toTopOf="@id/medication_dosage_label" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/medication_start_date_label"
@@ -81,9 +92,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="@string/medication_start_date_star"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/medication_dosage_label">
+            app:layout_constraintTop_toBottomOf="@+id/medication_dosage_label"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".6">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/medication_start_date"
@@ -92,15 +104,25 @@
                 android:focusableInTouchMode="false" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <Button
+            android:id="@+id/clear_start_date"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/medication_start_date_label"
+            app:layout_constraintTop_toTopOf="@id/medication_start_date_label" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/medication_end_date_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="@string/medication_end_date"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/medication_start_date_label">
+            app:layout_constraintTop_toBottomOf="@+id/medication_start_date_label"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".6">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/medication_end_date"
@@ -109,23 +131,44 @@
                 android:focusableInTouchMode="false" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <Button
+            android:id="@+id/clear_end_date"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/medication_end_date_label"
+            app:layout_constraintTop_toTopOf="@id/medication_end_date_label" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/medication_repetition_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="@string/medication_repetition"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/medication_end_date_label">
+            app:layout_constraintTop_toBottomOf="@+id/medication_end_date_label"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".6">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/medication_repetition"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:singleLine="true"
-                android:maxLength="15"/>
+                android:inputType="numberDecimal"
+                android:maxLength="3"
+                android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/repetition_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toEndOf="@id/medication_repetition_label"
+            app:layout_constraintTop_toTopOf="@id/medication_repetition_label" />
 
         <Button
             android:id="@+id/save_info_button"
@@ -136,6 +179,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/medication_repetition_label" />
+
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/red_400"
+            android:text="@string/delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/save_info_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pet_name_star">*Όνομα κατοικιδίου</string>
+    <string name="pet_name">Όνομα κατοικιδίου</string>
+    <string name="pet_species_star">*Είδος κατοικιδίου</string>
+    <string name="pet_species">Είδος κατοικιδίου</string>
+    <string name="pet_breed">Ράτσα κατοικιδίου</string>
+    <string name="pet_sex_star">*Φύλο κατοικιδίου</string>
+    <string name="pet_sex">Φύλο κατοικιδίου</string>
+    <string name="male">Αρσενικό</string>
+    <string name="female">Θηλυκό</string>
+    <string name="pet_date_of_birth">* Ημ/νια γέννησης κατικοιδίου</string>
+    <string name="pet_age">Ηλικία</string>
+    <string name="pet_colour">Χρώμα κατοικιδίου</string>
+    <string name="pet_chip">Αριθμός τσιπ κατοικιδίου</string>
+    <string name="pet_image">Εικόνα κατοικιδίου</string>
+    <string name="vaccine_name">Όνομα</string>
+    <string name="vaccine_name_star">*Όνομα</string>
+    <string name="vaccine_description">Περιγραφή</string>
+    <string name="vaccination_date">Ημ/νια εμβολιασμού</string>
+    <string name="vaccination_date_star">*Ημ/νια εμβολιασμού</string>
+    <string name="next_vaccination_date">Επόμενη ημ/νια εμβολιασμού</string>
+    <string name="next_vaccination_date_star">*Επόμενη ημ/νια εμβολιασμού</string>
+    <string name="medication_name_star">*Όνομα</string>
+    <string name="medication_name">Όνομα</string>
+    <string name="medication_description">Περιγραφή</string>
+    <string name="medication_dosage_star">*Δοσολογία</string>
+    <string name="medication_dosage">Δοσολογία</string>
+    <string name="medication_start_date_star">*Ημ/νια έναρξης</string>
+    <string name="medication_start_date">Ημ/νια έναρξης</string>
+    <string name="medication_end_date">Ημ/νια λήξης</string>
+    <string name="medication_repetition">Επανάληψη</string>
+    <string name="bath_date_star">*Ημ/νια μπάνιου</string>
+    <string name="bath_date">Ημ/νια μπάνιου</string>
+    <string name="next_bath">Ημ/νια επόμενου μπάνιο</string>
+    <string name="grooming_date_star">*Ημ/νια καλλωπισμού</string>
+    <string name="grooming_date">Ημ/νια καλλωπισμού</string>
+    <string name="next_grooming_date">Επόμενη ημ/νια καλλωπισμού</string>
+    <string name="exam_type_star">*Τύπος</string>
+    <string name="exam_type">Τύπος</string>
+    <string name="exam_description">Περιγραφή</string>
+    <string name="examination_date_star">*Ημ/νια εξετάσεων</string>
+    <string name="examination_date">Ημ/νια εξετάσεων</string>
+    <string name="next_examination_date">Επόμενη ημ/νια εξετάσεων</string>
+    <string name="add">Προσθήκη</string>
+    <string name="edit">Επεξεργασία</string>
+    <string name="delete">Διαγραφή</string>
+    <string name="save_info">Αποθήκευση</string>
+    <string name="no">Οχι</string>
+    <string name="yes">Ναι</string>
+    <string name="vaccines">Εμβόλια</string>
+    <string name="medication">Αγωγή</string>
+    <string name="exams">Εξετάσεις</string>
+    <string name="bath">Μπάνιο</string>
+    <string name="grooming">Καλλωπισμός</string>
+    <string name="add_image">Προσθήκη εικόνας</string>
+    <string name="add_file">Προσθήκη εγγράφου</string>
+    <string name="delete_question">Είστε σίγουρος πως θέλετε να διαγραψετε</string>
+    <string name="mandatory_fields">Τα πεδία με * είναι υποχρεωτικά</string>
+    <string name="bath_fields">Η ημ/νια μπάνιου είναι απαραίτητη</string>
+    <string name="grooming_fields">Η ημ/νια καλλωπισμού είναι απαραίτητη</string>
+    <string name="medication_fields">Το ονομα, δοσολογία και ημ/νια της αγωγής έναρξης είναι απαραίτητα</string>
+    <string name="pet_fields">Το όνομα, είδος, φύλο και ημ/νια γέννησης του κατοικιδίου είναι απαραίτητα</string>
+    <string name="vaccine_fields">Το όνομα, ημ/νια έναρξης, ημ/νια λήξης της αγωγής είναι απαραίτητα</string>
+    <string name="exams_fields">Ο τύπος και η ημ/νια εξέασης είναι απαραίτητα</string>
+    <string name="add_pet">Προσθήκη κατοικιδίου</string>
+    <string name="update_pet">Ενημέρωση πληροφοριών κατοικιδίου</string>
+    <string name="add_vaccine">Προσθήκη εμβολίου</string>
+    <string name="update_vaccine">Ενημέρωση εμβολίου κατοικιδίου</string>
+    <string name="add_medication">Προσθήκη αγωγής</string>
+    <string name="update_medication">Ενημέρωση αγωγήε κατοικιδίου</string>
+    <string name="add_exam">Προσθήκη εξέτασης</string>
+    <string name="update_exam">Ενημέρωση εξέτασης κατοικιδίου</string>
+    <string name="add_bath">Προσθήκη μπάνιου</string>
+    <string name="update_bath">Ενημέρωση μπανιου κατοικιδίου</string>
+    <string name="add_grooming">Προσθήκη καλλωπισμού</string>
+    <string name="update_grooming">Ενημέρωση καλλωπισμού κατοικιδίου</string>
+    <string name="results">Αποτελέσματα</string>
+    <string name="empty_description">Δεν έχει γίνει προσθήκη περιγραφής για αυτό το πεδίo</string>
+
+    <string-array name="dosage_spinner">
+        <item>---</item>
+        <item>ml</item>
+        <item>cc</item>
+        <item>χάπι</item>
+        <item>δόση</item>
+        <item>αμπλούλα</item>
+    </string-array>
+
+    <string-array name="repetition_spinner">
+        <item>---</item>
+        <item>μέρες</item>
+        <item>εβδομάδες</item>
+        <item>μήνες</item>
+        <item>χρόνια</item>
+    </string-array>
+    <string name="clear_date">Εκαθάριση ημ/νιας</string>
+    <string name="delete_vaccine_question">"Είσται σίγουρος/η πως θέλετε να διαγράψετε αυτές τις πληροφορίες για το συγκεκριμένο εμβόλιο; "</string>
+    <string name="delete_exam_question">Είσται σίγουρος/η πως θέλετε να διαγράψετε αυτές τις πληροφορίες για την συγκεκριμένη εξέταση ;</string>
+    <string name="delete_medication_question">"Είσται σίγουρος/η πως θέλετε να διαγράψετε αυτές τις πληροφορίες για την συγκεκριμένη φαρμακευτική αγωγή; "</string>
+    <string name="delete_bath_question">"Είσται σίγουρος/η πως θέλετε να διαγράψετε αυτές τις πληροφορίες για το συγκεκριμένο μπάνιο; "</string>
+    <string name="delete_grooming_question">"Είσται σίγουρος/η πως θέλετε να διαγράψετε αυτές τις πληροφορίες για τον συγκεκριμένο καλλωπισμό; "</string>
+</resources>

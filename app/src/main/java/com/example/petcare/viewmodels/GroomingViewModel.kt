@@ -22,6 +22,10 @@ class GroomingViewModel(private val groomingDao: GroomingDao) : ViewModel() {
         viewModelScope.launch { groomingDao.updateGrooming(grooming) }
     }
 
+    fun deleteGrooming(grooming: Grooming) {
+        viewModelScope.launch { groomingDao.deleteGrooming(grooming) }
+    }
+
     //-------------------------------------------------------------------
 
     private fun getNewGroomingEntry(

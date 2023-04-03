@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/mandatory_fields"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/grooming_date_label"
@@ -21,9 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="@string/grooming_date"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/info_text">
+        app:layout_constraintTop_toBottomOf="@id/info_text"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".6">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/grooming_date"
@@ -32,15 +33,25 @@
             android:focusableInTouchMode="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/clear_grooming_date"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/grooming_date_label"
+        app:layout_constraintTop_toTopOf="@id/grooming_date_label" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/next_grooming_date_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="@string/next_grooming_date"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grooming_date_label">
+        app:layout_constraintTop_toBottomOf="@+id/grooming_date_label"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".6">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/next_grooming_date"
@@ -48,6 +59,15 @@
             android:layout_height="match_parent"
             android:focusableInTouchMode="false" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/clear_next_grooming_date"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/next_grooming_date_label"
+        app:layout_constraintTop_toTopOf="@id/next_grooming_date_label" />
 
     <Button
         android:id="@+id/save_info_button"
@@ -58,5 +78,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/next_grooming_date_label" />
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/red_400"
+        android:text="@string/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/save_info_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

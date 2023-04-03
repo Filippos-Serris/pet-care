@@ -40,7 +40,7 @@ class ExamListFragment : Fragment() {
 
         val adapter = ExamListAdapter {
             val action =
-                ExamListFragmentDirections.actionExamListFragmentToExamDetailFragment(navigationArgs.petId)
+                ExamListFragmentDirections.actionExamListFragmentToExamDetailFragment(it.examId)
             findNavController().navigate(action)
         }
         binding.recycler.adapter = adapter

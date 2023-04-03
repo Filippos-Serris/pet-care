@@ -5,10 +5,12 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -21,6 +23,7 @@ import com.example.petcare.database.medication.Medication
 import com.example.petcare.databinding.FragmentAddMedicationBinding
 import com.example.petcare.viewmodels.MedicationViewModel
 import com.example.petcare.viewmodels.MedicationViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.*
@@ -76,15 +79,42 @@ class AddMedicationFragment : Fragment() {
                 }
         } else {
             binding.saveInfoButton.setOnClickListener { addNewMedication() }
+            binding.deleteButton.isEnabled = false
         }
 
-        binding.medicationStartDate.setOnClickListener {
-            context?.hideKeyboard(it)
-            pickDate(binding.medicationStartDate)
+        binding.apply {
+            medicationStartDate.setOnClickListener {
+                context?.hideKeyboard(it)
+                pickDate(medicationStartDate)
+            }
+            medicationEndDate.setOnClickListener {
+                context?.hideKeyboard(it)
+                pickDate(medicationEndDate)
+            }
+            clearStartDate.setOnClickListener { medicationStartDate.text = null }
+            clearEndDate.setOnClickListener { medicationEndDate.text = null }
         }
-        binding.medicationEndDate.setOnClickListener {
-            context?.hideKeyboard(it)
-            pickDate(binding.medicationEndDate)
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.dosage_spinner,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            binding.dosageSpinner.adapter = adapter
+        }
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.repetition_spinner,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            binding.repetitionSpinner.adapter = adapter
         }
     }
 
@@ -92,7 +122,10 @@ class AddMedicationFragment : Fragment() {
         return this.medicationViewModel.isEntryValid(
             binding.medicationName.text.toString(),
             binding.medicationDosage.text.toString(),
-            binding.medicationStartDate.text.toString()
+            binding.dosageSpinner.selectedItem.toString(),
+            binding.medicationStartDate.text.toString(),
+            binding.medicationRepetition.text.toString(),
+            binding.repetitionSpinner.selectedItem.toString()
         )
     }
 
@@ -102,10 +135,10 @@ class AddMedicationFragment : Fragment() {
                 navigationArgs.petId,
                 binding.medicationName.text.toString(),
                 binding.medicationDescription.text.toString(),
-                binding.medicationDosage.text.toString(),
+                "${binding.medicationDosage.text} ${binding.dosageSpinner.selectedItem}",
                 binding.medicationStartDate.text.toString(),
                 binding.medicationEndDate.text.toString(),
-                binding.medicationRepetition.text.toString()
+                "${binding.medicationRepetition.text} ${binding.repetitionSpinner.selectedItem}"
             )
             val action =
                 AddMedicationFragmentDirections.actionAddMedicationFragmentToMedicationListFragment(
@@ -126,18 +159,55 @@ class AddMedicationFragment : Fragment() {
                 medication.medicationDescription,
                 TextView.BufferType.SPANNABLE
             )
-            medicationDosage.setText(medication.medicationDosage, TextView.BufferType.SPANNABLE)
+            medicationDosage.setText(
+                medication.medicationDosage.substringBefore(" "),
+                TextView.BufferType.SPANNABLE
+            )
+            dosageSpinner.setSelection(setDosageSpinner(medication.medicationDosage.substringAfter(" ")))
+
             medicationStartDate.setText(
                 medication.medicationStartDate,
                 TextView.BufferType.SPANNABLE
             )
             medicationEndDate.setText(medication.medicationEndDate, TextView.BufferType.SPANNABLE)
+
             medicationRepetition.setText(
-                medication.medicationRepetition,
+                medication.medicationRepetition?.substringBefore(" ") ?: "",
                 TextView.BufferType.SPANNABLE
             )
+            if (!medication.medicationRepetition.isNullOrEmpty()) {
+                repetitionSpinner.setSelection(
+                    setRepetitionSpinner(
+                        medication.medicationRepetition.substringAfter(" ")
+                    )
+                )
+            }
             saveInfoButton.setOnClickListener { updateMedication() }
+            deleteButton.setOnClickListener { confirmDialog() }
         }
+    }
+
+    private fun setDosageSpinner(dosageUnit: String): Int {
+        return when (dosageUnit) {
+            "ml" -> 1
+            "cc" -> 2
+            "pill", "χάπι" -> 3
+            "dose", "δόση" -> 4
+            "ampoule", "αμπούλα" -> 5
+            else -> 0
+        }
+    }
+
+    private fun setRepetitionSpinner(repetitionTimer: String): Int {
+        Log.d("", repetitionTimer)
+        return when (repetitionTimer) {
+            "days", "μέρες" -> 1
+            "weeks", "εβδομάδες" -> 2
+            "months", "μήνες" -> 3
+            "year", "χρόνια" -> 4
+            else -> 0
+        }
+
     }
 
     private fun updateMedication() {
@@ -190,6 +260,23 @@ class AddMedicationFragment : Fragment() {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun confirmDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage(getString(R.string.delete_medication_question))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.no)) { _, _ -> }
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                deleteMedication()
+            }
+            .show()
+    }
+
+    private fun deleteMedication() {
+        medicationViewModel.deleteMedication(medication)
+        findNavController().navigateUp()
     }
 
 }

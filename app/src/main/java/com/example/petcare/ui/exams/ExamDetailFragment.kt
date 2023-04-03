@@ -10,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.petcare.PetCareApplication
 import com.example.petcare.database.exams.Exams
 import com.example.petcare.databinding.FragmentExamDetailBinding
@@ -54,9 +53,6 @@ class ExamDetailFragment : Fragment() {
             examinationDate.text = exam.examinationDate
             nextExaminationDate.text = exam.nextExaminationDate
 
-            Glide.with(img1).load(exam.examinationResults?.get(0)).into(img1)
-            Glide.with(img2).load(exam.examinationResults?.get(1)).into(img2)
-
             val adapter = ExamResultAdapter(exam.examinationResults, requireContext()) {
                 val action =
                     ExamDetailFragmentDirections.actionExamDetailFragmentToExamResultPreviewFragment(
@@ -67,7 +63,7 @@ class ExamDetailFragment : Fragment() {
             }
 
             binding.recycler.adapter = adapter
-            binding.recycler.layoutManager = LinearLayoutManager(context)
+            binding.recycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         }
     }
 }

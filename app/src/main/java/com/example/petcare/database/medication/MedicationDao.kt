@@ -1,11 +1,6 @@
 package com.example.petcare.database.medication
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Transaction
-import androidx.room.Update
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -22,4 +17,7 @@ interface MedicationDao {
 
     @Update
     suspend fun updateMedication(medication: Medication)
+
+    @Delete
+    suspend fun deleteMedication(medication: Medication)
 }

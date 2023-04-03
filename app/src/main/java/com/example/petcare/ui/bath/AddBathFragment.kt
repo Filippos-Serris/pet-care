@@ -18,6 +18,7 @@ import com.example.petcare.database.bath.Bath
 import com.example.petcare.databinding.FragmentAddBathBinding
 import com.example.petcare.viewmodels.BathViewModel
 import com.example.petcare.viewmodels.BathViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.*
@@ -76,12 +77,15 @@ class AddBathFragment : Fragment() {
                 }
         } else {
             binding.saveInfoButton.setOnClickListener { addNewBath() }
+            binding.deleteButton.isEnabled = false
         }
 
-        binding.bathDate.setOnClickListener {
-            pickDate(binding.bathDate)
+        binding.apply {
+            bathDate.setOnClickListener { pickDate(bathDate) }
+            nextBathDate.setOnClickListener { pickDate(nextBathDate) }
+            clearBathDate.setOnClickListener { bathDate.text = null }
+            clearNextBathDate.setOnClickListener { nextBathDate.text = null }
         }
-        binding.nextBathDate.setOnClickListener { pickDate(binding.nextBathDate) }
     }
 
     //------------------------------------------------------------------------------------------------------
@@ -113,6 +117,7 @@ class AddBathFragment : Fragment() {
             bathDate.setText(bath.bathDate, TextView.BufferType.SPANNABLE)
             nextBathDate.setText(bath.nextBathDate, TextView.BufferType.SPANNABLE)
             saveInfoButton.setOnClickListener { updateBath() }
+            deleteButton.setOnClickListener { confirmDialog() }
         }
     }
 
@@ -154,5 +159,22 @@ class AddBathFragment : Fragment() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         date.setText(sdf.format(cal.time))
+    }
+
+    private fun confirmDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage(getString(R.string.delete_bath_question))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.no)) { _, _ -> }
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                deleteBath()
+            }
+            .show()
+    }
+
+    private fun deleteBath() {
+        bathViewModel.deleteBath(bath)
+        findNavController().navigateUp()
     }
 }

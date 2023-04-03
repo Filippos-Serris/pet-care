@@ -90,7 +90,8 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_addVaccineFragment_to_vaccineListFragment"
-            app:destination="@id/vaccineListFragment" />
+            app:destination="@id/vaccineListFragment"
+            app:popUpTo="@id/petDetailFragment" />
         <argument
             android:name="vacccine_id"
             app:argType="integer" />
@@ -123,7 +124,8 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_addMedicationFragment_to_medicationListFragment"
-            app:destination="@id/medicationListFragment" />
+            app:destination="@id/medicationListFragment"
+            app:popUpTo="@id/petDetailFragment" />
         <argument
             android:name="title"
             app:argType="string" />
@@ -139,9 +141,6 @@
         <action
             android:id="@+id/action_bathListFragment_to_addBathFragment"
             app:destination="@id/addBathFragment" />
-        <action
-            android:id="@+id/action_bathListFragment_to_petDetailFragment"
-            app:destination="@id/petDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addBathFragment"
@@ -156,7 +155,8 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_addBathFragment_to_bathListFragment"
-            app:destination="@id/bathListFragment" />
+            app:destination="@id/bathListFragment"
+            app:popUpTo="@id/petDetailFragment" />
         <argument
             android:name="title"
             app:argType="string" />
@@ -186,7 +186,8 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_addGroomingFragment_to_groomingListFragment"
-            app:destination="@id/groomingListFragment" />
+            app:destination="@id/groomingListFragment"
+            app:popUpTo="@id/petDetailFragment" />
         <argument
             android:name="title"
             app:argType="string" />
@@ -213,7 +214,8 @@
         tools:layout="@layout/fragment_add_exam">
         <action
             android:id="@+id/action_addExamFragment_to_examListFragment"
-            app:destination="@id/examListFragment" />
+            app:destination="@id/examListFragment"
+            app:popUpTo="@id/petDetailFragment" />
         <argument
             android:name="pet_id"
             app:argType="integer" />
@@ -242,8 +244,8 @@
     <fragment
         android:id="@+id/examResultPreviewFragment"
         android:name="com.example.petcare.ui.exams.ExamResultPreviewFragment"
-        android:label="fragment_exam_result_preview"
-        tools:layout="@layout/fragment_exam_result_preview" >
+        android:label="@string/results"
+        tools:layout="@layout/fragment_exam_result_preview">
         <argument
             android:name="uri"
             app:argType="string" />
